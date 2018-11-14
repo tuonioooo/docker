@@ -14,5 +14,7 @@ docker pull nginx
  docker run -d -p 17000:80 nginx
 ```
 
+界面显示
 
+![](/assets/[T2ZNI%}%291$2%28_O]SCZZ6P1.png)
 

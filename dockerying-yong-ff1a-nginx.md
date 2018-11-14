@@ -10,3 +10,9 @@ docker pull nginx
 
 3.运行
 
+```
+ docker run -d -p 17000:80 nginx
+```
+
+
+

@@ -43,6 +43,8 @@ Docker 仓库是用来包含镜像的位置，Docker提供一个注册服务器�
 
 仓库支持的操作类似git，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到公有或者私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。.
 
+示意图如下：![](/assets/docker安装命令.png)![](/assets/docker概念详细介绍.png)
+
 ## Reference
 
 > [http://tech.365rili.com/?p=41](https://link.jianshu.com/?t=http://tech.365rili.com/?p=41) [https://yeasy.gitbooks.io/docker\_practice/content/index.html](https://link.jianshu.com/?t=https://yeasy.gitbooks.io/docker_practice/content/index.html)  

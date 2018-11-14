@@ -22,13 +22,13 @@ chkconfig docker on
 * 抓取镜像文件
 
 ```
-docker pull
+docker pull  XXX
 ```
 
 * 运行镜像文件
 
 ```
-docker run
+docker run   XXX
 ```
 
 

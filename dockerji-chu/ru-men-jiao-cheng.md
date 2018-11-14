@@ -246,3 +246,5 @@ docker pull centos:latest
 [Docker系列之一：入门介绍](https://tech.meituan.com/docker_introduction.html)  
 [Docker 入门教程](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 
+https://www.centos.org/download/  官网下载地址
+

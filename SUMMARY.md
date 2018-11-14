@@ -9,7 +9,7 @@
 * [docker swarm集群搭建](docker-swarmji-qun-da-jian.md)
 * [docker compose部署脚本](docker-composebu-shu-jiao-ben.md)
 * [docker service服务编排](docker-servicefu-wu-bian-pai.md)
-* docker stack分布式集群部署
+* [docker stack分布式集群部署](docker-stackfen-bu-shi-ji-qun-bu-shu.md)
 * docker portainer容器可视化管理工具
 * 通过maven插件打包docker镜像
 * docker应用：ELK搭建

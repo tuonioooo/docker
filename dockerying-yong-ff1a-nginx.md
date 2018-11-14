@@ -16,5 +16,5 @@ docker pull nginx
 
 界面显示
 
-![](/assets/[T2ZNI%}%291$2%28_O]SCZZ6P1.png)
+![](/assets/nginx-001.png)
 

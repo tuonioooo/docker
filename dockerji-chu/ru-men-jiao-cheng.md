@@ -97,9 +97,7 @@ chkconfig docker on
 
 ```
 systemctl start docker.service
-systemctl 
-enable
- docker.service
+systemctl enable docker.service
 ```
 
 测试

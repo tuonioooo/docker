@@ -11,7 +11,7 @@
 * [docker service服务编排](docker-servicefu-wu-bian-pai.md)
 * [docker stack分布式集群部署](docker-stackfen-bu-shi-ji-qun-bu-shu.md)
 * [docker portainer容器可视化管理工具](docker-portainerrong-qi-ke-shi-hua-guan-li-gong-ju.md)
-* 通过maven插件打包docker镜像
+* [通过maven插件打包docker镜像](tong-guo-maven-cha-jian-da-bao-docker-jing-xiang.md)
 * docker应用：ELK搭建
 * docker应用：搭建rabbitmq、mysql等软件
 

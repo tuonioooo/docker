@@ -5,3 +5,13 @@
 
 
 
+
+
+
+
+docker pull aliyun.com:port/java  ——&gt;从国内阿里云镜像下载
+
+docker pull java ——&gt;Java 从国外下载
+
+
+

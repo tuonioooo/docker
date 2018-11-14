@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [docker基础](dockerji-chu.md)
   * [入门教程](dockerji-chu/ru-men-jiao-cheng.md)
-  * 镜像、容器、仓库
+  * [镜像、容器、仓库](dockerji-chu/jing-xiang-3001-rong-qi-3001-cang-ku.md)
 * [docker安装与使用](dockeran-zhuang-yu-shi-yong.md)
 * [docker私有仓库搭建](dockersi-you-cang-ku-da-jian.md)
 * [docker swarm集群搭建](docker-swarmji-qun-da-jian.md)

@@ -21,4 +21,5 @@
   * [docker应用：ELK搭建](dockerying-yong-ff1a-elk-da-jian.md)
   * [docker应用：nginx](dockerying-yong-ff1a-nginx.md)
   * [docker应用：开放docker的远程连接访问](dockerying-yong-ff1a-kai-fang-docker-de-yuan-cheng-lian-jie-fang-wen.md)
+  * [docker应用：idea配置docker容器及使用](dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
 

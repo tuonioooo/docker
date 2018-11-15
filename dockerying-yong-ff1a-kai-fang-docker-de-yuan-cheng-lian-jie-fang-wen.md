@@ -8,7 +8,7 @@
 
 ![](/assets/12312321321.png)
 
-* **方法三**
+* **方法三（推荐）**
 
 1.
 
@@ -32,11 +32,7 @@ iptables-save
 
 OK,至此服务器端配置完成.
 
-* **方法四**
+* **方法四（推荐）**
 
-https://blog.csdn.net/faryang/article/details/75949611
-
-
-
-
+[https://blog.csdn.net/faryang/article/details/75949611](https://blog.csdn.net/faryang/article/details/75949611)
 

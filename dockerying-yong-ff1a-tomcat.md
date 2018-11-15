@@ -20,6 +20,10 @@ docker.io/hello-world   latest              4ab4c602aa5e        2 months ago    
 
 3
 
+```
+docker run -d -p 16000:8000 tomcat
+```
+
 接下来我们要让这个镜像作为容器在后台运行起来，并且将该容器的端口号暴露出来，也就是说，将容器的端口映射到我们自己计算机的物理端口上
 
 -d参数是让tomcat容器在后台运行

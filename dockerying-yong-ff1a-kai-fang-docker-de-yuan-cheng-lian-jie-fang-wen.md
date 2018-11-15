@@ -8,8 +8,6 @@
 
 ![](/assets/12312321321.png)
 
-
-
 * **方法三**
 
 1.
@@ -33,4 +31,12 @@ systemctl restart docker
 iptables-save
 
 OK,至此服务器端配置完成.
+
+* **方法四**
+
+https://blog.csdn.net/faryang/article/details/75949611
+
+
+
+
 

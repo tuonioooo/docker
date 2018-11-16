@@ -26,9 +26,24 @@ systemctl restart docker
 
 开放防火墙2375端口：
 
-/sbin/iptables -I INPUT -p tcp --dport 2375 -j ACCEPT\(firewall-cmd --zone=public --add-port=80/tcp --permanent\(永久生效\)\)
+/sbin/iptables -I INPUT -p tcp --dport 2375 -j ACCEPT
 
 iptables-save
+
+或
+
+```
+添加
+firewall-cmd --zone=public --add-port=80/tcp --permanent （--permanent永久生效，没有此参数重启后失效）
+重新载入
+firewall-cmd --reload
+查看
+firewall-cmd --zone=public --query-port=80/tcp
+删除
+firewall-cmd --zone=public --remove-port=80/tcp --permanent
+```
+
+
 
 OK,至此服务器端配置完成.
 

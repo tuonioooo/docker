@@ -190,11 +190,38 @@ docker.io/openjdk            8-jdk-alpine        97bc1352afde        3 weeks ago
 
 访问[http://docker.cn:16000/](http://docker.cn:16000/)  即可看到如下效果：
 
-![](/assets/docker-003.png)
+![](/assets/docker-003.png)**六.搭建过程中遇到的问题**
 
+1.SELinux 引起的docker启动失败：
 
+```
+Error starting daemon: SELinux is not supported with the overlay2 graph driver on this kernel. Either boot into a newer kernel or disabl...nabled=false)
+```
 
+解决方案如下：
 
+http://blog.51cto.com/10950710/2131803
+
+2.
+
+On centos, the first maven build of spring cloud project. got below exception :
+
+\[ERROR\] Failed to execute goal com.spotify:**docker-maven-plugin**:0.4.13:build \(default-cli\) on project sc-disco: **Exception caught: error creating overlay mount to /var/lib/docker/overlay2/**1539f4988ccb6da79034da8e5b4576b0f1a69e0ff79b23412392fa3dc8ad83bf-init/merged: invalid argument -&gt; \[Help 1\]
+
+解决方案如下：
+
+```
+1.systemctl stop docker
+
+2.rm -rf /var/lib/docker
+
+3.vi /etc/sysconfig/docker-storage
+(change to DOCKER_STORAGE_OPTIONS="--storage-driver overlay ")
+
+4.vi /etc/sysconfig/docker(remove "--selinux-enabled" )
+
+5. systemctl start docker
+```
 
 
 

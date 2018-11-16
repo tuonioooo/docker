@@ -200,7 +200,7 @@ Error starting daemon: SELinux is not supported with the overlay2 graph driver o
 
 解决方案如下：
 
-http://blog.51cto.com/10950710/2131803
+[http://blog.51cto.com/10950710/2131803](http://blog.51cto.com/10950710/2131803)
 
 2.
 
@@ -221,6 +221,16 @@ On centos, the first maven build of spring cloud project. got below exception :
 4.vi /etc/sysconfig/docker(remove "--selinux-enabled" )
 
 5. systemctl start docker
+```
+
+3.rm: cannot remove ‘/var/lib/docker/containers’: Device or resource busy
+
+解决方案如下：
+
+```
+cat /proc/mounts|grep containers
+
+umount /var/lib/docker/containers/
 ```
 
 

@@ -266,6 +266,16 @@ docker rmi $\(docker images \| grep "^&lt;none&gt;" \| awk "{print $3}"\)
 
 docker rmi $\(docker images -q\)
 
+
+
+## Docker启动失败的原因
+
+https://zhuanlan.zhihu.com/p/35500351
+
+http://blog.51cto.com/10950710/2131803
+
+
+
 ## 参考
 
 [Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)  

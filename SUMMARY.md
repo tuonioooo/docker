@@ -24,4 +24,5 @@
   * [docker应用：idea配置docker容器及使用](dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
   * [docker应用：SpringBoot搭建app部署到Docker中](dockerying-yongff1a-springboot-da-jian-app-bu-shu-dao-docker-zhong.md)
   * [docker应用：异常总结](dockerying-yong-ff1a-yi-chang-zong-jie.md)
+  * [docker应用：安装与卸载](dockerying-yong-ff1a-an-zhuang-yu-xie-zai.md)
 

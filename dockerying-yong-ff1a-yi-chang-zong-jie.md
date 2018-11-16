@@ -10,8 +10,6 @@ yum install epel-release
 
 运行上面的命令后，在执行 yum install docker.io或yum install docker
 
-
-
 2.yum提示Another app is currently holding the yum lock; waiting for it to exit...
 
 解决方式：
@@ -30,8 +28,6 @@ root     25960  0.0  0.0      0     0 ?        Z    Sep19   0:01 [yumBackend.py]
 ```
 rm -f /var/run/yum.pid
 ```
-
-
 
 
 

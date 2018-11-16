@@ -188,7 +188,13 @@ docker.io/openjdk            8-jdk-alpine        97bc1352afde        3 weeks ago
 58766045c234c262e9049d4ab2dea1542e02bbeec55f2e1c083aabc2f5b8f319
 ```
 
-访问http://docker.cn:16000/  即可看到如下效果：
+访问[http://docker.cn:16000/](http://docker.cn:16000/)  即可看到如下效果：
 
 ![](/assets/docker-003.png)
+
+
+
+
+
+
 

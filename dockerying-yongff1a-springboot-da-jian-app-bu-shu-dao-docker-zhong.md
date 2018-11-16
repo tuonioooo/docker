@@ -202,6 +202,8 @@ Error starting daemon: SELinux is not supported with the overlay2 graph driver o
 
 [http://blog.51cto.com/10950710/2131803](http://blog.51cto.com/10950710/2131803)
 
+如果还是解决不了，请查一下自己linux系统的版本，建议安装：CentOS-7-x86\_64-Everything-1611.ISO版本
+
 2.
 
 On centos, the first maven build of spring cloud project. got below exception :

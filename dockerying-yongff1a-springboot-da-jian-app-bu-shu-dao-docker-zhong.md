@@ -235,5 +235,14 @@ cat /proc/mounts|grep containers
 umount /var/lib/docker/containers/
 ```
 
+七.查看实时日志
+
+```
+# 实时日志
+docker logs -f --tail=100 containerId
+# 参考地址
+https://docs.docker-cn.com/engine/admin/logging/view_container_logs
+```
+
 
 

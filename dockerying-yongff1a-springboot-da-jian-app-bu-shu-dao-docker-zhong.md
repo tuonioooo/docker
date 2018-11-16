@@ -1,94 +1,94 @@
 # docker应用：SpringBoot搭建app自定义镜像部署到Docker中
 
-一.idea搭建SpringBoot基础项目Springboot-docker
+**一.idea搭建SpringBoot基础项目Springboot-docker**
 
 目录如下：
 
 ![](/assets/docker-001.png)
 
-二.添加POM依赖
+**二.添加POM依赖**
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.master</groupId>
-	<artifactId>springboot-docker</artifactId>
-	<version>1.0</version>
-	<packaging>jar</packaging>
+    <groupId>com.master</groupId>
+    <artifactId>springboot-docker</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
 
-	<name>springboot-docker</name>
-	<description>SpringBoot基于Docker的应用</description>
+    <name>springboot-docker</name>
+    <description>SpringBoot基于Docker的应用</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<docker.image.prefix>springio</docker.image.prefix>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <docker.image.prefix>springio</docker.image.prefix>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.13</version>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName> <!--镜像名称-->
-					<baseImage>openjdk:8-jdk-alpine</baseImage><!--镜像文件-->
-					<dockerHost>http://docker.cn:2375</dockerHost><!--docker 服务器ip 地址-->
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName> <!--镜像名称-->
+                    <baseImage>openjdk:8-jdk-alpine</baseImage><!--镜像文件-->
+                    <dockerHost>http://docker.cn:2375</dockerHost><!--docker 服务器ip 地址-->
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
 ```
 
-三.执行maven的命令
+**三.执行maven的命令**
 
 ![](/assets/docker-002.png)
 
-输出如下：
+**四.输出如下：**
 
 ```
 D:\Java\jdk1.8.0_92\bin\java -Dmaven.multiModuleProjectDirectory=E:\Github\Springboot-master\springboot-docker "-Dmaven.home=D:\Tools\IntelliJ IDEA 2017.3.1\plugins\maven\lib\maven3" "-Dclassworlds.conf=D:\Tools\IntelliJ IDEA 2017.3.1\plugins\maven\lib\maven3\bin\m2.conf" "-javaagent:D:\Tools\IntelliJ IDEA 2017.3.1\lib\idea_rt.jar=25923:D:\Tools\IntelliJ IDEA 2017.3.1\bin" -Dfile.encoding=UTF-8 -classpath "D:\Tools\IntelliJ IDEA 2017.3.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.5.2.jar" org.codehaus.classworlds.Launcher -Didea.version=2017.3.5 -s E:\.m2\settings.xml clean package docker:build -DskipTests
@@ -171,8 +171,24 @@ Successfully built deea69ed0227
 [INFO] ------------------------------------------------------------------------
 
 Process finished with exit code 0
-
 ```
 
+上面就会把相应的jar打成镜像，添加到远程服务端docker上
 
+**五.在docker服务器上运行相应的命令：**
+
+```
+[root@localhost ~]# docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+[root@localhost ~]# docker image ls
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+springio/springboot-docker   latest              deea69ed0227        9 minutes ago       121 MB
+docker.io/openjdk            8-jdk-alpine        97bc1352afde        3 weeks ago         103 MB
+[root@localhost ~]# docker run -d -p 16000:8080 springio/springboot-docker
+58766045c234c262e9049d4ab2dea1542e02bbeec55f2e1c083aabc2f5b8f319
+```
+
+访问http://docker.cn:16000/  即可看到如下效果：
+
+![](/assets/docker-003.png)
 

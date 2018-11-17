@@ -239,7 +239,7 @@ umount /var/lib/docker/containers/
 
 ```
 # 实时日志
-docker logs -f --tail=100 containerId
+docker logs -f --tail=100 containerId/names
 # 参考地址
 https://docs.docker-cn.com/engine/admin/logging/view_container_logs
 ```

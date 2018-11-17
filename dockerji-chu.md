@@ -5,6 +5,7 @@
 * [docker与虚拟机区别](/dockerji-chu/dockeryu-xu-ni-ji-qu-bie.md)
 * [docker应用场景](/dockerji-chu/dockerying-yong-chang-jing.md)
 * [docker常用命令](/dockerji-chu/dockerchang-yong-ming-ling.md)
+* [docker中国相关的镜像地址](/dockerji-chu/dockerzhong-guo-xiang-guan-de-jing-xiang-di-zhi.md)
 
 docker pull aliyun.com:port/java  ——&gt;从国内阿里云镜像下载
 

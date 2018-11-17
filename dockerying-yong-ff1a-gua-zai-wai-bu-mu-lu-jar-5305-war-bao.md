@@ -1,7 +1,5 @@
 # docker应用：挂载外部目录jar包/war包
 
-
-
 * ### docker执行容器外部的Jar文件
 
 1.下载java镜像
@@ -33,10 +31,6 @@ docker run -d -p 8081:8080 -v /opt/springboot-docker-1.0.jar:/var/lib/docker/jar
 > java -jar /var/lib/docker/jar/springboot-docker-1.0.jar
 >
 > 表示运行jar包，注意：这里的jar包为容器中的位置，是通过前面的-v属性映射的
-
-
-
-
 
 
 

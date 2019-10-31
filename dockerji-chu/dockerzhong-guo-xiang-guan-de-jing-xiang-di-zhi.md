@@ -36,5 +36,5 @@
 }
 ```
 
-
+清华镜像地址：[https://mirrors.tuna.tsinghua.edu.cn/](https://mirrors.tuna.tsinghua.edu.cn/)
 

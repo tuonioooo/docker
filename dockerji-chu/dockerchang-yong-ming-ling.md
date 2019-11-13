@@ -15,8 +15,13 @@ docker version
 3.设置开机启动
 
 ```
+CentOS6语法：
 service docker start
 chkconfig docker on
+
+CentOS7语法：
+systemctl start docker.service
+systemctl enable docker.service
 ```
 
 4.抓取/拉取镜像文件

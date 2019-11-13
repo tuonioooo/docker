@@ -173,98 +173,7 @@ This message shows that your installation appears to be working correctly.
 
 ## 常用命令
 
-除过以上我们使用的Docker命令外，Docker还有一些其它常用的命令
 
-拉取docker镜像
-
-```
-docker pull image_name
-```
-
-查看宿主机上的镜像，Docker镜像保存在/var/lib/docker目录下:
-
-```
-docker images
-```
-
-删除镜像
-
-```
-docker rmi  docker.io/tomcat:7.0.77-jre7   或者  docker rmi b39c68b7af30
-```
-
-查看当前有哪些容器正在运行
-
-```
-docker ps
-```
-
-查看所有容器
-
-```
-docker ps -a
-```
-
-启动、停止、重启容器命令：
-
-```
-docker start container_name/container_id
-docker stop container_name/container_id
-docker restart container_name/container_id
-```
-
-后台启动一个容器后，如果想进入到这个容器，可以使用attach命令：
-
-```
-docker attach container_name/container_id
-```
-
-删除容器的命令：
-
-```
-docker rm container_name/container_id
-```
-
-查看当前系统Docker信息
-
-```
-docker info
-```
-
-从Docker hub上下载某个镜像:
-
-```
-docker pull centos:latest
-docker pull centos:latest
-```
-
-执行docker pull centos会将Centos这个仓库下面的所有镜像下载到本地repository。
-
-# Docker 容器镜像删除
-
-1.停止所有的container，这样才能够删除其中的images：
-
-docker stop $\(docker ps -a -q\)
-
-如果想要删除所有container的话再加一个指令：
-
-docker rm $\(docker ps -a -q\)
-
-2.查看当前有些什么images
-
-docker images
-
-3.删除images，通过image的id来指定删除谁
-
-docker rmi &lt;image id&gt;
-
-想要删除untagged images，也就是那些id为&lt;None&gt;的image的话可以用
-
-docker rmi $\(docker images \| grep "^&lt;none&gt;" \| awk "{print $3}"\)
-
-要删除全部image的话
-
-docker rmi $\(docker images -q\)
 
 ## Docker启动失败的原因
 
@@ -272,7 +181,7 @@ docker rmi $\(docker images -q\)
 
 [http://blog.51cto.com/10950710/2131803](http://blog.51cto.com/10950710/2131803)
 
-https://blog.csdn.net/su4416160/article/details/82348219
+[https://blog.csdn.net/su4416160/article/details/82348219](https://blog.csdn.net/su4416160/article/details/82348219)
 
 ## 参考
 

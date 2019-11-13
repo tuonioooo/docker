@@ -171,10 +171,6 @@ This message shows that your installation appears to be working correctly.
 
 输出这段提示以后，hello world就会停止运行，容器自动终止。有些容器不会自动终止，因为提供的是服务，比如Mysql镜像等。
 
-## 常用命令
-
-
-
 ## Docker启动失败的原因
 
 [https://zhuanlan.zhihu.com/p/35500351](https://zhuanlan.zhihu.com/p/35500351)

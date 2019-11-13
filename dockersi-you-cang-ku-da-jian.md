@@ -8,7 +8,7 @@
 
 ## **搭建私有仓库**
 
-**      
+**        
 **在153机器上下载registry镜像
 
 ```
@@ -32,13 +32,13 @@ docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry
 b4c21ca8cf8a23ea72e0471909742541ffc312ea5cf492486b5bdc3130179864
 ```
 
-![](https://images2017.cnblogs.com/blog/1207331/201711/1207331-20171111102843013-2127942541.png)
+![](/assets/1207331-20171111102843013-2127942541.png)
 
 可以看到容器存放位置不在/tmp 下
 
 我们接着来查找下，挂载位置到底在哪里
 
-![](https://images2017.cnblogs.com/blog/1207331/201711/1207331-20171111103101528-505335491.png)
+![](/assets/1207331-20171111103101528-505335491.png)
 
 可以看到registry 挂载目录是 在 /var/lib/registry 下
 

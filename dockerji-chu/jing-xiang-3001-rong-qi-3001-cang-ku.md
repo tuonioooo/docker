@@ -10,7 +10,7 @@ Docker 包括三个基本概念:
 
 这三部分组成了Docker的整个生命周期，如下图所示，容器是由镜像实例化而来的，这和我们学习的面向对象的概念十分相似，我们可以把`镜像`想象成`类`,把`容器`想象成类经过实例化后的`对象`，这样就非常好理解镜像和容器的关系了。
 
-![](https://upload-images.jianshu.io/upload_images/2156466-b4341e9da2e6e170.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/700)
+![](/assets/2156466-b4341e9da2e6e170.jpg)
 
 Docker生命周期
 
@@ -43,7 +43,7 @@ Docker 仓库是用来包含镜像的位置，Docker提供一个注册服务器�
 
 仓库支持的操作类似git，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到公有或者私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。.
 
-示意图如下：![](/assets/docker安装命令.png)![](/assets/docker概念详细介绍.png)
+示意图如下：![](/assets/docker安装命令.png)
 
 ## Reference
 

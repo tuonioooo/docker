@@ -27,4 +27,5 @@
   * [docker应用：异常总结](dockerying-yong-ff1a-yi-chang-zong-jie.md)
   * [docker应用：安装与卸载](dockerying-yong-ff1a-an-zhuang-yu-xie-zai.md)
   * [docker应用：挂载外部目录jar包/war包](dockerying-yong-ff1a-gua-zai-wai-bu-mu-lu-jar-5305-war-bao.md)
+  * docker应用：配置harbor私服
 

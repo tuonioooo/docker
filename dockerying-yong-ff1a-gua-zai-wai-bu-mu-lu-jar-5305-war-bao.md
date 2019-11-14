@@ -16,7 +16,7 @@ docker run -d -p 8081:8080 -v /opt/springboot-docker-1.0.jar:/var/lib/docker/jar
 
 > -d 表示在后台启动
 >
-> -p 8081:8080 表示将容器的端口 映射成宿主主机的端口，否则9090端口访问不到
+> -p 8081:8080 表示将容器的端口 映射成宿主主机的端口，否则8080端口访问不到
 >
 > -v /opt/springboot-docker-1.0.jar:/var/lib/docker/jar/springboot-docker-1.0.jar
 >
@@ -36,5 +36,5 @@ docker run -d -p 8081:8080 -v /opt/springboot-docker-1.0.jar:/var/lib/docker/jar
 
 [https://blog.csdn.net/lym152898/article/details/78358238](https://blog.csdn.net/lym152898/article/details/78358238)
 
-https://blog.csdn.net/yanyuan904/article/details/77680823?locationNum=9&fps=1
+[https://blog.csdn.net/yanyuan904/article/details/77680823?locationNum=9&fps=1](https://blog.csdn.net/yanyuan904/article/details/77680823?locationNum=9&fps=1)
 

@@ -20,21 +20,24 @@ vi /usr/lib/systemd/system/docker.service
 
 重新加载配置并重启Docker：
 
+```
 systemctl daemon-reload
-
 systemctl restart docker
+```
 
 查看端口是否开启
 
+```
 netstat -nptl
+```
 
 ![](/assets/VHWVSQ}41HEX%%LA9I8}HRO.png)
 
 直接curl看是否生效
 
+```
 curl http://localhost:2375/verion
-
-
+```
 
 2.
 

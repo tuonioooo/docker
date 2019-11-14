@@ -14,13 +14,19 @@
 
 vi /usr/lib/systemd/system/docker.service
 
-修改ExeStart为:/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
+![](/assets/p.jpg)
 
 重新加载配置并重启Docker：
 
 systemctl daemon-reload
 
 systemctl restart docker
+
+查看端口是否开启
+
+netstat -nptl
+
+![](/assets/VHWVSQ}41HEX%%LA9I8}HRO.png)
 
 2.
 
@@ -42,8 +48,6 @@ firewall-cmd --zone=public --query-port=80/tcp
 删除
 firewall-cmd --zone=public --remove-port=80/tcp --permanent
 ```
-
-
 
 OK,至此服务器端配置完成.
 

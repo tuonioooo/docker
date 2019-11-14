@@ -14,6 +14,8 @@
 
 vi /usr/lib/systemd/system/docker.service
 
+修改ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
+
 ![](/assets/p.jpg)
 
 重新加载配置并重启Docker：
@@ -27,6 +29,12 @@ systemctl restart docker
 netstat -nptl
 
 ![](/assets/VHWVSQ}41HEX%%LA9I8}HRO.png)
+
+直接curl看是否生效
+
+curl http://localhost:2375/verion
+
+
 
 2.
 

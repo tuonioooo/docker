@@ -36,7 +36,7 @@ netstat -nptl
 直接curl看是否生效
 
 ```
-curl http://localhost:2375/info
+curl http://122.114.70.115:2375/info
 ```
 
 2.

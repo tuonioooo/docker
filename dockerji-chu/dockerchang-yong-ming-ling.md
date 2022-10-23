@@ -27,7 +27,50 @@ systemctl enable docker.service
 4.抓取/拉取镜像文件
 
 ```
-docker pull  image_name
+docker pull image_name
+
+#示例
+[root@localhost ~]# docker pull mysql
+Using default tag: latest # 如果不写tag，默认就是latest
+latest: Pulling from library/mysql
+b380bbd43752: Pull complete # 分层下载，docker image的核心 联合文件系统
+f23cbf2ecc5d: Pull complete
+30cfc6c29c0a: Pull complete
+b38609286cbe: Pull complete
+8211d9e66cd6: Pull complete
+2313f9eeca4a: Pull complete
+7eb487d00da0: Pull complete
+a5d2b117a938: Pull complete
+1f6cb474cd1c: Pull complete
+896b3fd2ab07: Pull complete
+532e67ebb376: Pull complete
+233c7958b33f: Pull complete
+Digest: sha256:5d52dc010398db422949f079c76e98f6b62230e5b59c0bf7582409d2c85abacb # 签名
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest # 真实地址
+
+# 等价于它
+docker pull mysql 等价于 docker pull docker.io/library/mysql:latest
+
+# 指定版本下载
+docker pull mysql:5.7
+
+[root@localhost ~]# docker pull mysql:5.7
+5.7: Pulling from library/mysql
+b380bbd43752: Already exists
+f23cbf2ecc5d: Already exists
+30cfc6c29c0a: Already exists
+b38609286cbe: Already exists
+8211d9e66cd6: Already exists
+2313f9eeca4a: Already exists
+7eb487d00da0: Already exists
+bb9cc5c700e7: Pull complete
+88676eb32344: Pull complete
+8fea0b38a348: Pull complete
+3dc585bfc693: Pull complete
+Digest: sha256:b8814059bbd9c80b78fe4b2b0b70cd70fe3772b3c5d8ee1edfa46791db3224f9
+Status: Downloaded newer image for mysql:5.7
+docker.io/library/mysql:5.7
 ```
 
 5.运行镜像文件
@@ -75,6 +118,10 @@ $ docker run -p 127.0.0.1:80:8080/tcp ubuntu bash
 $ docker run -it nginx:latest /bin/bash
 $:/# 
 
+#从容器中退回主机
+[root@8631de5eaae9 /]# exit
+exit
+[root@localhost ~]#
 
 ```
 
@@ -137,6 +184,82 @@ docker pull centos:latest
 
 执行docker pull centos会将Centos这个仓库下面的所有镜像下载到本地repository。
 
+15.docker search 搜索镜像
+
+```
+#基本使用
+[root@localhost ~]# docker search mysql
+NAME DESCRIPTION STARS OFFICIAL AUTOMATED
+mysql MySQL is a widely used, open-source relation… 11543 [OK]
+mariadb MariaDB Server is a high performing open sou… 4390 [OK]
+
+#可选项，通过搜索来过滤
+[root@localhost ~]# docker search mysql --filter=STARS=3000
+NAME DESCRIPTION STARS OFFICIAL AUTOMATED
+mysql MySQL is a widely used, open-source relation… 11543 [OK]
+mariadb MariaDB Server is a high performing open sou… 4390 [OK]
+```
+
+16.docker查看日志
+
+```
+#查看日志
+docker logs [OPTIONS] CONTAINER
+
+OPTIONS说明：
+-f : 跟踪日志输出
+--since :显示某个开始时间的所有日志
+-t : 显示时间戳
+--tail :仅列出最新N条容器日志
+
+
+#示例
+
+#跟踪查看容器mynginx的日志输出。
+runoob@runoob:~$ docker logs -f mynginx
+192.168.239.1 - - [10/Jul/2016:16:53:33 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
+2016/07/10 16:53:33 [error] 5#5: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 192.168.239.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.239.130", referrer: "http://192.168.239.130/"
+192.168.239.1 - - [10/Jul/2016:16:53:33 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://192.168.239.130/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
+192.168.239.1 - - [10/Jul/2016:16:53:59 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
+...
+
+#查看容器mynginx从2016年7月1日后的最新10条日志。
+docker logs --since="2016-07-01" --tail=10 mynginx
+```
+
+17.进入一个正在运行的docker容器
+
+```
+#示例一  进入容器后开启一个新的终端，可以在里面操作（常用）
+
+[root@localhost ~]# docker exec -it 容器id /bin/bash
+
+
+#示例二  进入容器正在执行的终端，不会启动新的进程
+
+[root@localhost ~]# docker attach 97e2c02aa09f
+```
+
+18.从容器内拷贝文件到主机上
+
+```
+docker cp 容器id:容器内路径 目的主机路径
+```
+
+19.docker安装一个镜像且用完立即从容器删除
+
+```
+docker run -it --rm tomcat:9.0
+```
+
+
+
+
+
+> 官方文档：https://docs.docker.com/reference/
+
+
+
 # Docker 容器镜像删除
 
 1.停止所有的container，这样才能够删除其中的images：
@@ -162,4 +285,19 @@ docker rmi $\(docker images \| grep "^&lt;none&gt;" \| awk "{print $3}"\)
 要删除全部image的话
 
 docker rmi $\(docker images -q\)
+
+
+
+## 卸载docker
+
+```
+sudo yum remove docker-ce docker-ce-cli containerd.io
+
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```
+
+参考菜鸟教程：https://www.runoob.com/docker/centos-docker-install.html
+
+
 

@@ -3,8 +3,11 @@
 docker容器技术
 
 * [docker基础](./dockerji-chu.md)
+* [docker运行原理](./docker运行原理.md)
 * [docker、docker engine和docker desktop区别](./20221023.md)
 * [docker安装与使用](./dockeran-zhuang-yu-shi-yong.md)
+* [docker可视化工具](./docker可视化工具.md)
+* [docker常见问题](./docker常见问题.md)
 * [docker私有仓库搭建](./dockersi-you-cang-ku-da-jian.md)
 * [docker swarm集群搭建](./docker-swarmji-qun-da-jian.md)
 * [docker compose部署脚本](./docker-composebu-shu-jiao-ben.md)

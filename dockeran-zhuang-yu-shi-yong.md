@@ -1,6 +1,6 @@
 # docker安装与使用
 
-菜鸟教程安装（**推荐讲的真的详细**）：[http://www.runoob.com/docker/centos-docker-install.html](http://www.runoob.com/docker/centos-docker-install.html)
+菜鸟教程安装与使用（**推荐讲的真的详细**）：[http://www.runoob.com/docker/centos-docker-install.html](http://www.runoob.com/docker/centos-docker-install.html)
 
 官方文档安装：[https://docs.docker.com/install/](https://docs.docker.com/install/)
 

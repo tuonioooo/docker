@@ -1,4 +1,4 @@
-# docker应用：挂载外部目录jar包/war包
+# docker挂载主机目录jar包/war包
 
 * ### docker执行容器外部的Jar文件
 

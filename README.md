@@ -13,9 +13,6 @@ docker容器技术
 * [docker compose部署脚本&服务编排](./docker-composebu-shu-jiao-ben.md)
 * [docker stack分布式集群部署](./docker-stackfen-bu-shi-ji-qun-bu-shu.md)
 * [通过maven插件打包docker镜像](./tong-guo-maven-cha-jian-da-bao-docker-jing-xiang.md)
-* [docker应用：SpringBoot搭建app部署到Docker中](/dockerying-yongff1a-springboot-da-jian-app-bu-shu-dao-docker-zhong.md)
-* [docker应用：idea配置docker容器及使用](/dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
-* [docker应用：挂载外部目录jar包/war包](/dockerying-yong-ff1a-gua-zai-wai-bu-mu-lu-jar-5305-war-bao.md)
-
-
+* [docker应用：SpringBoot搭建app自定义镜像部署到Docker中](./dockerying-yongff1a-springboot-da-jian-app-bu-shu-dao-docker-zhong.md)
+* [docker应用：idea配置docker容器及使用](./dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
 

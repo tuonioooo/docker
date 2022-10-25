@@ -135,7 +135,7 @@ docker run -p 8080:80 --name nginx-test \
 -v /mydata/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf  \
 -v /mydata/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
 -v /mydata/nginx/logs:/var/log/nginx  \
---privileged=true
+--privileged=true \
 -d nginx
 ```
 

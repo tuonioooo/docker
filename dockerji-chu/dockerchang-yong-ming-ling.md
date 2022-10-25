@@ -1,18 +1,20 @@
 # docker常用命令
 
-1.安装docker
+[TOC]
+
+### 1.安装docker
 
 ```
 yum install docker
 ```
 
-2.查看版本
+### 2.查看版本
 
 ```
 docker version
 ```
 
-3.设置开机启动
+### 3.设置开机启动
 
 ```
 CentOS6语法：
@@ -24,7 +26,7 @@ systemctl start docker.service
 systemctl enable docker.service
 ```
 
-4.抓取/拉取镜像文件
+### 4.抓取/拉取镜像文件
 
 ```
 docker pull image_name
@@ -73,7 +75,7 @@ Status: Downloaded newer image for mysql:5.7
 docker.io/library/mysql:5.7
 ```
 
-5.运行镜像文件
+### 5.运行镜像文件
 
 ```
 docker run   XXX
@@ -125,31 +127,31 @@ exit
 
 ```
 
-6.查看宿主机上的镜像，Docker镜像保存在/var/lib/docker目录下:
+### 6.查看宿主机上的镜像，Docker镜像保存在/var/lib/docker目录下:
 
 ```
 docker images
 ```
 
-7.删除镜像  PS：b39c68b7af30是一个镜像Id
+### 7.删除镜像  PS：b39c68b7af30是一个镜像Id
 
 ```
 docker rmi  docker.io/tomcat:7.0.77-jre7   或者  docker rmi b39c68b7af30
 ```
 
-8.查看当前有哪些容器正在运行
+### 8.查看当前有哪些容器正在运行
 
 ```
 docker ps
 ```
 
-9.查看所有容器
+### 9.查看所有容器
 
 ```
 docker ps -a
 ```
 
-10.启动、停止、重启容器命令：
+### 10.启动、停止、重启容器命令：
 
 ```
 docker start container_name/container_id
@@ -157,25 +159,25 @@ docker stop container_name/container_id
 docker restart container_name/container_id
 ```
 
-11.后台启动一个容器后，如果想进入到这个容器，可以使用attach命令：
+### 11.后台启动一个容器后，如果想进入到这个容器，可以使用attach命令：
 
 ```
 docker attach container_name/container_id
 ```
 
-12.删除容器的命令：
+### 12.删除容器的命令：
 
 ```
 docker rm container_name/container_id
 ```
 
-13.查看当前系统Docker信息
+### 13.查看当前系统Docker信息
 
 ```
 docker info
 ```
 
-14.从Docker hub上下载某个镜像:
+### 14.从Docker hub上下载某个镜像:
 
 ```
 docker pull centos:latest
@@ -184,7 +186,7 @@ docker pull centos:latest
 
 执行docker pull centos会将Centos这个仓库下面的所有镜像下载到本地repository。
 
-15.docker search 搜索镜像
+### 15.docker search 搜索镜像
 
 ```
 #基本使用
@@ -200,7 +202,7 @@ mysql MySQL is a widely used, open-source relation… 11543 [OK]
 mariadb MariaDB Server is a high performing open sou… 4390 [OK]
 ```
 
-16.docker查看日志
+### 16.docker查看日志
 
 ```
 #查看日志
@@ -227,7 +229,7 @@ runoob@runoob:~$ docker logs -f mynginx
 docker logs --since="2016-07-01" --tail=10 mynginx
 ```
 
-17.进入一个正在运行的docker容器
+### 17.进入一个正在运行的docker容器
 
 ```
 #示例一  进入容器后开启一个新的终端，可以在里面操作（常用）
@@ -240,27 +242,112 @@ docker logs --since="2016-07-01" --tail=10 mynginx
 [root@localhost ~]# docker attach 97e2c02aa09f
 ```
 
-18.从容器内拷贝文件到主机上
+### 18.从容器内拷贝文件到主机上
 
 ```
 docker cp 容器id:容器内路径 目的主机路径
 ```
 
-19.docker安装一个镜像且用完立即从容器删除
+### 19.docker安装一个镜像且用完立即从容器删除
 
 ```
 docker run -it --rm tomcat:9.0
 ```
 
+### 20.--volume , -v:	映射一个卷（将容器的文件/文件夹绑定到主机的位置）
+
+[docker挂载主机目录jar包/war包](../dockerying-yong-ff1a-gua-zai-wai-bu-mu-lu-jar-5305-war-bao.md)
+
+### 21.docker 镜像导入和导出（docker 、export）
+
+[菜鸟教程命令大全：docker save](https://www.runoob.com/docker/docker-save-command.html)
+
+[菜鸟教程命令大全：docker load](https://www.runoob.com/docker/docker-load-command.html)
+
+[采集教程命令大全：docker export](https://www.runoob.com/docker/docker-export-command.html)
+
+[菜鸟教程命令大全：docker import](https://www.runoob.com/docker/docker-import-command.html)
+
+#### 简写
+
+#### 使用 export 和 import
+
+- 查看本机的容器
+
+  这两个命令是通过容器来导入、导出镜像。首先我们使用 docker ps -a 命令查看本机所有的容器。
+
+- 导出镜像
+
+  使用 docker export 命令根据容器 ID 将镜像导出成一个文件。
+
+```
+docker export f299f501774c > /mydata/export_container.tar
+```
+
+- 导入镜像
+
+```
+docker import new_export_container < /mydata/export_container.tar
+```
+
+#### 使用 save 和 load
+
+单个镜像导出
+
+```
+[root@localhost ~]# docker save -o /mydata/hello.tar hello-world
+或根据镜像Id 导出
+[root@localhost ~]# docker save 123sewqe21312 > /mydata/hello.tar
+```
+
+多个镜像导出
+
+```
+[root@localhost ~]# docker save -o /mydata/back.tar nginx hello-world
+```
+
+> ```
+> docker save [OPTIONS] IMAGE [IMAGE...]
+> ```
+
+镜像导入
+
+```
+[root@localhost ~]# docker load < hello.tar
+```
+
+#### 两种方案的差别
+
+特别注意：两种方法不可混用。
+如果使用 import 导入 save 产生的文件，虽然导入不提示错误，但是启动容器时会提示失败，会出现类似"docker: Error response from daemon: Container command not found or does not exist"的错误。
+
+**1，文件大小不同**
+
+export 导出的镜像文件体积小于 save 保存的镜像
+
+**2，是否可以对镜像重命名**
+
+docker import 可以为镜像指定新名称
+docker load 不能对载入的镜像重命名
+
+**3，是否可以同时将多个镜像打包到一个文件中**
+
+docker export 不支持
+docker save 支持
+
+**4，是否包含镜像历史**
+
+export 导出（import 导入）是根据容器拿到的镜像，再导入时会丢失镜像所有的历史记录和元数据信息（即仅保存容器当时的快照状态），所以无法进行回滚操作。
+而 save 保存（load 加载）的镜像，没有丢失镜像的历史，可以回滚到之前的层（layer）。
+
+**5，应用场景不同**
+
+docker export 的应用场景：主要用来制作基础镜像，比如我们从一个 ubuntu 镜像启动一个容器，然后安装一些软件和进行一些设置后，使用 docker export 保存为一个基础镜像。然后，把这个镜像分发给其他人使用，比如作为基础的开发环境。
+docker save 的应用场景：如果我们的应用是使用 docker-compose.yml 编排的多个镜像组合，但我们要部署的客户服务器并不能连外网。这时就可以使用 docker save 将用到的镜像打个包，然后拷贝到客户服务器上使用 docker load 载入。
 
 
 
-
-> 官方文档：https://docs.docker.com/reference/
-
-
-
-# Docker 容器镜像删除
+### 22.Docker 容器镜像删除
 
 1.停止所有的container，这样才能够删除其中的images：
 
@@ -286,9 +373,7 @@ docker rmi $\(docker images \| grep "^&lt;none&gt;" \| awk "{print $3}"\)
 
 docker rmi $\(docker images -q\)
 
-
-
-## 卸载docker
+### 23.卸载docker
 
 ```
 sudo yum remove docker-ce docker-ce-cli containerd.io
@@ -296,6 +381,10 @@ sudo yum remove docker-ce docker-ce-cli containerd.io
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
+
+
+
+官方文档：https://docs.docker.com/reference/
 
 参考菜鸟教程：https://www.runoob.com/docker/centos-docker-install.html
 

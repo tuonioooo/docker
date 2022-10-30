@@ -13,3 +13,5 @@
 * [docker安装MySQL](./docker安装MySQL.md)
 * [docker安装Elasticsearch](./dockerying-yong-ff1a-elk-da-jian.md)
 * [docker安装Gitlab](./docker-an-zhuang-gitlab-jiao-cheng.md)
+* [docker安装jenkins](./docker安装jenkins.md)
+

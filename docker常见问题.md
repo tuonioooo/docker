@@ -41,3 +41,36 @@ shell>docker run -dit centos /bin/bash
 
 原文链接：https://blog.csdn.net/m0_67393342/article/details/124171304
 
+
+
+## OCI runtime exec failed: exec failed: unable to start container process: exec: "/bin/bash": stat /bin/bash: no such file
+
+### 问题描述
+
+执行进入容器命令时，报如下错误
+
+```
+[root@bogon ~]# docker exec -it 05608860479e /bin/bash
+OCI runtime exec failed: exec failed: unable to start container process: exec: "/bin/bash": stat /bin/bash: no such file                                or directory: unknown
+```
+
+### 解决方案
+
+将` /bin/bash` 换成 `/bin/sh`成功 ，执行成功
+
+```
+[root@bogon ~]# docker exec -it 05608860479e /bin/sh
+/code #
+```
+
+### 分析
+
+制作镜像时使用了精简版，只装了sh命令，未安装bash。
+如下都是精简版：
+
+```
+FROM redis:alpine 
+FROM python:3.6-alpine
+```
+
+> 参考：https://blog.csdn.net/qq_35764295/article/details/126379879 （更多的sh和bash区别之间的扩展）

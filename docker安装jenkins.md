@@ -74,6 +74,7 @@ $ chown -R 1000:1000 /opt/apache-maven-3.5.0/	（如果需要maven，可以设�
 ```
 $ docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
+  -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
   -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
@@ -86,8 +87,11 @@ $ docker run -p 8080:8080  \
 ```
 docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
+  -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
+  -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/
+  -v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
   -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
   --restart "always" \
   --user root \
@@ -98,6 +102,10 @@ docker run -p 8080:8080  \
 > 命令说明：
 >
 > -v /mydata/jenkins/:/var/jenkins_home   ：挂载宿主主机目录到容器目录
+>
+> -v /var/run/docker.sock:/var/run/docker.sock ：挂载docker的实例
+>
+> -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/：挂载宿主主机的maven
 >
 > -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai ：设置环境变量
 >

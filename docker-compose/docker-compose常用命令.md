@@ -7,11 +7,11 @@ docker compose [-f <arg>...] [--profile <name>...] [options] [COMMAND] [ARGS...]
 ```
 
 #### help
-  
+
 `docker-compose -help` 查看帮助。
 
 #### config
-  
+
 `docker-compose config -q` 验证docker-compose.yml文件。当配置正确时，不输出任何内容，当配置错误时，输出错误信息。
 
 #### pull
@@ -27,7 +27,7 @@ docker-compose pull nginx
 docker-compose pull -q
 ```
 
-#### up 
+#### up
 
 `docker-compose up` 创建并启动所有服务的容器。指定多个yml加-f选项。以守护进程模式运行加-d选项。
 
@@ -64,7 +64,7 @@ docker-compose ps
 docker-compose ps nginx
 ```
 
-#### run  
+#### run
 
 `docker-compose run` 在指定服务容器上额外执行一个命令。
 
@@ -192,6 +192,7 @@ docker-compose images nginx
 #### port
 
 `docker-compose port` 打印指定服务容器的某个端口所映射的宿主机端口。
+
 ```docker
 docker-compose port nginx 80
 0.0.0.0:80

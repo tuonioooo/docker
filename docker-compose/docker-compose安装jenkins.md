@@ -1,6 +1,6 @@
 # docker-compose部署jenkins
 
-### 安装docker-compose 
+### 安装docker-compose
 
 菜鸟教程（基础，很详细）：
 
@@ -37,8 +37,10 @@ services:    #服务根节点
       - 50000
 ```
 
-### 部署jenkins
+### 部署
+
 将 `docker-compose.yml` 文件上传到Linux服务器 `/mydata` 目录下，目录请自建
+
 ```
 $ cd /mydata
 $ docker-compose up -d  #后台运行
@@ -49,5 +51,3 @@ $ docker-compose up -d  #后台运行
 ### 常用命令
 
 [docker-compose常用命令](docker-compose常用命令.md)
-
-

@@ -88,13 +88,13 @@ $ docker run --name nginx-test -p 8080:80 -d nginx
 [root@localhost ~]# mkdir -p /mydata/nginx/logs
 [root@localhost ~]# mkdir -p /mydata/nginx/html
 [root@localhost ~]# mkdir -p /mydata/nginx/conf.d
-
-#说明
-mkdir -p /mydata/nginx/conf			#存放配置文件入口文件
-mkdir -p /mydata/nginx/logs			#存放日志文件
-mkdir -p /mydata/nginx/html			#存放静态文件 可以动态注入自己的静态页面
-mkdir -p /mydata/nginx/conf.d	    #存放多个配置文件（相当于vhost）
 ```
+
+> 说明  
+> mkdir -p /mydata/nginx/conf			#存放配置文件入口文件  
+> mkdir -p /mydata/nginx/logs			#存放日志文件  
+> mkdir -p /mydata/nginx/html			#存放静态文件 可以动态注入自己的静态页面  
+> mkdir -p /mydata/nginx/conf.d	    #存放多个配置文件（相当于vhost）  
 
 先运行一次容器（为了拷贝配置文件）：
 

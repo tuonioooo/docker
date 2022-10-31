@@ -2,7 +2,10 @@
 
 * [docker-compose常用命令](./docker-compose/docker-compose常用命令.md)
 * [docker-compose安装jenkins](./docker-compose/docker-compose安装jenkins.md)
-
+* [docker-compose安装mySql](./docker-compose/docker-compose安装mySql.md)
+* [docker-compose安装nginx](./docker-compose/docker-compose安装nginx.md)
+* [docker-compose安装redis](./docker-compose/docker-compose安装redis.md)
+* [docker-compose编排多服务](./docker-compose/docker-compose编排多服务.md)
 
 ## 参考
 
@@ -21,7 +24,26 @@ https://www.runoob.com/docker/docker-compose.html
 
 [https://docs.docker.com/compose/reference/](https://docs.docker.com/compose/reference/)
 
+
 #### compose yml命令配置规则
+
+```docker
+version: '' # 版本
+servers:  # 服务
+  服务1: web
+     # 服务的配置
+     build
+     network
+     images
+  服务2: redis
+  服务3:
+  服务4:
+  ...
+# 其他配置 网络，全局的规则 数据卷
+volumes:
+configs:
+networks:
+```
 
 [https://docs.docker.com/compose/compose-file/ (命令行)](https://docs.docker.com/compose/compose-file/ (命令行))
 

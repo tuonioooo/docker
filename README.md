@@ -12,7 +12,11 @@ docker容器技术
 * [docker swarm集群搭建](./docker-swarmji-qun-da-jian.md)
 * [docker compose部署脚本&服务编排](./docker-composebu-shu-jiao-ben.md)
 * [docker stack分布式集群部署](./docker-stackfen-bu-shi-ji-qun-bu-shu.md)
-* [通过maven插件打包docker镜像](./tong-guo-maven-cha-jian-da-bao-docker-jing-xiang.md)
-* [docker应用：SpringBoot搭建app自定义镜像部署到Docker中](./dockerying-yongff1a-springboot-da-jian-app-bu-shu-dao-docker-zhong.md)
+* [基于Maven插件为SpringBoot应用构建镜像（一）](docker-maven-1.md)
+* [基于Maven插件为SpringBoot应用构建镜像（二）](docker-maven-2.md)
+* [Dockerfile常用命令](dockerfile-command.md)
+* [基于Dockerfile为SpringBoot应用构建镜像](dockerfile-build-image.md)
+* [基于Dockerfile+Maven插件为SpringBoot应用构建镜像（推荐）](dockerfile-maven.md)
+* [基于Maven插件为SpringBoot应用构建镜像并推送到远程/私人仓库](docker-maven-push.md)
 * [docker应用：idea配置docker容器及使用](./dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
 

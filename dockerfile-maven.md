@@ -17,7 +17,7 @@
 FROM java:8
 # 将当前目录下的jar包复制到docker容器的/目录下
 ADD dockerfile-maven-example-0.0.1-SNAPSHOT.jar /app.jar
-# 运行过程中创建一个app.jar文件
+# 运行过程中更改 `app.jar` 文件的访问时间和修改时间
 RUN bash -c 'touch /app.jar'
 # 声明服务运行在8803端口
 EXPOSE 8803
@@ -157,6 +157,10 @@ echo '----stop container----'
 docker rm dockerfile-maven-01
 echo '----rm container----'
 docker rmi `docker images | grep none | awk '{print $3}'`
+或
+docker rmi $(docker images -f "dangling=true" -q)
+或  
+docker image prune
 echo '----rm none images----'
 ```
 

@@ -13,7 +13,7 @@
 FROM java:8
 # 将当前目录下的jar包复制到docker容器的/目录下
 ADD dockerfile-example-0.0.1-SNAPSHOT.jar /app.jar
-# 运行过程中创建一个app.jar文件
+# 运行过程中更改 `app.jar` 文件的访问时间和修改时间
 RUN bash -c 'touch /app.jar'
 # 声明服务运行在8080端口
 EXPOSE 8802

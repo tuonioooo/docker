@@ -25,7 +25,10 @@
 * jenkins挂载目录
 
 ```docker
+#jenkins的数据目录
 $ mkdir -p /mount/jenkins/
+#maven本地仓库地址
+$ mkdir -p /mount/maven/repository
 ```
 
 * mySql挂载目录
@@ -91,6 +94,7 @@ services:
     volumes:
       - /mount/jenkins/:/var/jenkins_home 
       - /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6
+      - /mount/maven/repository:/mount/maven/repository
       - /usr/local/java/jdk1.8.0_341:/usr/local/java/jdk1.8.0_341
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker

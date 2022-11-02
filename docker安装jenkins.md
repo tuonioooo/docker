@@ -59,14 +59,15 @@ jenkins/jenkins   lts       2a4bbe50c40b   11 months ago   441MB
 ### 4、设置宿主机目录权限，方便于容器映射
 
 ```
-$ mkdir /mydata/jenkins
-$ chown -R 1000:1000 /mydata/jenkins
-$ chown -R 1000:1000 /usr/local/src/jdk/jdk1.8/ （如果需要挂载jdk，可以设置权限）
-$ chown -R 1000:1000 /opt/apache-maven-3.5.0/	（如果需要maven，可以设置权限）
+mkdir -p /mydata/jenkins
+mkdir -p /mydata/maven/repository
+chown -R 1000:1000 /mydata/jenkins
+chown -R 1000:1000 /mydata/maven/repository
+chown -R 1000:1000 /usr/local/src/jdk/jdk1.8/ （如果需要挂载jdk，可以设置权限）
+chown -R 1000:1000 /opt/apache-maven-3.8.6/	（如果需要maven，可以设置权限）
 ```
 
 > 说明：需要修改映射的目录权限，因为当映射本地数据卷时，/mydata/jenkins/目录的拥有者为root用户，
->
 > 而容器中jenkins用户的 uid 为 1000。
 
 ### 5、运行容器
@@ -75,6 +76,7 @@ $ chown -R 1000:1000 /opt/apache-maven-3.5.0/	（如果需要maven，可以设�
 $ docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
   -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
+  -v /mydata/maven/repository:/mydata/maven/repository \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
   -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
@@ -84,10 +86,11 @@ $ docker run -p 8080:8080  \
 
 如果没有授权宿主主机目录的权限，可以使用授予root权限执行容器命令
 
-```
+```docker
 docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
   -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
+  -v /mydata/maven/repository:/mydata/maven/repository \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
   -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/
@@ -100,21 +103,14 @@ docker run -p 8080:8080  \
 ```
 
 > 命令说明：
->
 > -v /mydata/jenkins/:/var/jenkins_home   ：挂载宿主主机目录到容器目录
->
 > -v /var/run/docker.sock:/var/run/docker.sock ：挂载docker的实例
->
 > -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/：挂载宿主主机的maven
->
+> -v /mydata/maven/repository:/mydata/maven/repository：挂载maven仓库目录
 > -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai ：设置环境变量
->
 > --restart "always" ：随着容器启动而启动
->
 > --user root     ：root用户执行命令
->
 > --privileged=true ：授予root权限
->
 > -d jenkins/jenkins:lts：后台运行镜像
 
 ### 6、jenkins配置参考

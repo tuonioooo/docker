@@ -51,6 +51,18 @@ MAINTAINER tuonioooo
             <groupId>com.spotify</groupId>
             <artifactId>docker-maven-plugin</artifactId>
             <version>1.1.0</version>
+            <!--
+                WARNING: The following warnings have been detected: WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+                @see https://github.com/spotify/dockerfile-maven/issues/90
+                添加如下依赖解决问题
+                -->
+            <dependencies>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                    <version>1.1.1</version>
+                </dependency>
+            </dependencies>
             <!--如果想在项目打包时构建镜像添加 `mvn clean -DskipTests package` 会同时构建镜像 相当于 mvn clean -DskipTests package docker:build -->
             <executions>
                 <execution>

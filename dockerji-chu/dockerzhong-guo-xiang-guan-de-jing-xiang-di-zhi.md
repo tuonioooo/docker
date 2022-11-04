@@ -1,5 +1,11 @@
 # docker中国相关的镜像地址
 
+### 编辑前，先启动docker服务
+
+```shell script
+systemctl start docker
+```
+
 ### 阿里云加速
 
 ```

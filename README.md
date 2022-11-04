@@ -17,6 +17,7 @@ docker容器技术
 * [Dockerfile常用命令](dockerfile-command.md)
 * [基于Dockerfile为SpringBoot应用构建镜像](dockerfile-build-image.md)
 * [基于Dockerfile+Maven插件为SpringBoot应用构建镜像（推荐）](dockerfile-maven.md)
+* [基于jenkins容器部署SpringBoot应用(基于Dockerfile+Maven插件构建镜像)](dockerfile-maven-jenkins.md)
 * [基于Maven插件为SpringBoot应用构建镜像并推送到远程/私人仓库](docker-maven-push.md)
 * [docker应用：idea配置docker容器及使用](./dockerying-yong-ff1a-idea-pei-zhi-docker-rong-qi-ji-shi-yong.md)
 

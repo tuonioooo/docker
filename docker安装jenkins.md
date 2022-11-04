@@ -58,19 +58,41 @@ jenkins/jenkins   lts       2a4bbe50c40b   11 months ago   441MB
 
 ### 4、设置宿主机目录权限，方便于容器映射
 
+#### 说明: 下面将会介绍两种挂载的方式
+
+* 第一种 在宿主主机 安装好java环境、maven环境（PS：请提前配置好settings.xml 仓库目录为 `/mydata/maven/repository`），启动容器时挂载到容器内部，在jenkins配置时无需额外的自动安装java环境、maven环境，只需要指定java、maven目录即可（因为已经通过宿主主机挂载到容器内部，即使删除容器也不用担心数据丢失的问题）
+
 ```
-mkdir -p /mydata/jenkins
-mkdir -p /mydata/maven/repository
-chown -R 1000:1000 /mydata/jenkins
+mkdir -p /mydata/jenkins                    #在宿主主机中创建挂载目录
+mkdir -p /mydata/maven/repository           #在宿主主机中创建挂载目录
+chown -R 1000:1000 /mydata/jenkins          #授予权限
 chown -R 1000:1000 /mydata/maven/repository
-chown -R 1000:1000 /usr/local/src/jdk/jdk1.8/ （如果需要挂载jdk，可以设置权限）
-chown -R 1000:1000 /opt/apache-maven-3.8.6/	（如果需要maven，可以设置权限）
+chown -R 1000:1000 /usr/local/src/jdk/jdk1.8/
+chown -R 1000:1000 /usr/local/apache-maven-3.8.6/
 ```
 
-> 说明：需要修改映射的目录权限，因为当映射本地数据卷时，/mydata/jenkins/目录的拥有者为root用户，
+
+> 参数说明：需要修改映射的目录权限，因为当映射本地数据卷时，/mydata/jenkins/目录的拥有者为root用户，
 > 而容器中jenkins用户的 uid 为 1000。
 
+* 第二种 在jenkins容器中（自动安装java环境、maven环境)，启动容器时挂载到宿主主机目录（避免数据丢失）
+
+```
+mkdir -p /mydata/jenkins                    #在宿主主机中创建挂载目录
+mkdir -p /mydata/jenkins/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/repository #在宿主主机中创建maven仓库挂载目录
+chown -R 1000:1000 /mydata/jenkins          #授予权限
+```
+> 参数说明: 参考第一种  
+> 在jenkins容器内部安装软件时，会自动安装到 `/var/jenkins_home/tools/` 这个目录，又因为我们已经打算通过 `-v /mydata/jenkins/:/var/jenkins_home` 挂载目录，所以自动安装的软件将会自动挂载到宿主主机中
+> 但我们需要额外的配置一下 仓库的地址来映射 宿主主机目录 避免容器删除时，仓库数据丢失。  
+> 容器内部目录 `/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/conf/settings.xml`  
+> 挂载宿主主机目录 `/mydata/jenkins/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/conf/settings.xml`  
+> 所以只需修改 `/mydata/jenkins/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/conf/settings.xml` 配置文件即可  
+> 这里仓库是映射到 `/mydata/jenkins/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/repository`
+
 ### 5、运行容器
+
+#### jenkins手动安装maven、java环境，启动容器配置参数
 
 ```
 $ docker run -p 8080:8080  \
@@ -79,6 +101,7 @@ $ docker run -p 8080:8080  \
   -v /mydata/maven/repository:/mydata/maven/repository \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
+  -v /etc/localtime:/etc/localtime \
   -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
   --restart "always" \
   -d jenkins/jenkins:lts
@@ -91,6 +114,7 @@ docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
   -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
   -v /mydata/maven/repository:/mydata/maven/repository \
+  -v /etc/localtime:/etc/localtime \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
   -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/
@@ -102,16 +126,36 @@ docker run -p 8080:8080  \
   -d jenkins/jenkins:lts
 ```
 
-> 命令说明：
-> -v /mydata/jenkins/:/var/jenkins_home   ：挂载宿主主机目录到容器目录
-> -v /var/run/docker.sock:/var/run/docker.sock ：挂载docker的实例
-> -v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/：挂载宿主主机的maven
-> -v /mydata/maven/repository:/mydata/maven/repository：挂载maven仓库目录
-> -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai ：设置环境变量
-> --restart "always" ：随着容器启动而启动
-> --user root     ：root用户执行命令
-> --privileged=true ：授予root权限
-> -d jenkins/jenkins:lts：后台运行镜像
+> 命令说明：  
+> `-v /mydata/jenkins/:/var/jenkins_home` 挂载宿主主机目录到容器目录  
+> `-v /var/run/docker.sock:/var/run/docker.sock`  挂载docker的实例  
+> `-v /usr/local/apache-maven-3.8.6/: /usr/local/apache-maven-3.8.6/` 挂载宿主主机的maven  
+> `-v /mydata/maven/repository:/mydata/maven/repository` 挂载maven仓库目录  
+> `-v /etc/localtime:/etc/localtime` 同步时间  
+> `-e JAVA_OPTS=-Duser.timezone=Asia/Shanghai` 设置环境变量  
+> `--restart "always" ` 随着容器启动而启动  
+> `--user root` root用户执行命令  
+> `--privileged=true` 授予root权限  
+> `-d jenkins/jenkins:lts` 后台运行镜像  
+
+
+#### jenkins自动安装maven、java环境，启动容器配置参数
+
+```docker
+docker run -p 8080:8080  \
+  -v /mydata/jenkins/:/var/jenkins_home \
+  -v /mydata/jenkins/tools/hudson.tasks.Maven_MavenInstallation/apache-maven-3.8.6/repository:/root/.m2/repository
+  -v /etc/localtime:/etc/localtime \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /usr/bin/docker:/usr/bin/docker \
+  -v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+  -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
+  --restart "always" \
+  --user root \
+  --privileged=true \
+  -d jenkins/jenkins:lts
+```
+
 
 ### 6、jenkins配置参考
 

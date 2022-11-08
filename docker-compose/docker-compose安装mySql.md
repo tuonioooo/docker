@@ -12,13 +12,16 @@ https://www.runoob.com/docker/docker-compose.html
 
 ### 编写docker-compose.yml文件
 
-```docker
+```yml
 version: '3'
 services:
   mysql:                                            #mysql服务节点
     image: mysql:5.7                                #mysql镜像，如果镜像容器没有会去自动拉取
     container_name: mysql                           #容器的名称
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci #构建容器后所执行的命令
+    command:                                        #构建容器后所执行的命令
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --lower-case-table-names=1    #忽略数据表明大小写 
     restart: always                                 #跟随docker的启动而启动
     environment:
       MYSQL_ROOT_PASSWORD: root                     #设置root帐号密码
@@ -30,13 +33,27 @@ services:
       - /mydata/mysql/log:/var/log/mysql            #日志文件挂载
 ```
 
+> 配置参数说明：   
+> * `image`   镜像名称
+> * `container_name` 容器名称
+> * `command`      #容器启动后执行的命令
+>  * `--character-set-server=utf8mb4` 设置服务器字符编码，可通过my.cnf覆盖
+>  * `--collation-server=utf8mb4_unicode_ci` 设置服务器字符编码，可通过my.cnf覆盖
+>  * `--lower-case-table-names=1`    #忽略数据表明大小写  
+     注意：**该属性只有初始化构建时才生效，my.cnf无法覆盖，如果没有设置的话，需要重新配置mysql才可以且记要备份挂载的数据文件，否则会死的很惨**
+> * `restart`      重启的方式，常用 `跟随docker的启动而启动`
+> * `environment`  设置环境变量
+>   * MYSQL_ROOT_PASSWORD: root                     #设置root帐号密码
+> * `ports`   宿主主机端口映射到容器端口    
+> * `volumes` 数据卷的挂载  
+
 ### 部署
 
 #### 准备工作
 
 创建目录
 
-```docker
+```shell
 $ mkdir -p /mydata/mysql/data/db \
  -p /mydata/mysql/data/conf \
  -p /mydata/mysql/log
@@ -50,6 +67,11 @@ $ mkdir -p /mydata/mysql/data/db \
 > 新建的文件中的配置项可以覆盖 `/etc/mysql/my.cnf` 中的配置项。
 > 又由于宿主主机 `/mydata/mysql/conf.d` 目录 已经挂载到docker容器 `/etc/mysql/conf.d` 目录，所以只需在 `/mydata/mysql/conf.d` 目录下自定义*.cnf文件即可生效。
 
+配置文件模板
+
+* 官方配置文件模板 [my.cnf](mysql/default/my.cnf)
+
+* 我的配置文件模板 [my.cnf](mysql/my.cnf)
 
 将 `docker-compose.yml` 文件上传到Linux服务器 `/mydata` 目录下
 

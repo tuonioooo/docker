@@ -66,7 +66,9 @@ docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
 -e MYSQL_ROOT_PASSWORD=root  \
--d mysql:5.7
+--lower-case-table-names=1 \
+-d mysql:5.7 
+
 ```
 
 - 参数说明
@@ -75,6 +77,8 @@ docker run -p 3306:3306 --name mysql \
   - -v /mydata/mysql/log:/var/log/mysql：将日志文件夹挂载到主机
   - -v /mydata/mysql/data:/var/lib/mysql/：将数据文件夹挂载到主机
   - -e MYSQL_ROOT_PASSWORD=root：初始化root用户的密码
+  - `--lower-case-table-names=1` #忽略数据表明大小写  
+注意：**该属性只有初始化构建时才生效，my.cnf无法覆盖，如果没有设置的话，需要重新配置mysql才可以且记要备份挂载的数据文件，否则会死的很惨**
 
 进入运行MySQL的docker容器：
 

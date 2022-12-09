@@ -1,4 +1,4 @@
-# docker安装与使用
+# docker资源教程&安装与使用
 
 菜鸟教程安装与使用（**推荐讲的真的详细**）：[http://www.runoob.com/docker/centos-docker-install.html](http://www.runoob.com/docker/centos-docker-install.html)
 
@@ -9,3 +9,5 @@
 镜像地址：[http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo](http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo)
 
 版本区别：[docker、docker engine和docker desktop区别](./20221023.md)
+
+第三方docker文档：[https://www.kancloud.cn/zatko/docker/2291464](https://www.kancloud.cn/zatko/docker/2291464)

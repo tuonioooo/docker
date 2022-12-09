@@ -373,6 +373,16 @@ docker rmi $\(docker images \| grep "^&lt;none&gt;" \| awk "{print $3}"\)
 
 docker rmi $\(docker images -q\)
 
+```text
+# 关闭所有正在运行容器
+docker ps | awk  '{print $1}' | xargs docker stop
+
+# 删除所有容器应用
+docker ps -a | awk  '{print $1}' | xargs docker rm
+# 或者
+docker rm $(docker ps -a -q)
+```
+
 ### 23.卸载docker
 
 ```
@@ -382,6 +392,31 @@ sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
 
+### 24.网络命令
+新建
+```text
+docker network create -d bridge test-net
+```
+查看网络详情
+```text
+docker network inspect test-net
+```
+容器加入指定网络
+```text
+# 创建mysql容器并加入到 `docker-mount_default` 网络
+docker run -p 3367:3306 \
+--name mysql02 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-v /home/mysql02/data:/var/lib/mysql \
+--net docker-mount_default \
+-d mysql
+```
+> 具体参考 [docker容器互联](../docker容器互联.md)
+
+刪除
+```text
+docker network rm [networkID/NAME]
+```
 
 
 官方文档：https://docs.docker.com/reference/

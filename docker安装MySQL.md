@@ -4,7 +4,7 @@
 
 
 
-## docker安装MySQL(5.7.19)
+## docker安装MySQL(5.7.19) （推荐指数 ⭐️⭐️⭐️）
 
 
 
@@ -34,11 +34,10 @@ MySQL(5.7.19)的默认配置文件是 /etc/mysql/my.cnf 文件。如果想要自
 
 命令说明：
 
-- **-p 3306:3306：**将容器的3306端口映射到主机的3306端口
-- **-v /opt/docker_v/mysql/conf:/etc/mysql/conf.d：**将主机/opt/docker_v/mysql/conf目录挂载到容器的/etc/mysql/conf.d
-- **-e MYSQL_ROOT_PASSWORD=123456：**初始化root用户的密码
-- **-d:** 后台运行容器，并返回容器ID
-- **imageID:** mysql镜像ID
+- -p 3306:3306：**将容器的`3306`端口映射到主机的`3306`端口
+- -v /opt/docker_v/mysql/conf:/etc/mysql/conf.d：**将主机/opt/docker_v/mysql/conf目录挂载到容器的/etc/mysql/conf.d
+- -e MYSQL_ROOT_PASSWORD=123456：**初始化root用户的密码
+- -d imageID:  后台运行容器，imageID: mysql镜像ID
 
 **查看容器运行情况**
 
@@ -50,7 +49,7 @@ CONTAINER ID IMAGE          COMMAND          ... PORTS                    NAMES
 
 
 
-## 另一个版本：
+## 高级写法 （推荐指数 ⭐️⭐️⭐️⭐️️）
 
 下载MySQL`5.7`的docker镜像：
 
@@ -62,23 +61,23 @@ docker pull mysql:5.7
 
 ```bash
 docker run -p 3306:3306 --name mysql \
+-e MYSQL_ROOT_PASSWORD=root  \
 -v /mydata/mysql/log:/var/log/mysql \
 -v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
--e MYSQL_ROOT_PASSWORD=root  \
---lower-case-table-names=1 \
 -d mysql:5.7 
+--lower-case-table-names=1 \
 
 ```
 
-- 参数说明
-  - -p 3306:3306：将容器的3306端口映射到主机的3306端口
-  - -v /mydata/mysql/conf:/etc/mysql：将配置文件夹挂在到主机
-  - -v /mydata/mysql/log:/var/log/mysql：将日志文件夹挂载到主机
-  - -v /mydata/mysql/data:/var/lib/mysql/：将数据文件夹挂载到主机
-  - -e MYSQL_ROOT_PASSWORD=root：初始化root用户的密码
-  - `--lower-case-table-names=1` #忽略数据表明大小写  
-注意：**该属性只有初始化构建时才生效，my.cnf无法覆盖，如果没有设置的话，需要重新配置mysql才可以且记要备份挂载的数据文件，否则会死的很惨**
+> 参数说明
+>  - -p 3306:3306：将容器的`3306`端口映射到主机的`3306`端口
+>  - -e MYSQL_ROOT_PASSWORD=root：             #初始化root用户的密码
+>  - -v /mydata/mysql/conf:/etc/mysql：        #将配置文件夹挂在到主机
+>  - -v /mydata/mysql/log:/var/log/mysql：     #将日志文件夹挂载到主机
+>  - -v /mydata/mysql/data:/var/lib/mysql/：   #将数据文件夹挂载到主机
+>  - `--lower-case-table-names=1`              #忽略数据表名大小写    
+> 注意：**该属性只有初始化构建时才生效，my.cnf无法覆盖，如果没有设置的话，需要重新配置mysql才可以且记要备份挂载的数据文件，否则会死的很惨**
 
 进入运行MySQL的docker容器：
 
@@ -92,29 +91,136 @@ docker exec -it mysql /bin/bash
 mysql -uroot -proot --default-character-set=utf8
 ```
 
-创建一个`reader:123456`帐号并修改权限，使得任何ip都能访问：
+创建一个账号并授予远程登录权限，使得任何ip都能访问：
 
-```sql
-grant all privileges on *.* to 'reader' @'%' identified by '123456';
+```shell
+CREATE USER 'reader'@'%' IDENTIFIED WITH mysql_native_password BY 'Lzslov123!';
+GRANT ALL PRIVILEGES ON *.* TO 'reader'@'%';
+flush privileges;
 ```
 
-##  docker 安装 mysql 8 版本
+##  docker 安装 mysql 8 版本（推荐 ⭐️⭐️⭐️⭐️⭐️）
 
-```
+#### 下载 、简单运行
+
+```shell
 # docker 中下载 mysql
 docker pull mysql
 
-#启动
-docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Lzslov123! -d mysql
+# 查看mysql镜像
+docker images mysql
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+mysql        8         3218b38490ce   22 months ago   516MB
 
-#进入容器
+#启动
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=your_pwd -d mysql
+
+```
+
+#### 无需手动配置.cnf文件，启动时设置相应的参数和挂载文件
+
+```shell
+docker run -p 3306:3306 --name test_mysql \
+--privileged=true \
+-e MYSQL_ROOT_PASSWORD=root \
+-v /mnt/data2/mysql/data:/var/lib/mysql \
+-v /mnt/data2/mysql/log:/var/log/mysql \
+-d mysql:8 \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci \
+--lower-case-table-names=1
+```
+> 参数详解：    
+> `--privileged=true` 启动时拥有root 相关的特权，注意位置不用放到 mysql:8 的后面  
+> `lower-case-table-names` 忽略数据表明大小写, 只能首次初始化设置有效，如果你首次没有加此参数，第二次加的话会报错并且 my.cnf无法覆盖，解决方式：需要重新配置mysql，删除原有的数据库挂载目录且要备份挂载的数据文件，否则会死的很惨  
+> `-e MYSQL_ROOT_PASSWORD=<root_password> ` # 初始化root用户的密码，必须加
+> `-v /mnt/data2/mysql/data:/var/lib/mysql` # 挂载数据目录  
+> `-v /mnt/data2/mysql/log:/var/log/mysql`  # 挂载日志目录  
+> `--character-set-server=utf8mb4`          # 设置服务器的字符集  
+> `--collation-server=utf8mb4_0900_ai_ci`   # 设置服务器的排序规则  
+
+#### 手动配置.cnf文件，启动时必须先上传配置文件，创建相应挂载的数据文件、日志文件、配置文件
+
+[my.cnf详细配置含有官网对应的索引目录](assets/mysql/my.cnf.md)  
+[my.cnf初始配置](assets/mysql/my.cnf)  
+> * 设置忽略表名大小写
+> * 关闭了binlog日志
+> * 设置了一些相关的字符集
+
+docker启动创建mysql容器
+
+```shell
+docker run -p 3306:3306 --name test_mysql \
+--privileged=true \
+-e MYSQL_ROOT_PASSWORD=root \
+-v /mnt/data2/mysql/data:/var/lib/mysql \
+-v /mnt/data2/mysql/conf.d:/etc/mysql/conf.d \
+-v /mnt/data2/mysql/log:/var/log/mysql \
+-d mysql:8
+```
+> 参数详解：   
+> `--privileged=true` 启动时拥有root 相关的特权，注意位置不用放到 mysql:8 的后面  
+> `lower-case-table-names` 忽略数据表明大小写, 只能首次初始化设置有效，如果你首次没有加此参数，第二次加的话会报错并且 my.cnf无法覆盖，解决方式：需要重新配置mysql，删除原有的数据库挂载目录且要备份挂载的数据文件，否则会死的很惨  
+> `-e MYSQL_ROOT_PASSWORD=<root_password> `       # 初始化root用户的密码    
+> `-v /mnt/data2/mysql/data:/var/lib/mysql`       # 挂载数据目录    
+> `-v /mnt/data2/mysql/conf.d:/etc/mysql/conf.d`  # 挂载配置文件目录    
+> `-v /mnt/data2/mysql/log:/var/log/mysql`        # 挂载日志目录    
+
+
+#### docker同镜像安装多mysql服务
+
+只需设置 `容器名字` 和 `主机映射端口`不同即可启动多个mysql服务，具体如下：
+
+```shell
+docker run -p 33306:3306 --name test_mysql \
+--privileged=true \
+-e MYSQL_ROOT_PASSWORD=root \
+-v /mnt/data2/mysql/data:/var/lib/mysql \
+-v /mnt/data2/mysql/conf.d:/etc/mysql/conf.d \
+-v /mnt/data2/mysql/log:/var/log/mysql \
+-d mysql:8
+```
+
+> 安装、参数详解略
+
+
+#### 初始化后修改root密码
+
+```shell
+#进入mysql容器
 docker exec -it mysql bash
 
 #登录mysql
-mysql -u root -p
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';
+mysql -uroot -p'root'
 
-#添加远程登录用户
-CREATE USER 'liaozesong'@'%' IDENTIFIED WITH mysql_native_password BY 'Lzslov123!';
-GRANT ALL PRIVILEGES ON *.* TO 'liaozesong'@'%';
+#查询用户相关信息
+select user, host, authentication_string from user;
+
+#修改 root 密码
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'youpassord';
+
+exit;
+
+#重新登录
+mysql -uroot -p'youpassord'
+```
+
+
+#### 授权用户远程登录的权限
+
+```shell
+#进入mysql容器
+docker exec -it mysql bash
+
+#登录mysql
+mysql -u root -p'youpassord'
+
+#授予root远程登录权限
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+flush privileges;
+
+#添加一个新的用户，并授予远程登录的权限
+CREATE USER 'tuonioooo'@'%' IDENTIFIED WITH mysql_native_password BY 'Lzslov123!';
+GRANT ALL PRIVILEGES ON *.* TO 'tuonioooo'@'%';
+flush privileges;
 ```

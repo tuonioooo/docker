@@ -1,6 +1,14 @@
 # docker安装MySQL
 
-官网：[https://hub.docker.com/_/mysql](https://hub.docker.com/_/mysql)
+官网：
+
+[公共仓库地址](https://hub.docker.com/_/mysql)
+
+[MySQL 官方文档首页](https://dev.mysql.com/doc/)
+
+[MySQL 8.0 服务器配置选项](https://dev.mysql.com/doc/refman/8.0/en/server-options.html)
+
+[MySQL 5.7 配置文件选项](https://dev.mysql.com/doc/refman/5.7/en/option-files.html)
 
 参考：https://www.runoob.com/docker/docker-install-mysql.html
 

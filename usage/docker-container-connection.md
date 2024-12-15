@@ -82,6 +82,7 @@ tuonioooo@ecs:~$ docker port adoring_stonebraker 5000
 ---
 
 ## Docker 网络bridge网桥模式实现容器互联
+
 端口映射并不是唯一把 docker 连接到另一个容器的方法。
 
 docker 有一个连接系统允许将多个容器连接在一起，共享连接信息。
@@ -109,7 +110,7 @@ CONTAINER ID     IMAGE            COMMAND           ...    PORTS                
 ### 新建网络
 下面先创建一个新的 Docker 网络。$ docker network create -d bridge test-net
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901103-dc42e6e7-b688-4049-8174-53c08ae5e2dd.png)
+![](../assets/usage/1734170901103.png)
 
 参数说明：
 
@@ -128,7 +129,7 @@ $ docker run -itd --name test2 --network test-net ubuntu /bin/bash
 
 点击图片查看大图：
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901157-03e2c192-6e40-4670-b053-51f19543d9a9.png)
+![](../assets/usage/1734170901157.png)
 
 下面通过 ping 来证明 test1 容器和 test2 容器建立了互联关系。
 
@@ -143,13 +144,13 @@ apt install iputils-ping
 
 点击图片查看大图：
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901183-103ba47b-e763-4e3c-a4e9-431b47f206b6.png)
+![](../assets/usage/1734170901183-103ba47b.png)
 
 同理在 test2 容器也会成功连接到:
 
 点击图片查看大图：
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901187-b1d1798a-e863-48d5-b98f-079fe1a25e18.png)
+![](../assets/usage/1734170901187-b1d1798a.png)
 
 这样，test1 容器和 test2 容器建立了互联关系。
 
@@ -179,7 +180,7 @@ $ docker run -it --rm  ubuntu  cat etc/resolv.conf
 
 点击图片查看大图：
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901133-b69b99cb-6f4c-4240-8671-4d8f870ec104.png)
+![](../assets/usage/1734170901133-b69b99cb.png)
 
 **手动指定容器的配置**
 

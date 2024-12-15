@@ -5,7 +5,7 @@
 ### 方法一、docker pull python:3.5
 查找 [Docker Hub](https://hub.docker.com/_/python?tab=tags) 上的 Python 镜像:
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734161161694-e6ff4515-e91a-4291-8890-591d4b6a3b65.png)
+![](../assets/install/python1.png)
 
 可以通过 Sort by 查看其他版本的 python，默认是最新版本 **python:latest**。
 

@@ -41,15 +41,19 @@ Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发
 
 运行以下命令以下载 Docker Compose 的当前稳定版本：
 
+```shell
 $ sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
 
 要安装其他版本的 Compose，请替换 v2.2.2。
 
-_Docker Compose 存放在 GitHub，不太稳定。_
+Docker Compose 存放在 GitHub，不太稳定。
 
-_你可以也通过执行下面的命令，高速安装 Docker Compose。_
+你可以也通过执行下面的命令，高速安装 Docker Compose。
 
+```shell
 curl -L https://get.daocloud.io/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+```
 
 将可执行权限应用于二进制文件：
 
@@ -332,7 +336,7 @@ endpoint_mode: dnsrr
 + **global**：全局服务，服务将部署至集群的每个节点。
 + 图解：下图中黄色的方块是 replicated 模式的运行情况，灰色方块是 global 模式的运行情况。
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171028333-8b24ec57-d806-4ab3-8f63-5a83a16e109c.png)
+![](../assets/usage/1734171028333-8b24ec57.png)
 
 **replicas：mode** 为 replicated 时，需要使用此参数配置具体运行的节点数量。
 

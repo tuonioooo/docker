@@ -17,7 +17,7 @@
 * 搭建maven环境请自行准备(本教程演示的挂载目录: /usr/local/apache-maven-3.8.6)  
 * 搭建git环境请自行准备  
 * [安装docker](../dockeran-zhuang-yu-shi-yong.md)  
-* [安装docker-compose](https://www.runoob.com/docker/docker-compose.html)  
+* [安装docker-compose](../manual/docker-compose-run-command.md)  
 
 
 #### 创建容器映射宿主主机挂载目录

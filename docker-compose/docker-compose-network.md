@@ -62,7 +62,7 @@ docker network inspect docker-mount_default
 
 容器互联
 
-[docker容器互联](../docker容器互联.md)
+[docker容器互联](../usage/docker-container-connection.md)
 
 ## links
 

@@ -8,11 +8,11 @@ Redis 是一个开源的使用 ANSI C 语言编写、支持网络、可基于内
 
 可以通过 Sort by 查看其他版本的 Redis，默认是最新版本 **redis:latest**。
 
-![img](./assets/docker-redis1.png)
+![img](assets/install/redis1.png)
 
 你也可以在下拉列表中找到其他你想要的版本：
 
-![img](./assets/docker-redis2.png)
+![img](assets/install/redis2.png)
 
 
 
@@ -47,7 +47,7 @@ servivum/redis            Redis Docker Image            1                    [OK
 $ docker pull redis:latest
 ```
 
-![img](./assets/docker-redis3.png)
+![img](assets/install/redis3.png)
 
 ### 3、查看本地镜像
 
@@ -57,7 +57,7 @@ $ docker pull redis:latest
 $ docker images
 ```
 
-![img](./assets/docker-redis4.png)
+![img](assets/install/redis4.png)
 
 在上图中可以看到我们已经安装了最新版本（latest）的 redis 镜像。
 
@@ -73,13 +73,13 @@ $ docker run -itd --name redis-test -p 6379:6379 redis
 
 - **-p 6379:6379**：宿主机的 6379 端口:容器服务的 6379 端口。外部可以直接通过宿主机ip:6379 访问到 Redis 的服务。
 
-![img](./assets/docker-redis5.png)
+![img](assets/install/redis5.png)
 
 ### 5、安装成功
 
 最后我们可以通过 **docker ps** 命令查看容器的运行信息：
 
-![img](./assets/docker-redis6.png)
+![img](assets/install/redis6.png)
 
 接着我们通过 redis-cli 连接测试使用 redis 服务。
 
@@ -87,7 +87,7 @@ $ docker run -itd --name redis-test -p 6379:6379 redis
 $ docker exec -it redis-test /bin/bash(bash)
 ```
 
-![img](./assets/docker-redis7.png)
+![img](assets/install/redis7.png)
 
 ### 6、高级进阶，data 映射本地文件
 

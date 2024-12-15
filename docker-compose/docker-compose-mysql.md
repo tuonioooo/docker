@@ -1,14 +1,9 @@
 # docker-compose安装mySql
 
-### 安装docker-compose
+### docker-compose 安装
 
-菜鸟教程（基础，很详细）：
+[docker-compose 安装](../manual/docker-compose-run-command.md)
 
-https://www.runoob.com/docker/docker-compose.html
-
-官方文档教程：
-
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
 ### 编写docker-compose.yml文件
 
@@ -86,7 +81,7 @@ $ docker-compose up mysql -d  #指定mysql 后台运行
 
 验证
 
-```
+```shell
 docker exec -it mysql  mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -108,4 +103,4 @@ mysql>
 
 ### 常用命令
 
-[docker-compose常用命令](docker-compose常用命令.md)
+[docker-compose常用命令](./docker-compose-common-command.md)

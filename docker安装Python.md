@@ -11,7 +11,7 @@
 此外，我们还可以用 docker search python 命令来查看可用版本：
 
 ```
-runoob@runoob:~/python$ docker search python
+tuonioooo@ecs:~/python$ docker search python
 NAME                           DESCRIPTION                        STARS     OFFICIAL   AUTOMATED
 python                         Python is an interpreted,...       982       [OK]       
 kaggle/python                  Docker image for Python...         33                   [OK]
@@ -31,13 +31,13 @@ tnanba/python                  Python on CentOS-7 image.          0             
 这里我们拉取官方的镜像,标签为3.5
 
 ```
-runoob@runoob:~/python$ docker pull python:3.5
+tuonioooo@ecs:~/python$ docker pull python:3.5
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到 REPOSITORY 为python, 标签为 3.5 的镜像。
 
 ```
-runoob@runoob:~/python$ docker images python:3.5 
+tuonioooo@ecs:~/python$ docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 ```
@@ -49,7 +49,7 @@ python              3.5              045767ddf24a        9 days ago          684
 首先，创建目录 python，用于存放后面的相关东西。
 
 ```
-runoob@runoob:~$ mkdir -p ~/python ~/python/myapp
+tuonioooo@ecs:~$ mkdir -p ~/python ~/python/myapp
 ```
 
 myapp 目录将映射为 python 容器配置的应用目录。
@@ -113,13 +113,13 @@ CMD ["python3"]
 通过 Dockerfile 创建一个镜像，替换成你自己的名字：
 
 ```
-runoob@runoob:~/python$ docker build -t python:3.5 .
+tuonioooo@ecs:~/python$ docker build -t python:3.5 .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像：
 
 ```
-runoob@runoob:~/python$ docker images python:3.5 
+tuonioooo@ecs:~/python$ docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 ```
@@ -139,7 +139,7 @@ print("Hello, World!");
 ### 运行容器
 
 ```
-runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
+tuonioooo@ecs:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
 ```
 
 命令说明：

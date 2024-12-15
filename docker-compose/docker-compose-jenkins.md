@@ -1,14 +1,8 @@
-# docker-compose部署jenkins
+# docker-compose 部署jenkins
 
-### 安装docker-compose
+### docker-compose 安装
 
-菜鸟教程（基础，很详细）：
-
-https://www.runoob.com/docker/docker-compose.html
-
-官方文档教程：
-
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+[docker-compose 安装](../manual/docker-compose-run-command.md)
 
 ### 设置宿主机目录权限，方便于容器映射
 
@@ -47,7 +41,7 @@ chown -R 1000:1000 /mydata/jenkins          #授予权限
 
 * 第一种 需要宿主主机自备maven环境、java环境，安装过程略，提前配置settings.xml  `/mydata/maven/repository` 仓库目录地址
 
-```
+```yml
 version: '3' #指定版本
 services:    #服务根节点
   jenkins:   #jenkins服务/其他服务（web服务/nginx服务等）
@@ -77,7 +71,7 @@ services:    #服务根节点
 
 * 第二种 在jenkins容器中（自动安装java环境、maven环境)，启动容器时挂载到宿主主机目录（避免数据丢失）
 
-```
+```yml
 version: '3' #指定版本
 services:    #服务根节点
   jenkins:   #jenkins服务/其他服务（web服务/nginx服务等）
@@ -123,4 +117,4 @@ $ docker-compose up -d  #后台运行
 
 ### 常用命令
 
-[docker-compose常用命令](docker-compose常用命令.md)
+[docker-compose常用命令](./docker-compose-common-command.md)

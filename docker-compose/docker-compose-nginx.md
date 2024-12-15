@@ -1,18 +1,12 @@
 # docker-compose安装nginx
 
-### 安装docker-compose
+### docker-compose 安装
 
-菜鸟教程（基础，很详细）：
-
-https://www.runoob.com/docker/docker-compose.html
-
-官方文档教程：
-
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+[docker-compose 安装](../manual/docker-compose-run-command.md)
 
 ### 编写docker-compose.yml文件
 
-```
+```yml
 version: '3' #指定版本
 services:    #服务根节点
   nginx:   #jenkins服务/其他服务（web服务/nginx服务等）
@@ -35,7 +29,7 @@ Nginx 需要拷贝nginx配置文件、入口文件，否则挂载时会因为没
 
 创建目录&copy示例文件  
 
-```docker
+```shell
 $ mkdir -p /mydata/nginx/
 $ mkdir -p /mydata/nginx/logs
 $ mkdir -p /mydata/nginx/html
@@ -74,4 +68,4 @@ $ docker-compose up -d  #后台运行
 
 ### 常用命令
 
-[docker-compose常用命令](docker-compose常用命令.md)
+[docker-compose常用命令](./docker-compose-common-command.md)

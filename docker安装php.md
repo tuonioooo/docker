@@ -13,7 +13,7 @@
 此外，我们还可以用 docker search php 命令来查看可用版本：
 
 ```
-runoob@runoob:~/php-fpm$ docker search php
+tuonioooo@ecs:~/php-fpm$ docker search php
 NAME                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 php                       While designed for web development, the PH...   1232      [OK]       
 richarvey/nginx-php-fpm   Container running Nginx + PHP-FPM capable ...   207                  [OK]
@@ -32,13 +32,13 @@ webdevops/php             PHP (FPM and CLI) service container             10    
 这里我们拉取官方的镜像,标签为5.6-fpm
 
 ```
-runoob@runoob:~/php-fpm$ docker pull php:5.6-fpm
+tuonioooo@ecs:~/php-fpm$ docker pull php:5.6-fpm
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为php,标签为5.6-fpm的镜像。
 
 ```
-runoob@runoob:~/php-fpm$ docker images
+tuonioooo@ecs:~/php-fpm$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 php                 5.6-fpm             025041cd3aa5        6 days ago          456.3 MB
 ```

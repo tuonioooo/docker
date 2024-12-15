@@ -14,13 +14,13 @@ Nginx 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供
 
 可以通过 Sort by 查看其他版本的 Nginx，默认是最新版本 **nginx:latest**。
 
-![](assets/docker-nginx1.png)
+![](assets/install/nginx1.png)
 
 
 
 你也可以在下拉列表中找到其他你想要的版本：
 
-[![img](assets/docker-nginx2.png)](./assets/docker-nginx2.png)
+[![img](assets/install/nginx2.png)](assets/install/nginx2.png)
 
 此外，我们还可以用 docker search nginx 命令来查看可用版本：
 
@@ -43,7 +43,7 @@ maxexcloo/nginx-php       Docker framework container with Nginx and ...   57    
 $ docker pull nginx:latest
 ```
 
-![](assets/docker-nginx3.png)
+![](assets/install/nginx3.png)
 
 ### 3、查看本地镜像
 
@@ -53,7 +53,7 @@ $ docker pull nginx:latest
 $ docker images
 ```
 
-![](assets/docker-nginx4.png)
+![](assets/install/nginx4.png)
 
 在上图中可以看到我们已经安装了最新版本（latest）的 nginx 镜像。
 
@@ -71,13 +71,13 @@ $ docker run --name nginx-test -p 8080:80 -d nginx
 - **-p 8080:80**： 端口进行映射，将本地 8080 端口映射到容器内部的 80 端口（主机端口**:**容器端口）。
 - **-d nginx**： 设置容器在在后台一直运行。
 
-![](assets/docker-nginx5.png)
+![](assets/install/nginx5.png)
 
 ### 5、安装成功
 
 最后我们可以通过浏览器可以直接访问 8080 端口的 nginx 服务：
 
-![](assets/docker-nginx6.png)
+![](assets/install/nginx6.png)
 
 ### 6、进阶操作，映射本地文件便于动态扩展
 

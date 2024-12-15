@@ -11,7 +11,7 @@
 此外，我们还可以用 docker search httpd 命令来查看可用版本：
 
 ```
-runoob@runoob:~/apache$ docker search httpd
+tuonioooo@ecs:~/apache$ docker search httpd
 NAME                           DESCRIPTION                  STARS  OFFICIAL AUTOMATED
 httpd                          The Apache HTTP Server ..    524     [OK]       
 centos/httpd                                                7                [OK]
@@ -33,13 +33,13 @@ alizarion/httpd                httpd on centos with mo...   0                [OK
 这里我们拉取官方的镜像
 
 ```
-runoob@runoob:~/apache$ docker pull httpd
+tuonioooo@ecs:~/apache$ docker pull httpd
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为httpd的镜像。
 
 ```
-runoob@runoob:~/apache$ docker images httpd
+tuonioooo@ecs:~/apache$ docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 ```
@@ -51,7 +51,7 @@ httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 首先，创建目录apache,用于存放后面的相关东西。
 
 ```
-runoob@runoob:~$ mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
+tuonioooo@ecs:~$ mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
 ```
 
 www 目录将映射为 apache 容器配置的应用程序目录。
@@ -154,19 +154,19 @@ exec httpd -DFOREGROUND
 赋予 httpd-foreground 文件可执行权限。
 
 ```
-runoob@runoob:~/apache$ chmod +x httpd-foreground
+tuonioooo@ecs:~/apache$ chmod +x httpd-foreground
 ```
 
 通过 Dockerfile 创建一个镜像，替换成你自己的名字。
 
 ```
-runoob@runoob:~/apache$ docker build -t httpd .
+tuonioooo@ecs:~/apache$ docker build -t httpd .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像。
 
 ```
-runoob@runoob:~/apache$ docker images httpd
+tuonioooo@ecs:~/apache$ docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 ```
@@ -196,7 +196,7 @@ docker run -p 80:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.c
 查看容器启动情况：
 
 ```
-runoob@runoob:~/apache$ docker ps
+tuonioooo@ecs:~/apache$ docker ps
 CONTAINER ID  IMAGE   COMMAND             ... PORTS               NAMES
 79a97f2aac37  httpd   "httpd-foreground"  ... 0.0.0.0:80->80/tcp  sharp_swanson
 ```

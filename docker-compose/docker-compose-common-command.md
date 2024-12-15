@@ -1,11 +1,5 @@
 # docker-compose 常用命令
 
-官方文档：[https://docs.docker.com/compose/reference/](https://docs.docker.com/compose/reference/)
-
-```docker
-docker compose [-f <arg>...] [--profile <name>...] [options] [COMMAND] [ARGS...]
-```
-
 #### help
 
 `docker-compose -help` 查看帮助。

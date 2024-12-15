@@ -8,11 +8,11 @@ MongoDB 是一个免费的开源跨平台面向文档的 NoSQL 数据库程序�
 
 可以通过 Sort by 查看其他版本的 MongoDB，默认是最新版本 **mongo:latest**。
 
-![img](./assets/docker-mongo1.png)
+![img](assets/install/mongo1.png)
 
 你也可以在下拉列表中找到其他你想要的版本：
 
-![img](./assets/docker-mongo2.png)
+![img](assets/install/mongo2.png)
 
 此外，我们还可以用 docker search mongo 命令来查看可用版本：
 
@@ -43,7 +43,7 @@ valtlfelipe/mongo                 Docker Image based on the la...  1            
 $ docker pull mongo:latest
 ```
 
-![img](./assets/docker-mongo3.png)
+![img](assets/install/mongo3.png)
 
 ### 3、查看本地镜像
 
@@ -53,7 +53,7 @@ $ docker pull mongo:latest
 $ docker images
 ```
 
-![img](./assets/docker-mongo4.png)
+![img](assets/install/mongo4.png)
 
 在上图中可以看到我们已经安装了最新版本（latest）的 mongo 镜像。
 
@@ -71,13 +71,13 @@ $ docker run -itd --name mongo -p 27017:27017 mongo --auth
 - **mongo**:  镜像名称
 - **--auth**：需要密码才能访问容器服务。
 
-![img](./assets/docker-mongo5.png)
+![img](assets/install/mongo5.png)
 
 ### 5、安装成功
 
 最后我们可以通过 **docker ps** 命令查看容器的运行信息：
 
-![img](./assets/docker-mongo6.png)
+![img](assets/install/mongo6.png)
 
 接着使用以下命令添加用户和设置密码，并且尝试连接。
 
@@ -89,7 +89,7 @@ $ docker exec -it mongo mongo admin
 > db.auth('admin', '123456')
 ```
 
-![img](./assets/docker-mongo7.png)
+![img](assets/install/mongo7.png)
 
 
 

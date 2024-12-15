@@ -10,11 +10,11 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，是一个�
 
 可以通过 Sort by 查看其他版本的 Node，默认是最新版本 **node:latest**。
 
-![img](./assets/docker-node1.png)
+![img](assets/install/node1.png)
 
 你也可以在下拉列表中找到其他你想要的版本：
 
-![img](./assets/docker-node2.png)
+![img](assets/install/node2.png)
 
 此外，我们还可以用 docker search node 命令来查看可用版本：
 
@@ -30,7 +30,7 @@ $ docker search node
 $ docker pull node:latest
 ```
 
-![img](./assets/docker-node3.png)
+![img](assets/install/node3.png)
 
 ### 3、查看本地镜像
 
@@ -40,7 +40,7 @@ $ docker pull node:latest
 $ docker images
 ```
 
-![img](./assets/docker-node4.png)
+![img](assets/install/node4.png)
 
 在上图中可以看到我们已经安装了最新版本（latest）的 node 镜像。
 
@@ -56,7 +56,7 @@ $ docker run -itd --name node-test node
 
 - **--name node-test**：容器名称。
 
-![img](./assets/docker-node5.png)
+![img](assets/install/node5.png)
 
 ### 5、安装成功
 
@@ -67,4 +67,4 @@ $ docker exec -it node-test /bin/bash
 root@6c5d265c68a6:/# node -v
 ```
 
-![img](./assets/docker-node6.png)
+![img](assets/install/node6.png)

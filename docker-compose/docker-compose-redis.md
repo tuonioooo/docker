@@ -1,18 +1,12 @@
 # docker-compose安装redis
 
-### 安装docker-compose
+### docker-compose 安装
 
-菜鸟教程（基础，很详细）：
-
-https://www.runoob.com/docker/docker-compose.html
-
-官方文档教程：
-
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+[docker-compose 安装](../manual/docker-compose-run-command.md)
 
 ### 编写docker-compose.yml文件
 
-```docker
+```yml
 version: '3' #指定版本
 services:    #服务根节点
   redis:     #redis服务/其他服务（web服务/nginx服务等）
@@ -32,7 +26,7 @@ services:    #服务根节点
 
 创建目录
 
-```docker
+```shell
 $ mkdir -p /mydata/redis/data
 ```
 
@@ -40,7 +34,7 @@ $ mkdir -p /mydata/redis/data
 
 #### 启动redis
 
-```
+```shell
 $ cd /mydata
 $ docker-compose up redis -d  #指定redis 后台运行
 [+] Running 1/1
@@ -49,7 +43,7 @@ $ docker-compose up redis -d  #指定redis 后台运行
 
 验证
 
-```
+```shell
 [root@localhost ~]# docker exec -it redis redis-cli
 127.0.0.1:6379> set name allen
 (error) NOAUTH Authentication required.
@@ -63,4 +57,5 @@ OK
 
 ### 常用命令
 
-[docker-compose常用命令](docker-compose常用命令.md)
+
+[docker-compose常用命令](./docker-compose-common-command.md)

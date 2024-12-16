@@ -11,20 +11,19 @@ docker run -p 6379:6379 --name redis \
 -d redis redis-server --appendonly yes
 ```
 
-:::color1
-**参数说明：**
-
--p 6379:6379 ：将容器端口号映射到主机端口号
-
---name redis ：设置容器的名称
-
--v /mydata/redis/data:/data: 将容器data文件夹映射到主机/mydata/redis/data
-
-redis-server --appendonly yes： 在容器执行redis-server启动命令，并打开redis持久化配置
-
---restart=always： 随docker启动而启动
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> -p 6379:6379 ：将容器端口号映射到主机端口号
+>
+> --name redis ：设置容器的名称
+>
+> -v /mydata/redis/data:/data: 将容器data文件夹映射到主机/mydata/redis/data
+>
+> redis-server --appendonly yes： 在容器执行redis-server启动命令，并打开redis持久化配置
+>
+> --restart=always： 随docker启动而启动
 
 进入Redis容器使用`redis-cli`命令进行连接：
 
@@ -56,14 +55,13 @@ docker run -p 6379:6379 --name redis \
 -d redis redis-server --appendonly yes --requirepass '123456'
 ```
 
-:::color1
-**参数说明：**
-
---requirepass '123456' ：设置认证密码
-
-...其他类似参数参考上方示例
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> --requirepass '123456' ：设置认证密码
+>
+> ...其他类似参数参考上方示例
 
 用密码登录容器
 
@@ -73,14 +71,13 @@ docker exec -it redis redis-cli -a 123456
 docker exec -it redis redis-cli -h 127.0.0.1 -p 6379 -a 123456
 ```
 
-:::color1
-**参数说明：**
-
-+ -h 127.0.0.1 ：设置主机地址（默认为本机）
-+ -p 6379 ：端口号设置（默认为6379） #默认不加为 -p 6379
-+ -a 123456 ：redis 认证密码 通常来讲不在这里输入 而是进入到客户端后输入，这样输入不安全，使用如上命令会有提示：`Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.`
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> + -h 127.0.0.1 ：设置主机地址（默认为本机）
+> + -p 6379 ：端口号设置（默认为6379） #默认不加为 -p 6379
+> + -a 123456 ：redis 认证密码 通常来讲不在这里输入 而是进入到客户端后输入，这样输入不安全，使用如上命令会有提示：`Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.`
 
 登录时不带密码、进入redis-cli 使用 auth 认证密码
 

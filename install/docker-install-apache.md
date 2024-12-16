@@ -62,7 +62,7 @@ conf 目录里的配置文件将映射为 apache 容器的配置文件。
 
 进入创建的 apache 目录，创建 Dockerfile。
 
-```shell
+```dockerfile
 FROM debian:jessie
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
@@ -179,18 +179,17 @@ httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 docker run -p 6000:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf -v $PWD/logs/:/usr/local/apache2/logs/ -d httpd
 ```
 
-:::color1
-**参数说明：**
-
-**-p 6000:80:** 第一个 6000 端口为主机端口，后面一个是容器端口，效果为将容器的 80 端口映射到主机的 6000 端口。
-
-**-v $PWD/www/:/usr/local/apache2/htdocs/:** 将主机中当前目录下的 www 目录挂载到容器的 /usr/local/apache2/htdocs/。
-
-**-v $PWD/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf:** 将主机中当前目录下的 conf/httpd.conf 文件挂载到容器的 /usr/local/apache2/conf/httpd.conf。
-
-**-v $PWD/logs/:/usr/local/apache2/logs/:** 将主机中当前目录下的 logs 目录挂载到容器的 /usr/local/apache2/logs/。
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> **-p 6000:80:** 第一个 6000 端口为主机端口，后面一个是容器端口，效果为将容器的 80 端口映射到主机的 6000 端口。
+>
+> **-v $PWD/www/:/usr/local/apache2/htdocs/:** 将主机中当前目录下的 www 目录挂载到容器的 /usr/local/apache2/htdocs/。
+>
+> **-v $PWD/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf:** 将主机中当前目录下的 conf/httpd.conf 文件挂载到容器的 /usr/local/apache2/conf/httpd.conf。
+>
+> **-v $PWD/logs/:/usr/local/apache2/logs/:** 将主机中当前目录下的 logs 目录挂载到容器的 /usr/local/apache2/logs/。
 
 更详细的命令参考：[Docker run 命令](../manual/docker-run-command.md)
 
@@ -205,5 +204,4 @@ CONTAINER ID  IMAGE   COMMAND             ... PORTS               NAMES
 通过浏览器访问 localhost:6000，即可看到效果。
 
 ![](../assets/install/apache2.png)
-
 

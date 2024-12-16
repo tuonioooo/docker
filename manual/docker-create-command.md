@@ -97,9 +97,4 @@ docker start my_container
 + `docker create`: 用于创建一个新的容器实例但不启动它。可以通过各种参数设置容器的配置。
 + `docker start`: 启动已创建的容器，使其开始运行。
 
-:::color1
-**友情提示：**
-
 `docker create` 命令允许用户预先配置容器的设置，并在需要时手动启动容器，这对于自动化部署和测试场景特别有用。
-
-:::

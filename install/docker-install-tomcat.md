@@ -10,7 +10,7 @@
 此外，我们还可以在控制台使用 **docker search tomcat** 命令来查看可用版本：
 
 ```shell
-/tomcat$ docker search tomcat
+docker search tomcat
 NAME                       DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 tomcat                     Apache Tomcat is an open source implementa...   744       [OK]       
 dordoka/tomcat             Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 ba...   19                   [OK]
@@ -27,13 +27,13 @@ jtech/tomcat               Latest Tomcat production distribution on l...   1    
 这里我们拉取官方的镜像：
 
 ```shell
-/tomcat$ docker pull tomcat
+docker pull tomcat
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到 REPOSITORY 为 tomcat 的镜像。
 
 ```shell
-/tomcat$ docker images|grep tomcat
+docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 ```
 
@@ -221,13 +221,13 @@ CMD ["catalina.sh", "run"]
 通过 Dockerfile 创建一个镜像，替换成你自己的名字：
 
 ```shell
-/tomcat$ docker build -t tomcat .
+docker build -t tomcat .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像：
 
 ```shell
-/tomcat$ docker images|grep tomcat
+docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 ```
 
@@ -236,24 +236,23 @@ tomcat              latest              70f819d3d2d9        7 days ago          
 ### 使用 tomcat 镜像
 #### 运行容器
 ```shell
-/tomcat$ docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
+docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
 acb33fcb4beb8d7f1ebace6f50f5fc204b1dbe9d524881267aa715c61cf75320
 /tomcat$
 ```
 
-:::color1
-参数说明：
-
-**-p 8080:8080：**将主机的 8080 端口映射到容器的 8080 端口。
-
-**-v $PWD/test:/usr/local/tomcat/webapps/test：**将主机中当前目录下的 test 挂载到容器的 /test。
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> **-p 8080:8080：**将主机的 8080 端口映射到容器的 8080 端口。
+>
+> **-v $PWD/test:/usr/local/tomcat/webapps/test：**将主机中当前目录下的 test 挂载到容器的 /test。
 
 查看容器启动情况
 
 ```shell
-/tomcat$ docker ps 
+docker ps 
 CONTAINER ID    IMAGE     COMMAND               ... PORTS                    NAMES
 acb33fcb4beb    tomcat    "catalina.sh run"     ... 0.0.0.0:8080->8080/tcp   tomcat
 ```

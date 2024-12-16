@@ -12,7 +12,7 @@
 此外，我们还可以用 docker search python 命令来查看可用版本：
 
 ```shell
-/python$ docker search python
+docker search python
 NAME                           DESCRIPTION                        STARS     OFFICIAL   AUTOMATED
 python                         Python is an interpreted,...       982       [OK]       
 kaggle/python                  Docker image for Python...         33                   [OK]
@@ -32,13 +32,13 @@ tnanba/python                  Python on CentOS-7 image.          0             
 这里我们拉取官方的镜像,标签为3.5
 
 ```shell
-/python$ docker pull python:3.5
+docker pull python:3.5
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到 REPOSITORY 为python, 标签为 3.5 的镜像。
 
 ```shell
-/python$ docker images python:3.5 
+docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 ```
@@ -56,7 +56,7 @@ myapp 目录将映射为 python 容器配置的应用目录。
 
 进入创建的 python 目录，创建 Dockerfile。
 
-```shell
+```dockerfile
 FROM buildpack-deps:jessie
 
 # remove several traces of debian python
@@ -113,13 +113,13 @@ CMD ["python3"]
 通过 Dockerfile 创建一个镜像，替换成你自己的名字：
 
 ```shell
-/python$ docker build -t python:3.5 .
+docker build -t python:3.5 .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像：
 
 ```shell
-/python$ docker images python:3.5 
+docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 ```
@@ -137,19 +137,18 @@ print("Hello, World!");
 
 #### 运行容器
 ```shell
-/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
+docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
 ```
 
-:::color1
-**参数说明：**
-
-**-v $PWD/myapp:/usr/src/myapp:** 将主机中当前目录下的 myapp 挂载到容器的 /usr/src/myapp。
-
-**-w /usr/src/myapp:**** **指定容器的 /usr/src/myapp 目录为工作目录。
-
-**python helloworld.py:** 使用容器的 python 命令来执行工作目录中的 helloworld.py 文件。
-
-:::
+> [!NOTE]
+>
+> **参数说明：**
+>
+> **-v $PWD/myapp:/usr/src/myapp:** 将主机中当前目录下的 myapp 挂载到容器的 /usr/src/myapp。
+>
+> **-w /usr/src/myapp:**** **指定容器的 /usr/src/myapp 目录为工作目录。
+>
+> **python helloworld.py:** 使用容器的 python 命令来执行工作目录中的 helloworld.py 文件。
 
 输出结果：
 

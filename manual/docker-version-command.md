@@ -16,8 +16,8 @@ OPTIONS说明：
 ### 实例
 显示 Docker 版本信息。
 
-```plain
-$ docker version
+```shell
+docker version
 Client: Docker Engine - Community
  Version:           20.10.7
  API version:       1.41

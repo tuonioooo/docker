@@ -157,7 +157,7 @@ docker compose build [OPTIONS] [SERVICE...]
 + `--no-cache`：在构建过程中不使用缓存层，强制从头开始构建镜像。
 + `--pull`：始终尝试从注册表中拉取最新的基础镜像。
 + `--build-arg`：传递构建时的变量（类似于 Docker 的 `--build-arg` 选项）。
-+ `--progress`：指定构建的进度样式（`auto`、`plain`、`tty`），影响显示的输出方式。
++ `--progress`：指定构建的进度样式（`auto`、`shell`、`tty`），影响显示的输出方式。
 + `--parallel`：并行构建多个服务镜像以提高速度。
 + `--no-rm`：构建失败时，保留中间容器（默认在成功或失败后都会删除中间容器）。
 

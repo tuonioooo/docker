@@ -70,7 +70,7 @@ docker inspect my_container
 
 输出：
 
-```plain
+```shell
 [
     {
         "Id": "d2f5e3f19a6a",

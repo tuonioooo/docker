@@ -36,9 +36,8 @@ docker push myusername/myimage:1.0
 
 这会将 myimage:1.0 镜像标记为 myusername/myimage:1.0 并推送到 Docker Hub。
 
----
-
 ## 实例
+
 ### 为镜像打标签
 1、列出本地镜像
 

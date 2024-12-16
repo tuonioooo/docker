@@ -5,13 +5,13 @@ Docker Machine 是一种可以让您在虚拟主机上安装 Docker 的工具，
 
 Docker Machine 也可以集中管理所有的 docker 主机，比如快速的给 100 台服务器安装上 docker。
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076431-b1c478b9-d9e3-4c37-93e2-2b545e6a496e.png)
+![](../assets/usage/udm.png)
 
 Docker Machine 管理的虚拟主机可以是机上的，也可以是云供应商，如阿里云，腾讯云，AWS，或 DigitalOcean。
 
 使用 docker-machine 命令，您可以启动，检查，停止和重新启动托管主机，也可以升级 Docker 客户端和守护程序，以及配置 Docker 客户端与您的主机进行通信。
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076412-cef58e28-2a76-45f6-8363-83b8dd8741c3.png)
+![](../assets/usage/udm1.png)
 
 ---
 
@@ -21,7 +21,8 @@ Docker Machine 管理的虚拟主机可以是机上的，也可以是云供应�
 Docker Machine 可以在多种平台上安装使用，包括 Linux 、MacOS 以及 windows。
 
 ### Linux 安装命令
-```plain
+
+```shell
 $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
   curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
   sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
@@ -29,7 +30,8 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 ```
 
 ### macOS 安装命令
-```plain
+
+```shell
 $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
   curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/usr/local/bin/docker-machine &&
   chmod +x /usr/local/bin/docker-machine
@@ -38,7 +40,7 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 ### Windows 安装命令
 如果你是 Windows 平台，可以使用 [Git BASH](https://git-for-windows.github.io/)，并输入以下命令：
 
-```plain
+```shell
 $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
   mkdir -p "$HOME/bin" &&
   curl -L $base/docker-machine-Windows-x86_64.exe > "$HOME/bin/docker-machine.exe" &&
@@ -47,12 +49,12 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 
 查看是否安装成功：
 
-```plain
-$ docker-machine version
+```shell
+docker-machine version
 docker-machine version 0.16.0, build 9371605
 ```
 
-_**注意：**__各版本更新日志里面也有安装说明：_[_https://github.com/docker/machine/releases_](https://github.com/docker/machine/releases)
+**注意：** 各版本更新日志里面也有安装说明：[https://github.com/docker/machine/releases](https://github.com/docker/machine/releases)
 
 ---
 
@@ -62,42 +64,60 @@ _**注意：**__各版本更新日志里面也有安装说明：_[_https://githu
 ### 1、列出可用的机器
 可以看到目前只有这里默认的 default 虚拟机。
 
-$ docker-machine ls
+```shell
+docker-machine ls
+```
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076355-c95b4849-4a3e-4131-933c-d6e473237045.png)
+![](../assets/usage/udm2.png)
 
 ### 2、创建机器
 创建一台名为 test 的机器。
 
-$ docker-machine create --driver virtualbox test
+```shell
+docker-machine create --driver virtualbox test
+```
 
 + **--driver**：指定用来创建机器的驱动类型，这里是 virtualbox。
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076443-96944fe3-7c23-4bd0-a8d3-a7f5aaf63d19.png)
+![](../assets/usage/udm3.png)
 
 ### 3、查看机器的 ip
-$ docker-machine ip test
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076411-9f2468c4-9f2c-449e-8dfa-63105e4e75d4.png)
+```shell
+docker-machine ip test
+```
+
+![](../assets/usage/udm4.png)
 
 ### 4、停止机器
-$ docker-machine stop test![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076578-72ee8d78-70f9-497e-848a-7d539641a485.png)
+
+```shell
+docker-machine stop test
+```
+
+![](../assets/usage/udm5.png)
 
 ### 5、启动机器
-$ docker-machine start test
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076642-74f16b51-3f51-4818-b5b3-9cff836bf4e3.png)
+```shell
+docker-machine start test
+```
+
+![](../assets/usage/udm6.png)
 
 ### 6、进入机器
-$ docker-machine ssh test
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734171076645-abdb71b7-37f1-41c4-8271-2dda96ec92a5.png)
+```shell
+docker-machine ssh test
+```
+
+![](../assets/usage/udm7.png)
 
 ### docker-machine 命令参数说明
 + **docker-machine active**：查看当前激活状态的 Docker 主机。
 
-```plain
-$ docker-machine ls
+```shell
+docker-machine ls
 
 NAME      ACTIVE   DRIVER         STATE     URL
 dev       -        virtualbox     Running   tcp://192.168.99.103:2376

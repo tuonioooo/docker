@@ -15,7 +15,7 @@ Nginx 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供
 此外，我们还可以用 **docker search nginx** 命令来查看可用版本：
 
 ```shell
-$ docker search nginx
+docker search nginx
 NAME                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 nginx                     Official build of Nginx.                        3260      [OK]       
 jwilder/nginx-proxy       Automated Nginx reverse proxy for docker c...   674                  [OK]
@@ -29,7 +29,7 @@ maxexcloo/nginx-php       Docker framework container with Nginx and ...   57    
 这里我们拉取官方的最新版本的镜像：
 
 ```shell
-$ docker pull nginx:latest
+docker pull nginx:latest
 ```
 
 ![](../assets/install/nginx3.png)
@@ -38,7 +38,7 @@ $ docker pull nginx:latest
 使用以下命令来查看是否已安装了 nginx：
 
 ```shell
-$ docker images
+docker images
 ```
 
 ![](../assets/install/nginx4.png)
@@ -49,7 +49,7 @@ $ docker images
 安装完成后，我们可以使用以下命令来运行 nginx 容器：
 
 ```shell
-$ docker run --name nginx-test -p 8080:80 -d nginx
+docker run --name nginx-test -p 8080:80 -d nginx
 ```
 
 参数说明：

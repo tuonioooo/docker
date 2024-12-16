@@ -62,10 +62,10 @@ docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.Size}}"
 查看本地镜像列表:
 
 ```shell
-tuonioooo@ecs:~$ docker images
+docker images
 REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
 mymysql                 v1                  37af1236adef        5 minutes ago       329 MB
-runoob/ubuntu           v4                  1c06aa18edee        2 days ago          142.1 MB
+tuonioooo/ubuntu           v4                  1c06aa18edee        2 days ago          142.1 MB
 <none>                  <none>              5c6e1090e771        2 days ago          165.9 MB
 httpd                   latest              ed38aaffef30        11 days ago         195.1 MB
 alpine                  latest              4e38e38c8ce0        2 weeks ago         4.799 MB
@@ -79,7 +79,7 @@ python                  3.5                 045767ddf24a        3 weeks ago     
 列出本地镜像中 REPOSITORY 为 ubuntu的 镜像列表:
 
 ```shell
-root@runoob:~# docker images  ubuntu
+root@tuonioooo:~# docker images  ubuntu
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ubuntu              14.04               90d5884b1ee0        9 weeks ago         188 MB
 ubuntu              15.10               4e3b13c8a266        3 months ago        136.3 MB

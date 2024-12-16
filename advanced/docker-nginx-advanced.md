@@ -22,7 +22,7 @@ mkdir -p /mydata/nginx/conf.d #存放多个配置文件（相当于vhost）
 先运行一次容器（为了拷贝配置文件）：
 
 ```shell
-$ docker run --name nginx-test -p 8080:80 -d nginx
+docker run --name nginx-test -p 8080:80 -d nginx
 ```
 
 将容器内的配置文件复制到主机目录上

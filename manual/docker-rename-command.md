@@ -47,7 +47,7 @@ docker rename my_old_container existing_container_name
 
 输出：
 
-```plain
+```shell
 Error response from daemon: Conflict. 
 The container name "/existing_container_name" is already in use by container "abc123".
 You have to remove (or rename) that container to be able to reuse that name.

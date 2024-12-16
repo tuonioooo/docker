@@ -1,4 +1,4 @@
-# Dockerfile+Maven插件为SpringBoot应用构建镜像（推荐）
+# Dockerfile+Maven插件构建SpringBoot镜像（推荐）
 
 ## 简介
 本示例使用Dockerfile + docker-maven-plugin插件的方式 ，为SpringBoot应用构建镜像（推荐）。
@@ -93,7 +93,7 @@ MAINTAINER tuonioooo
 
 使用idea maven插件打包
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile-maven-01.png)
+![](../assets/advanced/dockerfile-maven-01.png)
 
 输出信息
 
@@ -184,7 +184,7 @@ docker run -p 8803:8803 --name dockerfile-maven-01 \
 
 进行访问测试，地址：[http://192.168.217.144:8803/swagger-ui.html](http://192.168.217.144:8803/swagger-ui.html)
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile-maven-02.png)
+![](../assets/advanced/dockerfile-maven-02.png)
 
 ## 演示项目地址
 [https://gitee.com/ecs-common-deploy/dockerfile-maven-example.git](https://gitee.com/ecs-common-deploy/dockerfile-maven-example.git)

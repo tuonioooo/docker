@@ -10,7 +10,7 @@
 此外，我们还可以在控制台使用 **docker search tomcat** 命令来查看可用版本：
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker search tomcat
+/tomcat$ docker search tomcat
 NAME                       DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 tomcat                     Apache Tomcat is an open source implementa...   744       [OK]       
 dordoka/tomcat             Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 ba...   19                   [OK]
@@ -27,13 +27,13 @@ jtech/tomcat               Latest Tomcat production distribution on l...   1    
 这里我们拉取官方的镜像：
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker pull tomcat
+/tomcat$ docker pull tomcat
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到 REPOSITORY 为 tomcat 的镜像。
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker images|grep tomcat
+/tomcat$ docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 ```
 
@@ -43,7 +43,7 @@ tomcat              latest              70f819d3d2d9        7 days ago          
 首先，创建目录tomcat,用于存放后面的相关东西。
 
 ```shell
-tuonioooo@ecs:~$ mkdir -p ~/tomcat/webapps ~/tomcat/logs ~/tomcat/conf
+$ mkdir -p ~/tomcat/webapps ~/tomcat/logs ~/tomcat/conf
 ```
 
 webapps 目录将映射为 tomcat 容器配置的应用程序目录。
@@ -221,13 +221,13 @@ CMD ["catalina.sh", "run"]
 通过 Dockerfile 创建一个镜像，替换成你自己的名字：
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker build -t tomcat .
+/tomcat$ docker build -t tomcat .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像：
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker images|grep tomcat
+/tomcat$ docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 ```
 
@@ -236,9 +236,9 @@ tomcat              latest              70f819d3d2d9        7 days ago          
 ### 使用 tomcat 镜像
 #### 运行容器
 ```shell
-tuonioooo@ecs:~/tomcat$ docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
+/tomcat$ docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
 acb33fcb4beb8d7f1ebace6f50f5fc204b1dbe9d524881267aa715c61cf75320
-tuonioooo@ecs:~/tomcat$
+/tomcat$
 ```
 
 :::color1
@@ -253,7 +253,7 @@ tuonioooo@ecs:~/tomcat$
 查看容器启动情况
 
 ```shell
-tuonioooo@ecs:~/tomcat$ docker ps 
+/tomcat$ docker ps 
 CONTAINER ID    IMAGE     COMMAND               ... PORTS                    NAMES
 acb33fcb4beb    tomcat    "catalina.sh run"     ... 0.0.0.0:8080->8080/tcp   tomcat
 ```

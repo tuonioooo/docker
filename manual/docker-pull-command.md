@@ -67,7 +67,7 @@ docker pull ubuntu
 
 输出示例：
 
-```plain
+```shell
 Using default tag: latest
 latest: Pulling from library/ubuntu
 Digest: sha256:12345abcdef...

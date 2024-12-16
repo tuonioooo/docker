@@ -1,10 +1,12 @@
 # Docker 安装 Jenkins
+
 ### 1、查看可用的 jenkins 版本
+
 访问 jenkins 镜像库地址： [https://hub.docker.com/_/jenkins?tab=tags](https://hub.docker.com/_/jenkins?tab=tags) 。
 
 可以通过 Sort by 查看其他版本的 jenkins，默认是最新版本 **jenkins:latest**。
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/jenkins_Snipaste_2022-10-30_17-04-50.png)
+![](../assets/install/jenkins_1.png)
 
 此外，我们还可以用 docker search jenkins 命令来查看可用版本：
 
@@ -41,12 +43,12 @@ rancher/jenkins-jnlp-slave                                                     0
 这里选择长期支持版本，下载完成后，查看镜像
 
 ```shell
-$ docker pull jenkins/jenkins:lts
+docker pull jenkins/jenkins:lts
 ```
 
 ### 3、查看本地镜像
 ```shell
-$ docker images
+docker images
 REPOSITORY        TAG       IMAGE ID       CREATED         SIZE
 jenkins/jenkins   lts       2a4bbe50c40b   11 months ago   441MB
 ```
@@ -89,7 +91,7 @@ chown -R 1000:1000 /mydata/jenkins          #授予权限
 ### 5、运行容器
 #### jenkins手动安装maven、java环境，启动容器配置参数
 ```shell
-$ docker run -p 8080:8080  \
+docker run -p 8080:8080  \
   -v /mydata/jenkins/:/var/jenkins_home \
   -v /usr/local/apache-maven-3.8.6:/usr/local/apache-maven-3.8.6 \
   -v /mydata/maven/repository:/mydata/maven/repository \

@@ -16,19 +16,19 @@ docker attach [OPTIONS] CONTAINER
 ### 实例
 例：附加到名为 my_container 的容器，用户可以直接与容器的标准输入、输出和错误输出交互。
 
-```plain
+```shell
 docker attach my_container
 ```
 
 例：附加到 my_container 容器，但不附加标准输入。
 
-```plain
+```shell
 docker attach --no-stdin my_container
 ```
 
 例：附加到 my_container 容器，并设置 ctrl-c 为分离键序列。
 
-```plain
+```shell
 docker attach --detach-keys="ctrl-c" my_container
 ```
 

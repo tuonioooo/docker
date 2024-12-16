@@ -16,7 +16,7 @@ MongoDB 是一个免费的开源跨平台面向文档的 NoSQL 数据库程序�
 此外，我们还可以用 **docker search mongo** 命令来查看可用版本：
 
 ```shell
-$ docker search mongo
+docker search mongo
 NAME                              DESCRIPTION                      STARS     OFFICIAL   AUTOMATED
 mongo                             MongoDB document databases ...   1989      [OK]       
 mongo-express                     Web-based MongoDB admin int...   22        [OK]       
@@ -38,7 +38,7 @@ valtlfelipe/mongo                 Docker Image based on the la...  1            
 这里我们拉取官方的最新版本的镜像：
 
 ```shell
-$ docker pull mongo:latest
+docker pull mongo:latest
 ```
 
 ![](../assets/install/mongo3.png)
@@ -47,7 +47,7 @@ $ docker pull mongo:latest
 使用以下命令来查看是否已安装了 mongo：
 
 ```shell
-$ docker images
+docker images
 ```
 
 ![](../assets/install/mongo4.png)

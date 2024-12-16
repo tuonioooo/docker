@@ -1,4 +1,4 @@
-# 基于Maven插件为SpringBoot应用构建镜像（一）
+# Maven插件构建SpringBoot镜像（一）
 
 ## 简介
 本示例，构建镜像依赖插件如下
@@ -29,7 +29,11 @@ ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
 ```
 
-说明: 其实就是在 `ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock` 命令后追加了 `-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock`
+> [!NOTE]
+>
+> 在 `ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock` 命令后追加了 
+>
+> `-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock`
 
 #### 修改配置后需要使用如下命令使配置生效
 ```shell
@@ -112,15 +116,15 @@ firewall-cmd --reload
 
 使用IDEA工具中的maven插件打包项目并构建镜像上传到docker服务器地址
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/docker_maven_01.png)
+![](../assets/advanced/docker_maven_01.png)
 
 构建成功
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/docker_maven_1002.png)
+![](../assets/advanced/docker_maven_1002.png)
 
 docker服务器地址（我的是192.168.217.144）, 查看结果
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/docker_maven_1003.png)
+![](../assets/advanced/docker_maven_1003.png)
 
 启动docker
 
@@ -140,15 +144,12 @@ $ docker run -p 8801:8801 --name docker-plugin-01 \
 
 进行访问测试，地址：[http://192.168.217.144:8801/swagger-ui.html](http://192.168.217.144:8801/swagger-ui.html)
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/docker_maven_04.jpg)
+![](../assets/advanced/docker_maven_04.jpg)
 
 ## 演示项目地址
 [ecs-common-deploy/docker-plugin-example](https://gitee.com/ecs-common-deploy/docker-plugin-example.git)
 
-:::color4
-**注意：**
-
-pom_spotify.xml: 为当前示例的pom文件，运行时请替换到pom.xml中
-
-:::
+> [!WARNING]
+>
+> pom_spotify.xml: 为当前示例的pom文件，运行时请替换到pom.xml中
 

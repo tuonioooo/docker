@@ -5,14 +5,14 @@
 ### 方法一、docker pull httpd
 查找 [Docker Hub](https://hub.docker.com/_/httpd?tab=tags) 上的 httpd 镜像:
 
-![](../assets/install/apache2.png)
+![](../assets/install/apache1.png)
 
-可以通过 Sort by 查看其他版本的 httpd，默认是最新版本 **httpd:latest**。
+可以通过 Sort by 查看其他版本的 httpd，默认是最新版本。
 
 此外，我们还可以用 docker search httpd 命令来查看可用版本：
 
-```plain
-tuonioooo@ecs:~/apache$ docker search httpd
+```shell
+docker search httpd
 NAME                           DESCRIPTION                  STARS  OFFICIAL AUTOMATED
 httpd                          The Apache HTTP Server ..    524     [OK]       
 centos/httpd                                                7                [OK]
@@ -34,13 +34,13 @@ alizarion/httpd                httpd on centos with mo...   0                [OK
 这里我们拉取官方的镜像
 
 ```shell
-tuonioooo@ecs:~/apache$ docker pull httpd
+docker pull httpd
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为httpd的镜像。
 
-```plain
-tuonioooo@ecs:~/apache$ docker images httpd
+```shell
+docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 ```
@@ -51,7 +51,7 @@ httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 首先，创建目录apache,用于存放后面的相关东西。
 
 ```shell
-tuonioooo@ecs:~$ mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
+mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
 ```
 
 www 目录将映射为 apache 容器配置的应用程序目录。
@@ -62,7 +62,7 @@ conf 目录里的配置文件将映射为 apache 容器的配置文件。
 
 进入创建的 apache 目录，创建 Dockerfile。
 
-```plain
+```shell
 FROM debian:jessie
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
@@ -141,7 +141,7 @@ CMD ["httpd-foreground"]
 
 Dockerfile文件中 COPY httpd-foreground /usr/local/bin/ 是将当前目录下的httpd-foreground拷贝到镜像里，作为httpd服务的启动脚本，所以我们要在本地创建一个脚本文件httpd-foreground
 
-```plain
+```shell
 #!/bin/bash
 set -e
 
@@ -154,19 +154,19 @@ exec httpd -DFOREGROUND
 赋予 httpd-foreground 文件可执行权限。
 
 ```shell
-tuonioooo@ecs:~/apache$ chmod +x httpd-foreground
+chmod +x httpd-foreground
 ```
 
 通过 Dockerfile 创建一个镜像，替换成你自己的名字。
 
 ```shell
-tuonioooo@ecs:~/apache$ docker build -t httpd .
+docker build -t httpd .
 ```
 
 创建完成后，我们可以在本地的镜像列表里查找到刚刚创建的镜像。
 
-```plain
-tuonioooo@ecs:~/apache$ docker images httpd
+```shell
+docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 ```
@@ -176,13 +176,13 @@ httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 ### 使用 apache 镜像
 #### 运行容器
 ```shell
-docker run -p 80:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf -v $PWD/logs/:/usr/local/apache2/logs/ -d httpd
+docker run -p 6000:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf -v $PWD/logs/:/usr/local/apache2/logs/ -d httpd
 ```
 
 :::color1
 **参数说明：**
 
-**-p 80:80:**第一个 80 端口为主机端口，后面一个是容器端口，效果为将容器的 80 端口映射到主机的 80 端口。
+**-p 6000:80:** 第一个 6000 端口为主机端口，后面一个是容器端口，效果为将容器的 80 端口映射到主机的 6000 端口。
 
 **-v $PWD/www/:/usr/local/apache2/htdocs/:** 将主机中当前目录下的 www 目录挂载到容器的 /usr/local/apache2/htdocs/。
 
@@ -196,13 +196,14 @@ docker run -p 80:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.c
 
 查看容器启动情况：
 
-```plain
-tuonioooo@ecs:~/apache$ docker ps
+```shell
+docker ps
 CONTAINER ID  IMAGE   COMMAND             ... PORTS               NAMES
-79a97f2aac37  httpd   "httpd-foreground"  ... 0.0.0.0:80->80/tcp  sharp_swanson
+79a97f2aac37  httpd   "httpd-foreground"  ... 0.0.0.0:6000->80/tcp  sharp_swanson
 ```
 
-通过浏览器访问
+通过浏览器访问 localhost:6000，即可看到效果。
 
 ![](../assets/install/apache2.png)
+
 

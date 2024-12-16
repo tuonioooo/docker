@@ -51,8 +51,8 @@ docker stats --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}"
 ### 实例
 列出所有在运行的容器信息。
 
-```plain
-tuonioooo@ecs:~$  docker stats
+```shell
+$  docker stats
 CONTAINER ID        NAME                                    CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
 b95a83497c91        awesome_brattain                        0.28%               5.629MiB / 1.952GiB   0.28%               916B / 0B           147kB / 0B          9
 67b2525d8ad1        foobar                                  0.00%               1.727MiB / 1.952GiB   0.09%               2.48kB / 0B         4.11MB / 0B         2
@@ -77,7 +77,7 @@ e5c383697914        test-1951.1.kay7x1lh1twk9c0oig50sd5tr   0.00%               
 根据容器等 ID 或名称现实信息：
 
 ```shell
-tuonioooo@ecs:~$ docker stats awesome_brattain 67b2525d8ad1
+docker stats awesome_brattain 67b2525d8ad1
 
 CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
 b95a83497c91        awesome_brattain    0.28%               5.629MiB / 1.952GiB   0.28%               916B / 0B           147kB / 0B          9
@@ -87,14 +87,14 @@ b95a83497c91        awesome_brattain    0.28%               5.629MiB / 1.952GiB 
 以 JSON 格式输出：
 
 ```shell
-tuonioooo@ecs:~$ docker stats nginx --no-stream --format "{{ json . }}"
+docker stats nginx --no-stream --format "{{ json . }}"
   {"BlockIO":"0B / 13.3kB","CPUPerc":"0.03%","Container":"nginx","ID":"ed37317fbf42","MemPerc":"0.24%","MemUsage":"2.352MiB / 982.5MiB","Name":"nginx","NetIO":"539kB / 606kB","PIDs":"2"}
 ```
 
 输出指定的信息：
 
 ```shell
-tuonioooo@ecs:~$ docker stats --all --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" fervent_panini 5acfcb1b4fd1 drunk_visvesvaraya big_heisenberg
+docker stats --all --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" fervent_panini 5acfcb1b4fd1 drunk_visvesvaraya big_heisenberg
   {"BlockIO":"0B / 13.3kB","CPUPerc":"0.03%","Container":"nginx","ID":"ed37317fbf42","MemPerc":"0.24%","MemUsage":"2.352MiB / 982.5MiB","Name":"nginx","NetIO":"539kB / 606kB","PIDs":"2"}
 
 CONTAINER                CPU %               MEM USAGE / LIMIT

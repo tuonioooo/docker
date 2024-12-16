@@ -35,7 +35,7 @@
 
 而容器只是一种隔离的进程，拥有其运行所需的所有文件。多个容器共享同一个内核，因此可以在更少的硬件资源上运行更多应用。
 
-![](../assets/docker-vs-vwmare.png)
+![](../assets/concepts/docker-vs-vwmare.png)
 
 ---
 

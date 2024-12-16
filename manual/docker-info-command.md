@@ -12,8 +12,8 @@ docker info [OPTIONS]
 ### 实例
 查看docker系统信息。
 
-```plain
-$ docker info
+```shell
+docker info
 Client:
  Context:    default
  Debug Mode: false

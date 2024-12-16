@@ -16,14 +16,14 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，是一个�
 此外，我们还可以用 **docker search node** 命令来查看可用版本：
 
 ```shell
-$ docker search node
+docker search node
 ```
 
 ### 2、取最新版的 node 镜像
 这里我们拉取官方的最新版本的镜像：
 
 ```shell
-$ docker pull node:latest
+docker pull node:latest
 ```
 
 ![](../assets/install/node3.png)
@@ -32,7 +32,7 @@ $ docker pull node:latest
 使用以下命令来查看是否已安装了 node
 
 ```shell
-$ docker images
+docker images
 ```
 
 ![](../assets/install/node4.png)
@@ -43,7 +43,7 @@ $ docker images
 安装完成后，我们可以使用以下命令来运行 node 容器：
 
 ```shell
-$ docker run -itd --name node-test node
+docker run -itd --name node-test node
 ```
 
 参数说明：
@@ -57,7 +57,7 @@ $ docker run -itd --name node-test node
 最后进入查看容器运行的 node 版本:
 
 ```shell
-$ docker exec -it node-test /bin/bash
+docker exec -it node-test /bin/bash
 root@6c5d265c68a6:/# node -v
 ```
 

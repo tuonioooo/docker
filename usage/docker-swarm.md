@@ -18,8 +18,6 @@ Docker Swarm 是 Docker 的集群管理工具。它将 Docker 主机池转变为
 
 ![](../assets/usage/swarm1.png)
 
----
-
 ## 使用
 以下示例，均以 Docker Machine 和 virtualbox 进行介绍，确保你的主机已安装 virtualbox。
 
@@ -34,8 +32,8 @@ $ docker-machine create -d virtualbox swarm-manager
 
 初始化 swarm 集群，进行初始化的这台机器，就是集群的管理节点。
 
-```plain
-$ docker-machine ssh swarm-manager
+```shell
+docker-machine ssh swarm-manager
 $ docker swarm init --advertise-addr 192.168.99.107 #这里的 IP 为创建机器时分配的 ip。
 ```
 
@@ -66,7 +64,7 @@ docker@swarm-worker1:~$ docker swarm join --token SWMTKN-1-4oogo9qziq768dma0uh3j
 进入管理节点，执行：docker info 可以查看当前集群的信息。
 
 ```shell
-$ docker info
+docker info
 ```
 
 ![](../assets/usage/swarm6.png)

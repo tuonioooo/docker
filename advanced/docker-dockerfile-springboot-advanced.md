@@ -1,9 +1,9 @@
-# Dockerfile为SpringBoot应用构建镜像
+# Dockerfile构建SpringBoot镜像
 
 ## 简介
 本示例使用Dockerfile 相关命令，和已经打好包(`mvn -DskiptTests package`) 的SpringBoot 应用 在Docker服务器上构建镜像并启动的 简单示例。
 
-[Dockerfile常用命令](https://github.com/tuonioooo/docker/blob/master/dockerfile-command.md)
+[Dockerfile常用命令](../usage/docker-dockerfile.md)
 
 ## 编写Dockerfile文件
 ```dockerfile
@@ -13,7 +13,7 @@ FROM java:8
 ADD dockerfile-example-0.0.1-SNAPSHOT.jar /app.jar
 # 运行过程中更改 `app.jar` 文件的访问时间和修改时间
 RUN bash -c 'touch /app.jar'
-# 声明服务运行在8080端口
+# 声明服务运行在8802端口
 EXPOSE 8802
 # 指定docker容器启动时运行jar包
 ENTRYPOINT ["java", "-jar","/app.jar"]
@@ -24,7 +24,7 @@ MAINTAINER tuonioooo
 ## 使用maven打包应用
 使用idea maven插件打包
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile_04.png)
+![](../assets/advanced/dockerfile_04.png)
 
 打包成功信息
 
@@ -46,7 +46,7 @@ Process finished with exit code 0
 ## 构建镜像
 将Dockerfile、dockerfile-example-0.0.1-SNAPSHOT.jar 上传到Linux服务器上
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile_05.png)
+![](../assets/advanced/dockerfile_05.png)
 
 在Dockerfile所在目录执行以下命令：
 
@@ -54,12 +54,9 @@ Process finished with exit code 0
 docker build -t my_dfile/dockerfile-example:0.0.1-SNAPSHOT .
 ```
 
-:::info
-**参数说明：**
-
-`-t` 表示指定镜像仓库名称/镜像名称:镜像标签 `.` 表示使用当前目录下的Dockerfile
-
-:::
+> [!NOTE]
+>
+> `-t` 表示指定镜像仓库名称/镜像名称:镜像标签 `.` 表示使用当前目录下的Dockerfile
 
 输出如下信息:
 
@@ -91,7 +88,7 @@ Successfully tagged my_dfile/dockerfile-example:0.0.1-SNAPSHOT
 
 查看镜像
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile_02.png)
+![](../assets/advanced/dockerfile_02.png)
 
 ## 启动
 挂载日志目录
@@ -121,7 +118,7 @@ docker run -p 8802:8802 --name dockerfile-01 \
 
 进行访问测试，地址：[http://192.168.217.144:8802/swagger-ui.html](http://192.168.217.144:8802/swagger-ui.html)
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/dockerfile_03.png)
+![](../assets/advanced/dockerfile_03.png)
 
 ## 演示项目地址
 [https://gitee.com/ecs-common-deploy/dockerfile-example.git](https://gitee.com/ecs-common-deploy/dockerfile-example.git)

@@ -17,13 +17,13 @@ OPTIONS说明：
 ### 实例
 获取所有事件：
 
-```plain
+```shell
 docker events
 ```
 
 输出：
 
-```plain
+```shell
 2023-07-22T15:04:05.123456789Z container create 123abc456def (image=ubuntu, name=my_container)
 2023-07-22T15:04:06.123456789Z container start 123abc456def (image=ubuntu, name=my_container)
 2023-07-22T15:04:10.123456789Z container stop 123abc456def (image=ubuntu, name=my_container)
@@ -32,7 +32,7 @@ docker events
 
 过滤事件：
 
-```plain
+```shell
 docker events --filter event=stop
 ```
 
@@ -40,13 +40,13 @@ docker events --filter event=stop
 
 输出：
 
-```plain
+```shell
 2023-07-22T15:04:10.123456789Z container stop 123abc456def (image=ubuntu, name=my_container)
 ```
 
 格式化输出：
 
-```plain
+```shell
 docker events --format '{{.Time}} - {{.Type}} - {{.Action}}'
 ```
 
@@ -54,7 +54,7 @@ docker events --format '{{.Time}} - {{.Type}} - {{.Action}}'
 
 输出：
 
-```plain
+```shell
 2023-07-22T15:04:05.123456789Z - container - create
 2023-07-22T15:04:06.123456789Z - container - start
 2023-07-22T15:04:10.123456789Z - container - stop
@@ -63,7 +63,7 @@ docker events --format '{{.Time}} - {{.Type}} - {{.Action}}'
 
 显示从指定时间开始的事件：
 
-```plain
+```shell
 docker events --since "2023-07-22T15:04:05"
 ```
 
@@ -71,7 +71,7 @@ docker events --since "2023-07-22T15:04:05"
 
 显示直到指定时间的事件：
 
-```plain
+```shell
 docker events --until "2023-07-22T16:04:05"
 ```
 

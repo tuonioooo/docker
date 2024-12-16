@@ -11,7 +11,7 @@ docker top [OPTIONS] CONTAINER [ps OPTIONS]
 
 **查看容器内的进程:**
 
-```plain
+```shell
 docker top my_container
 ```
 
@@ -19,7 +19,7 @@ docker top my_container
 
 **使用自定义 ps 选项:**
 
-```plain
+```shell
 docker top my_container -o pid,comm
 ```
 
@@ -28,13 +28,13 @@ docker top my_container -o pid,comm
 ### 实例
 查看容器内的进程：
 
-```plain
+```shell
 docker top my_container
 ```
 
 示例输出：
 
-```plain
+```shell
 UID       PID        PPID      C      STIME    TTY        TIME          CMD
 root      1725       1708      0      14:02    ?          00:00:00      bash
 root      1767       1725      0      14:03    ?          00:00:00      ps
@@ -42,13 +42,13 @@ root      1767       1725      0      14:03    ?          00:00:00      ps
 
 自定义输出：
 
-```plain
+```shell
 docker top my_container -o pid,comm
 ```
 
 示例输出：
 
-```plain
+```shell
 PID                 COMMAND
 1725                bash
 1767                ps

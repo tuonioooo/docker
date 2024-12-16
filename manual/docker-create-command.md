@@ -6,7 +6,7 @@
 
 `docker create` 命令会根据指定的镜像和参数创建一个容器实例，但容器只会在创建时进行初始化，并不会执行任何进程。
 
-用法同 [docker run](https://www.runoob.com/docker/docker-run-command.html)。
+用法同 [docker run](https://www.tuonioooo.com/docker/docker-run-command.html)。
 
 ### 语法
 docker create [OPTIONS] IMAGE [COMMAND] [ARG...]

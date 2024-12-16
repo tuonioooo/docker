@@ -11,8 +11,8 @@
 ## 网络端口映射
 我们创建了一个 python 应用的容器。
 
-```plain
-tuonioooo@ecs:~$ docker run -d -P training/webapp python app.py
+```shell
+docker run -d -P training/webapp python app.py
 fce072cc88cee71b1cdceb57c2821d054a4a59f67da6b416fceb5593f059fc6d
 ```
 
@@ -20,8 +20,8 @@ fce072cc88cee71b1cdceb57c2821d054a4a59f67da6b416fceb5593f059fc6d
 
 我们使用 **-P** 绑定端口号，使用 **docker ps** 可以看到容器端口 5000 绑定主机端口 32768。
 
-```plain
-tuonioooo@ecs:~$ docker ps
+```shell
+docker ps
 CONTAINER ID    IMAGE               COMMAND            ...           PORTS                     NAMES
 fce072cc88ce    training/webapp     "python app.py"    ...     0.0.0.0:32768->5000/tcp   grave_hopper
 ```
@@ -33,13 +33,13 @@ fce072cc88ce    training/webapp     "python app.py"    ...     0.0.0.0:32768->50
 + **-P：**是容器内部端口**随机**映射到主机的端口。
 + **-p：**是容器内部端口绑定到**指定**的主机端口。
 
-```plain
-tuonioooo@ecs:~$ docker run -d -p 5000:5000 training/webapp python app.py
+```shell
+docker run -d -p 5000:5000 training/webapp python app.py
 33e4523d30aaf0258915c368e66e03b49535de0ef20317d3f639d40222ba6bc0
 ```
 
-```plain
-tuonioooo@ecs:~$ docker ps
+```shell
+docker ps
 CONTAINER ID        IMAGE               COMMAND           ...           PORTS                     NAMES
 33e4523d30aa        training/webapp     "python app.py"   ...   0.0.0.0:5000->5000/tcp    berserk_bartik
 fce072cc88ce        training/webapp     "python app.py"   ...   0.0.0.0:32768->5000/tcp   grave_hopper
@@ -47,10 +47,10 @@ fce072cc88ce        training/webapp     "python app.py"   ...   0.0.0.0:32768->5
 
 另外，我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1。
 
-```plain
-tuonioooo@ecs:~$ docker run -d -p 127.0.0.1:5001:5000 training/webapp python app.py
+```shell
+docker run -d -p 127.0.0.1:5001:5000 training/webapp python app.py
 95c6ceef88ca3e71eaf303c2833fd6701d8d1b2572b5613b5a932dfdfe8a857c
-tuonioooo@ecs:~$ docker ps
+$ docker ps
 CONTAINER ID        IMAGE               COMMAND           ...     PORTS                                NAMES
 95c6ceef88ca        training/webapp     "python app.py"   ...  5000/tcp, 127.0.0.1:5001->5000/tcp   adoring_stonebraker
 33e4523d30aa        training/webapp     "python app.py"   ...  0.0.0.0:5000->5000/tcp               berserk_bartik
@@ -61,10 +61,10 @@ fce072cc88ce        training/webapp     "python app.py"   ...    0.0.0.0:32768->
 
 上面的例子中，默认都是绑定 tcp 端口，如果要绑定 UDP 端口，可以在端口后面加上 **/udp**。
 
-```plain
-tuonioooo@ecs:~$ docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
+```shell
+docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
 6779686f06f6204579c1d655dd8b2b31e8e809b245a97b2d3a8e35abe9dcd22a
-tuonioooo@ecs:~$ docker ps
+$ docker ps
 CONTAINER ID        IMAGE               COMMAND           ...   PORTS                                NAMES
 6779686f06f6        training/webapp     "python app.py"   ...   5000/tcp, 127.0.0.1:5000->5000/udp   drunk_visvesvaraya
 95c6ceef88ca        training/webapp     "python app.py"   ...    5000/tcp, 127.0.0.1:5001->5000/tcp   adoring_stonebraker
@@ -74,8 +74,8 @@ fce072cc88ce        training/webapp     "python app.py"   ...    0.0.0.0:32768->
 
 **docker port** 命令可以让我们快捷地查看端口的绑定情况。
 
-```plain
-tuonioooo@ecs:~$ docker port adoring_stonebraker 5000
+```shell
+docker port adoring_stonebraker 5000
 127.0.0.1:5001
 ```
 
@@ -94,21 +94,32 @@ docker 连接会创建一个父子关系，其中父容器可以看到子容器�
 ### 容器命名
 当我们创建一个容器的时候，docker 会自动对它进行命名。另外，我们也可以使用 **--name** 标识来命名容器，例如：
 
-```plain
-tuonioooo@ecs:~$  docker run -d -P --name runoob training/webapp python app.py
+```shell
+$  docker run -d -P --name tuonioooo training/webapp python app.py
 43780a6eabaaf14e590b6e849235c75f3012995403f97749775e38436db9a441
 ```
 
 我们可以使用 **docker ps** 命令来查看容器名称。
 
-```plain
-tuonioooo@ecs:~$ docker ps -l
+```shell
+docker ps -l
 CONTAINER ID     IMAGE            COMMAND           ...    PORTS                     NAMES
-43780a6eabaa     training/webapp   "python app.py"  ...     0.0.0.0:32769->5000/tcp   runoob
+43780a6eabaa     training/webapp   "python app.py"  ...     0.0.0.0:32769->5000/tcp   tuonioooo
 ```
 
 ### 新建网络
-下面先创建一个新的 Docker 网络。$ docker network create -d bridge test-net
+下面先创建一个新的 Docker 网络。
+
+```shell
+docker network create -d bridge docker-mount_default
+
+[root@ecs-149911 ~]# docker network ls
+NETWORK ID     NAME                   DRIVER    SCOPE
+f297f786d4b5   bridge                 bridge    local
+c3509a01b631   docker-mount_default   bridge    local
+f7f0029f747b   host                   host      local
+454e6fbe8a40   none                   null      local
+```
 
 ![](../assets/usage/1734170901103.png)
 
@@ -119,49 +130,111 @@ CONTAINER ID     IMAGE            COMMAND           ...    PORTS                
 其中 overlay 网络类型用于 Swarm mode，在本小节中你可以忽略它。
 
 ### 连接容器
-运行一个容器并连接到新建的 test-net 网络:
+运行一个容器并连接到新建的 `docker-mount_default` 网络:
 
-$ docker run -itd --name test1 --network test-net ubuntu /bin/bash
+```shell
+# 创建mysql容器并加入到 `docker-mount_default` 网络
+docker run -p 3367:3306 \
+--name mysql02 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-v /home/mysql02/data:/var/lib/mysql \
+--net docker-mount_default \
+-d mysql
+```
 
-打开新的终端，再运行一个容器并加入到 test-net 网络:
+打开新的终端，再运行一个容器并加入到 `docker-mount_default` 网络:
 
-$ docker run -itd --name test2 --network test-net ubuntu /bin/bash
+```shell
+# 创建Java容器并加入到 `docker-mount_default` 网络
+docker run -p 9330:9330 --name miliqk-manage-platform \ #容器的名称
+-e TZ="Asia/Shanghai" \
+-e APP_PROFILE=dev \
+-v /etc/localtime:/etc/localtime \
+-v /home/daizhao/apps/miliqk-manage-platform/logs:/logs \
+--net docker-mount_default \ 
+-d miliqk-manage-platform:0.0.1-SNAPSHOT #镜像名称:版本
+```
 
-点击图片查看大图：
+进入到miliqk-manage-platform容器 ping mysql02 查看效果
 
-![](../assets/usage/1734170901157.png)
+```shell
+docker exec -it miliqk-manage-platform bash
+root@28443415a16f:/# ping mysql02
+PING mysql (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: icmp_seq=0 ttl=64 time=0.065 ms
+64 bytes from 172.18.0.3: icmp_seq=1 ttl=64 time=0.084 ms
+64 bytes from 172.18.0.3: icmp_seq=2 ttl=64 time=0.082 ms
+64 bytes from 172.18.0.3: icmp_seq=3 ttl=64 time=0.097 ms
+```
 
-下面通过 ping 来证明 test1 容器和 test2 容器建立了互联关系。
+进入到mysql02容器 ping miliqk-manage-platform 查看效果
 
-如果 test1、test2 容器内中无 ping 命令，则在容器内执行以下命令安装 ping（即学即用：可以在一个容器里安装好，提交容器到镜像，在以新的镜像重新运行以上俩个容器）。
+```shell
+[root@ecs-149911 ~]# docker exec -it mysql02 bash
+root@ecf2f7975ad8:/# ping miliqk-manage-platform
+PING miliqk-manage-platform (172.18.0.5) 56(84) bytes of data.
+64 bytes from miliqk-manage-platform.docker-mount_default (172.18.0.5): icmp_seq=1 ttl=64 time=0.077 ms
+64 bytes from miliqk-manage-platform.docker-mount_default (172.18.0.5): icmp_seq=2 ttl=64 time=0.058 ms
+64 bytes from miliqk-manage-platform.docker-mount_default (172.18.0.5): icmp_seq=3 ttl=64 time=0.057 ms
+```
 
-```plain
+容器内中无 ping 命令，则在容器内执行以下命令安装 ping。
+
+```shell
 apt-get update
 apt install iputils-ping
 ```
 
-在 test1 容器输入以下命令：
+两者都可以互ping通，说明两个容器互联成功，也可以通过ip访问，容器的ip如何查看
 
-点击图片查看大图：
+```shell
+#检查`docker-mount_default`网络的详情
+docker network inspect docker-mount_default
+#....other
+"Containers": {
+            "28443415a16f053ddbe577efb9bfa00df2241395fd84506b6adcf47aee6214b4": {
+                "Name": "miliqk-manage-platform",
+                "EndpointID": "23c52d4d23198386c2737197f45c7d67ae0fd97d9c8b452360cbd794c5c0fc7d",
+                "MacAddress": "02:42:ac:12:00:05",
+                "IPv4Address": "172.18.0.5/16",
+                "IPv6Address": ""
+            },
+            "ecf2f7975ad813ce34241b465596699e722808f4f37d9b99dc65c87397c0a28a": {
+                "Name": "mysql02",
+                "EndpointID": "ad4fc6d96de58bcb33506be09713cb451acf4731b31449c5911e8a46a82446bf",
+                "MacAddress": "02:42:ac:12:00:06",
+                "IPv4Address": "172.18.0.6/16",
+                "IPv6Address": ""
+            }
+#....other
+```
+通过以上命令，可以查看到每一个容器所在网络中的ip，进入到容器miliqk-manage-platform用ip访问mysql02
 
-![](../assets/usage/1734170901183-103ba47b.png)
-
-同理在 test2 容器也会成功连接到:
-
-点击图片查看大图：
-
-![](../assets/usage/1734170901187-b1d1798a.png)
-
-这样，test1 容器和 test2 容器建立了互联关系。
+```shell
+docker exec -it miliqk-manage-platform bash
+root@28443415a16f:/# ping 172.18.0.6
+PING 172.18.0.6 (172.18.0.6): 56 data bytes
+64 bytes from 172.18.0.6: icmp_seq=0 ttl=64 time=0.090 ms
+64 bytes from 172.18.0.6: icmp_seq=1 ttl=64 time=0.072 ms
+64 bytes from 172.18.0.6: icmp_seq=2 ttl=64 time=0.085 ms
+64 bytes from 172.18.0.6: icmp_seq=3 ttl=64 time=0.071 ms
+```
 
 如果你有多个容器之间需要互相连接，推荐使用 Docker Compose，后面会介绍。
+
+删除一个网络的命令
+
+```shell
+docker network rm [networkID/NAME]
+```
+
 
 ---
 
 ## 配置 DNS
 我们可以在宿主机的 /etc/docker/daemon.json 文件中增加以下内容来设置全部容器的 DNS：
 
-```plain
+```json
 {
   "dns" : [
     "114.114.114.114",
@@ -176,7 +249,9 @@ apt install iputils-ping
 
 查看容器的 DNS 是否生效可以使用以下命令，它会输出容器的 DNS 信息：
 
-$ docker run -it --rm  ubuntu  cat etc/resolv.conf
+```shell
+docker run -it --rm  ubuntu  cat etc/resolv.conf
+```
 
 点击图片查看大图：
 
@@ -186,7 +261,9 @@ $ docker run -it --rm  ubuntu  cat etc/resolv.conf
 
 如果只想在指定的容器设置 DNS，则可以使用以下命令：
 
-$ docker run -it --rm -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.com ubuntu
+```shell
+docker run -it --rm -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.com ubuntu
+```
 
 参数说明：
 
@@ -200,14 +277,44 @@ $ docker run -it --rm -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.co
 
 点击图片查看大图：
 
-![](https://cdn.nlark.com/yuque/0/2024/png/2472623/1734170901452-c8ee45a9-54c8-455e-8560-8d58e9bdfdba.png)
+![](../assets/usage/1734170901452-c8ee45a9.png)
 
 如果在容器启动时没有指定 **--dns** 和 **--dns-search**，Docker 会默认用宿主主机上的 /etc/resolv.conf 来配置容器的 DNS。
 
 
 ## --link容器互联
 
-![](../assets/docker-link.png)
+启动redis容器，暴露端口 6379
+
+```shell
+docker run -itd --name redis -p 6379:6379 redis
+```
+
+启动mysql容器，暴露端口 3306
+
+```shell
+docker run -p 3306:3306 \
+--name mysql \ #容器名
+-e MYSQL_ROOT_PASSWORD=root \ #设置root账号密码
+-v /mnt/docker-mnt/mysql/data:/var/lib/mysql \
+-d mysql
+```
+
+`miliqk-manage-platform` 是一个已知创建好的容器 ，启动Java容器，通过--link 链接 mysql、redis容器
+
+```shell
+docker run -p 9330:9330 --name miliqk-manage-platform \ #容器的名称
+-e TZ="Asia/Shanghai" \
+-e APP_PROFILE=dev \
+-v /etc/localtime:/etc/localtime \
+-v /home/daizhao/apps/miliqk-manage-platform/logs:/logs \
+--link mysql:db \ #容器名:别名
+--link redis \
+-d miliqk-manage-platform:0.0.1-SNAPSHOT #镜像名称:版本
+```
+
+
+![](../assets/usage/docker-link.png)
 
 `application.yml`配置数据源说明
 

@@ -1,6 +1,9 @@
 # Docker redis进阶配置
+
 ### 进阶一
+
 #### 使用如下命令启动Redis服务
+
 ```shell
 docker run -p 6379:6379 --name redis \
 -v /mydata/redis/data:/data \
@@ -19,7 +22,7 @@ docker run -p 6379:6379 --name redis \
 
 redis-server --appendonly yes： 在容器执行redis-server启动命令，并打开redis持久化配置
 
---restart=always： 随[docker](https://so.csdn.net/so/search?q=docker&spm=1001.2101.3001.7020)启动而启动
+--restart=always： 随docker启动而启动
 
 :::
 
@@ -29,7 +32,7 @@ redis-server --appendonly yes： 在容器执行redis-server启动命令，并�
 docker exec -it redis redis-cli
 ```
 
-![](https://github.com/tuonioooo/docker/raw/master/assets/mall_linux_deploy_new_01.bc3b0cc9.png)
+![](../assets/advanced/mall_linux_deploy_new_01.bc3b0cc9.png)
 
 #### 设置requirepass密码启动redis
 如果容器存在先停止，删除

@@ -4,7 +4,7 @@
 安装完成后，我们可以使用以下命令来运行 mongo 容器：
 
 ```shell
-$ docker run -itd --name mongo -p 27017:27017 mongo --auth
+docker run -itd --name mongo -p 27017:27017 mongo --auth
 ```
 
 :::color1
@@ -25,7 +25,7 @@ $ docker run -itd --name mongo -p 27017:27017 mongo --auth
 接着使用以下命令添加用户和设置密码，并且尝试连接。
 
 ```shell
-$ docker exec -it mongo mongo admin
+docker exec -it mongo mongo admin
 # 创建一个名为 admin，密码为 123456 的用户。
 >  db.createUser({ user:'admin',pwd:'123456',roles:[ { role:'userAdminAnyDatabase', db: 'admin'},"readWriteAnyDatabase"]});
 # 尝试使用上面创建的用户信息进行连接。

@@ -16,7 +16,7 @@ Redis 是一个开源的使用 ANSI C 语言编写、支持网络、可基于内
 此外，我们还可以用 **docker search redis** 命令来查看可用版本：
 
 ```shell
-$ docker search  redis
+docker search  redis
 NAME                      DESCRIPTION                   STARS  OFFICIAL  AUTOMATED
 redis                     Redis is an open source ...   2321   [OK]       
 sameersbn/redis                                         32                   [OK]
@@ -36,7 +36,7 @@ servivum/redis            Redis Docker Image            1                    [OK
 这里我们拉取官方的最新版本的镜像：
 
 ```shell
-$ docker pull redis:latest
+docker pull redis:latest
 ```
 
 ![](../assets/install/redis3.png)
@@ -45,7 +45,7 @@ $ docker pull redis:latest
 使用以下命令来查看是否已安装了 redis：
 
 ```shell
-$ docker images
+docker images
 ```
 
 ![](../assets/install/redis4.png)
@@ -56,7 +56,7 @@ $ docker images
 安装完成后，我们可以使用以下命令来运行 redis 容器：
 
 ```shell
-$ docker run -itd --name redis-test -p 6379:6379 redis
+docker run -itd --name redis-test -p 6379:6379 redis
 ```
 
 **参数说明：**
@@ -74,7 +74,7 @@ $ docker run -itd --name redis-test -p 6379:6379 redis
 接着我们通过 redis-cli 连接测试使用 redis 服务。
 
 ```shell
-$ docker exec -it redis-test /bin/bash
+docker exec -it redis-test /bin/bash
 ```
 
 ![](../assets/install/redis7.png)

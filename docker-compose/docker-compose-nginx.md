@@ -2,7 +2,7 @@
 
 ### docker-compose 安装
 
-[docker-compose 安装](../manual/docker-compose-run-command.md)
+[docker-compose 安装](../usage/docker-compose.md)
 
 ### 编写docker-compose.yml文件
 

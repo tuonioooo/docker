@@ -1,5 +1,5 @@
 # Docker network进阶配置
-```plain
+```shell
 docker run -p 3367:3306 \
 --name mysql02 \
 -e MYSQL_ROOT_PASSWORD=123456 \

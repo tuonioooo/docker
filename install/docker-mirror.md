@@ -92,7 +92,7 @@ $ sudo systemctl restart docker
 检查加速器是否生效配置加速器之后，如果拉取镜像仍然十分缓慢，请手动检查加速器配置是否生效，在命令行执行 **docker info**，如果从结果中看到了如下内容，说明配置成功。
 
 ```shell
-$ docker info
+docker info
 Registry Mirrors:
     https://reg-mirror.qiniu.com
 ```

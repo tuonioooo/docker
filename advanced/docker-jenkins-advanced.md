@@ -1,6 +1,7 @@
 # Docker Jenkins进阶配置
 
 ## 初始化向导
+
 软件的安装参考：[Jenkins环境构建](https://github.com/tuonioooo/engineering-management/blob/master/jenkins-ji-cheng/jenkinshuan-jing-gou-jian/README.md)
 
 系统安装成功后，通过浏览器访问 http:/ip:port/进入初始页，如果 Jenkins 还没有启动完成，会显示如下内容

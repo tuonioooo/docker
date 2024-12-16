@@ -15,7 +15,7 @@
 登录需要输入用户名和密码，登录成功后，我们就可以从 docker hub 上拉取自己账号下的全部镜像。
 
 ```shell
-$ docker login
+docker login
 ```
 
 ![](../assets/usage/r1.png)
@@ -25,7 +25,7 @@ $ docker login
 退出 docker hub 可以使用以下命令：
 
 ```shell
-$ docker logout拉取镜像
+docker logout拉取镜像
 ```
 
 你可以通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。
@@ -33,7 +33,7 @@ $ docker logout拉取镜像
 以 ubuntu 为关键词进行搜索：
 
 ```shell
-$ docker search ubuntu
+docker search ubuntu
 ```
 
 ![](../assets/usage/r2.png)
@@ -41,7 +41,7 @@ $ docker search ubuntu
 使用 docker pull 将官方 ubuntu 镜像下载到本地：
 
 ```shell
-$ docker pull ubuntu
+docker pull ubuntu
 ```
 
 ![](../assets/usage/r3.png)
@@ -52,7 +52,7 @@ $ docker pull ubuntu
 以下命令中的 username 请替换为你的 Docker 账号用户名。
 
 ```shell
-$ docker tag ubuntu:18.04 username/ubuntu:18.04
+docker tag ubuntu:18.04 username/ubuntu:18.04
 $ docker image ls
 
 REPOSITORY      TAG        IMAGE ID            CREATED           ...  

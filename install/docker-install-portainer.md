@@ -5,7 +5,7 @@ docker图形化界面管理工具，提供一个后台面板供我们操作
 
 部署步骤：
 
-1、查询当前Portainer镜像，选择start值比较高的
+#### 1、查询当前Portainer镜像，选择start值比较高的
 
 命令：
 
@@ -13,7 +13,7 @@ docker图形化界面管理工具，提供一个后台面板供我们操作
 docker search portainer
 ```
 
-2、下载指定portainer镜像
+#### 2、下载指定portainer镜像
 
 命令：
 
@@ -21,7 +21,7 @@ docker search portainer
 docker pull portainer/portainer
 ```
 
-3、本次只部署单机版，命令如下
+#### 3、本次只部署单机版，命令如下
 
 ```shell
 docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data --name prtainer-test portainer/portainer
@@ -33,18 +33,23 @@ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/doc
 
 ![](https://camo.githubusercontent.com/494f74e8f82e1a832411e9812ffe0d98b70f545a648b8d749bb6fa27f11bb608/68747470733a2f2f696d67323031382e636e626c6f67732e636f6d2f626c6f672f3935343334382f3230313931322f3935343334382d32303139313231313135323832333736322d313939393837393831302e706e67)
 
-:::info
-**参数说明： **
+> [!NOTE]
+>
+> **参数说明：**
+>
+> -d：容器在后台运行；
+>
+>  -p 9000:9000 ：宿主机9000端口映射容器中的9000端口 –restart 标志会检查容器的退出代码，并据此来决定是否要重启容器，默认是不会重启。
+>
+> –restart=always：自动重启该容器 
+>
+> -v /var/run/docker.sock:/var/run/docker.sock ：把宿主机的Docker守护进程(Docker daemon)默认监听的Unix域套接字挂载到容器中 
+>
+> -v portainer_data:/data ：把宿主机portainer_data数据卷挂载到容器/data目录 
+>
+> –name prtainer-test ： 给容器起名为portainer-test
 
--d：容器在后台运行；
-
- -p 9000:9000 ：宿主机9000端口映射容器中的9000端口 –restart 标志会检查容器的退出代码，并据此来决定是否要重启容器，默认是不会重启。
-
-–restart=always：自动重启该容器 -v /var/run/docker.sock:/var/run/docker.sock ：把宿主机的Docker守护进程(Docker daemon)默认监听的Unix域套接字挂载到容器中 -v portainer_data:/data ：把宿主机portainer_data数据卷挂载到容器/data目录 –name prtainer-test ： 给容器起名为portainer-test
-
-:::
-
-4、使用docker ps查看进程，如下所示：
+#### 4、使用docker ps查看进程，如下所示：
 
 ![](https://camo.githubusercontent.com/50330e9f61eb758b37be09d1b74fe907cb82d6a9a2df7032aa824f0f88dd0ad2/68747470733a2f2f696d67323031382e636e626c6f67732e636f6d2f626c6f672f3935343334382f3230313931322f3935343334382d32303139313231313135333233343830362d313633383534343939342e706e67)
 
@@ -58,7 +63,7 @@ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/doc
 docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /public:/public --name prtainer-test portainer/portainer（如果已部署，需要将之前的容器删除）
 ```
 
-5、Portainer的web页面登录
+#### 5、Portainer的web页面登录
 
 在浏览器输入部署服务器的IP:9000，回车，显示如下界面：
 

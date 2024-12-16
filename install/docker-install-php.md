@@ -11,7 +11,7 @@
 此外，我们还可以用 docker search php 命令来查看可用版本：
 
 ```shell
-tuonioooo@ecs:~/php-fpm$ docker search php
+/php-fpm$ docker search php
 NAME                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 php                       While designed for web development, the PH...   1232      [OK]       
 richarvey/nginx-php-fpm   Container running Nginx + PHP-FPM capable ...   207                  [OK]
@@ -30,13 +30,13 @@ webdevops/php             PHP (FPM and CLI) service container             10    
 这里我们拉取官方的镜像,标签为5.6-fpm
 
 ```shell
-tuonioooo@ecs:~/php-fpm$ docker pull php:5.6-fpm
+/php-fpm$ docker pull php:5.6-fpm
 ```
 
 等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为php,标签为5.6-fpm的镜像。
 
 ```shell
-tuonioooo@ecs:~/php-fpm$ docker images
+/php-fpm$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 php                 5.6-fpm             025041cd3aa5        6 days ago          456.3 MB
 ```
@@ -49,7 +49,7 @@ Nginx 部署可以查看：[Docker 安装 Nginx](./docker-install-nginx.md)，�
 启动 PHP：
 
 ```shell
-$ docker run --name  myphp-fpm -v ~/nginx/www:/www  -d php:5.6-fpm
+docker run --name  myphp-fpm -v ~/nginx/www:/www  -d php:5.6-fpm
 ```
 
 参数说明：
@@ -62,7 +62,7 @@ $ docker run --name  myphp-fpm -v ~/nginx/www:/www  -d php:5.6-fpm
 
 mkdir ~/nginx/conf/conf.d 
 
-在该目录下添加 **~/nginx/conf/conf.d/runoob-test-php.conf** 文件，内容如下：
+在该目录下添加 **~/nginx/conf/conf.d/tuonioooo-test-php.conf** 文件，内容如下：
 
 ```text
 server {
@@ -96,7 +96,7 @@ location ~ \.php$ {
 启动 nginx：
 
 ```shell
-docker run --name runoob-php-nginx -p 8083:80 -d \
+docker run --name tuonioooo-php-nginx -p 8083:80 -d \
     -v ~/nginx/www:/usr/share/nginx/html:ro \
     -v ~/nginx/conf/conf.d:/etc/nginx/conf.d:ro \
     --link myphp-fpm:php \

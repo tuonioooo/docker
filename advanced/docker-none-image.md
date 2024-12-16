@@ -1,4 +1,4 @@
-# docker空(none)镜像处理
+# Docker空(none)镜像处理
 
 
 ### 有用镜像
@@ -16,5 +16,4 @@
 ```shell
 docker rmi $(docker images -f "dangling=true" -q)
 ```
-
 

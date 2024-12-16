@@ -15,7 +15,7 @@ MySQL 是世界上最受欢迎的开源数据库。凭借其可靠性、易用�
 此外，我们还可以用 **docker search mysql** 命令来查看可用版本：
 
 ```shell
-$ docker search mysql
+docker search mysql
 NAME                     DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 mysql                    MySQL is a widely used, open-source relati...   2529      [OK]       
 mysql/mysql-server       Optimized MySQL Server Docker images. Crea...   161                  [OK]
@@ -33,7 +33,7 @@ azukiapp/mysql           Docker image to run MySQL by Azuki - http:...   2      
 这里我们拉取官方的最新版本的镜像：
 
 ```shell
-$ docker pull mysql:latest
+docker pull mysql:latest
 ```
 
 ![](../assets/install/mysql-3.png)
@@ -42,7 +42,7 @@ $ docker pull mysql:latest
 使用以下命令来查看是否已安装了 mysql：
 
 ```shell
-$ docker images
+docker images
 ```
 
 ![](../assets/install/mysql-4.png)
@@ -53,7 +53,7 @@ $ docker images
 安装完成后，我们可以使用以下命令来运行 mysql 容器：
 
 ```shell
-$ docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
 ```
 
 :::color1

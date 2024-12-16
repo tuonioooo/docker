@@ -39,6 +39,7 @@
 + [rmi - 删除不再需要的镜像。](./docker-rmi-command.md)
 + [tag - 创建本地镜像的别名（tag）。](./docker-tag-command.md)
 + [build - 从 Dockerfile 构建 Docker 镜像。](./docker-build-command.md)
++ [dockerfile - 常用命令](../usage/docker-dockerfile.md)
 + [history - 查看指定镜像的历史层信息。](./docker-history-command.md)
 + [save - 将一个或多个 Docker 镜像保存到一个 tar 归档文件中。](./docker-save-command.md)
 + [load - 从由 docker save 命令生成的 tar 文件中加载 Docker 镜像。](./docker-load-command.md)
@@ -52,6 +53,7 @@
 + [docker compose 基本命令](./docker-compose-run-command.md)
 
 ### Docker-Compose（逐步被淘汰，兼容旧版本）
++ [docker-compose 安装](../usage/docker-compose.md)
 * [docker-compose 构建jenkins](../docker-compose/docker-compose-jenkins.md)
 * [docker-compose 构建mySql](../docker-compose/docker-compose-mysql.md)
 * [docker-compose 构建redis](../docker-compose/docker-compose-redis.md)

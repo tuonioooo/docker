@@ -99,20 +99,19 @@ firewall-cmd --reload
 </build>
 ```
 
-:::info
-**相关配置说明：**
-
-+ executions.execution.phase:此处配置了在maven打包应用时构建docker镜像;
-+ imageName：用于指定镜像名称;
-+ dockerHost：打包后上传到的docker服务器地址;
-+ baseImage：该应用所依赖的基础镜像，此处为java;
-+ entryPoint：docker容器启动时执行的命令;
-+ forceTags： 覆盖已存在的标签 镜像
-+ resources.resource.targetPath：将打包后的资源文件复制到该目录;
-+ resources.resource.directory：需要复制的文件所在目录，maven打包的应用jar包保存在target目录下面；
-+ resources.resource.include：需要复制的文件，打包好的应用jar包。
-
-:::
+> [!NOTE]
+>
+> **相关配置说明：**
+>
+> + executions.execution.phase:此处配置了在maven打包应用时构建docker镜像;
+> + imageName：用于指定镜像名称;
+> + dockerHost：打包后上传到的docker服务器地址;
+> + baseImage：该应用所依赖的基础镜像，此处为java;
+> + entryPoint：docker容器启动时执行的命令;
+> + forceTags： 覆盖已存在的标签 镜像
+> + resources.resource.targetPath：将打包后的资源文件复制到该目录;
+> + resources.resource.directory：需要复制的文件所在目录，maven打包的应用jar包保存在target目录下面；
+> + resources.resource.include：需要复制的文件，打包好的应用jar包。
 
 使用IDEA工具中的maven插件打包项目并构建镜像上传到docker服务器地址
 

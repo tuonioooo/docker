@@ -74,3 +74,8 @@
   + [Docker 常见问题](./manual/docker-problem.md)
 
 
+## 关注公众号，获取更多内容
+
+<img src="assets/mp_qrcode.png">
+<img src="assets/gh_96a4edd298d2_258.jpg" style="border-radius: 50%">
+

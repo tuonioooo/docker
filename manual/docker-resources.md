@@ -26,6 +26,23 @@
 + **清华大学镜像：**[**https://mirrors.tuna.tsinghua.edu.cn**](https://mirrors.tuna.tsinghua.edu.cn/)
 + daocloud：https://www.daocloud.io/mirror#accelerator-doc（注册后使用）
 
+#### 国外的一些可用的镜像加速
+
+| 源站                      | 替换为                     |
+|---------------------------|----------------------------|
+| cr.l5d.io                 | l5d.m.daocloud.io          |
+| docker.elastic.co         | elastic.m.daocloud.io      |
+| docker.io                 | docker.m.daocloud.io       |
+| gcr.io                    | gcr.m.daocloud.io          |
+| ghcr.io                   | ghcr.m.daocloud.io         |
+| k8s.gcr.io                | k8s-gcr.m.daocloud.io      |
+| registry.k8s.io           | k8s.m.daocloud.io          |
+| mcr.microsoft.com         | mcr.m.daocloud.io          |
+| nvcr.io                   | nvcr.m.daocloud.io         |
+| quay.io                   | quay.m.daocloud.io         |
+| registry.jujucharms.com   | jujucharms.m.daocloud.io   |
+| rocks.canonical.com       | rocks-canonical.m.daocloud.io |
+
 ### 其他
 
 + [centos官网](https://www.centos.org/)

@@ -59,46 +59,52 @@ sudo vi /etc/docker/daemon.json
 
 ```text
 ----------------------等级1----------------------
+"https://docker-0.unsee.tech",
+"https://mirror.iscas.ac.cn",
+"https://docker.imgdb.de",
+"https://docker.m.daocloud.io",
 "https://docker.rainbond.cc",
+
+----------------------等级2----------------------
 "https://reg-mirror.qiniu.com",
 "https://mirror.baidubce.com",
 "https://docker.mirrors.sjtug.sjtu.edu.cn",
-"https://mirror.iscas.ac.cn",
-"https://docker.m.daocloud.io",
-"https://docker.imgdb.de",
-"https://docker-0.unsee.tech",
 "https://docker.nju.edu.cn",
 
-----------------------等级2----------------------
+----------------------等级3----------------------
 
 "https://6kx4zyno.mirror.aliyuncs.com",
 "https://almtd3fa.mirror.aliyuncs.com",
 
-----------------------等级3----------------------
+----------------------等级4----------------------
 
 "https://mirrors.tuna.tsinghua.edu.cn",
 "https://docker.mirrors.ustc.edu.cn",
 
+
+
 ```
 
 > 说明：上面镜像加速，都是以 **docker pull node:20-alpine** 拉取node:20-alpine为例  
-> 等级1：代表加速器访问流畅  
-> 等级2：代表第三方个人的加速器  
-> 等级3：代表可以访问部分镜像资源，部分包会存在下载成功，读取错误，导致镜像无法拉取  
+> 等级1：代表浏览器+docker pull都可以访问流畅  
+> 等级2：代表浏览器403，docker pull可以访问流畅 
+> 等级3：代表第三方个人的加速器  
+> 等级4：代表可以访问部分镜像资源，部分包会存在下载成功，读取错误，导致镜像无法拉取  
 
 一条龙完美配置
 
 ```json
 {
   "registry-mirrors": [
+    "https://docker-0.unsee.tech",
+    "https://mirror.iscas.ac.cn",
+    "https://docker.imgdb.de",
+    "https://docker.m.daocloud.io",
     "https://docker.rainbond.cc",
+    
     "https://reg-mirror.qiniu.com",
     "https://mirror.baidubce.com",
     "https://docker.mirrors.sjtug.sjtu.edu.cn",
-    "https://mirror.iscas.ac.cn",
-    "https://docker.m.daocloud.io",
-    "https://docker.imgdb.de",
-    "https://docker-0.unsee.tech",
     "https://docker.nju.edu.cn",
 
     "https://6kx4zyno.mirror.aliyuncs.com",

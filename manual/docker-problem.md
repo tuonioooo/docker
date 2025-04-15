@@ -95,3 +95,79 @@ docker pull node:20-alpine
 ✅ 解决方式，更换镜像源地址
 
 改成手动拉取的方式
+
+## Windows 桌面Docker 执行 `sudo systemctl enable docker` 报错 `Failed to enable unit: Interactive authentication required.`
+
+🧩 原因分析
+`systemctl` 是 Linux 系统中用于管理服务的命令，依赖于 systemd 初始化系统。而在 Windows 上，Docker Desktop 并不使用 systemd 来管理 Docker 服务，因此不会存在 `docker.service` 单元。
+
+此外，即使在 Windows 上的 WSL（Windows Subsystem for Linux）环境中，由于 WSL 默认不支持 systemd，运行 `systemctl` 相关命令也会出现类似错误。
+
+
+✅ 选项一： 在 **Windows 11** 上，将必要的命令添加到[boot]，以下部分/etc/wsl.conf：
+
+```conf
+[boot]
+command="service docker start"
+```
+
+> [!CAUTION] 注意：
+> 在最新的预览版中，似乎存在一个问题，当通过实际命令行启动的服务均未运行时，通过此方法启动的任何boot.command服务都会终止。  
+> 换句话说，如果您需要解决方式：手动修改`C:\Users\Administrator\.docker\daemon.json`改为正确的json语法，重启Docker Desktop 应用程序即可  
+> 在退出 WSL2 会话后继续运行 Docker（或任何其他服务），则可能需要使用选项 2（或卸载预览版）。  
+
+✅ 选项二（推荐）
+
+在 Windows 10 上，在用户启动脚本中运行必要的命令（例如.profile）。首先检查服务是否正在运行，例如：
+
+```shell
+wsl.exe -u root -e sh -c "service docker status || service docker start"
+```
+
+> [!CAUTION] 注意：
+> 这比（下面的选项三）更好，因为它不需要修改。这利用了可以从 WSL 内部运行命令sudoers的优势，使用无需密码即可以 root 身份运行命令的选项。  
+> wsl.exe-u root  
+> 如果此命令由于某种原因失败，您的默认 WSL 发行版可能与预期不同。请检查 的输出wsl.exe -l -v。  
+> 您可以使用 更改默认发行版，wsl.exe --setdefault <distro_name>或者使用 调整上面的命令行以指定发行版-d <distro_name>。
+
+✅ 选项三（旧答案，供后人参考）
+
+visudo或添加规则以/etc/sudoers.d允许您的用户无需密码即可运行命令：
+
+```shell
+username ALL = (root) NOPASSWD: /usr/sbin/service docker *
+```
+然后编辑您的.profile以添加：
+
+```shell
+sudo service docker status || sudo service docker start
+```
+
+✅ 选项四（推荐）
+
+在 Windows 上使用 Docker Desktop 时，您可以通过以下方式管理 Docker：
+
+- **使用 Docker Desktop 应用程序**：通过图形界面启动和停止 Docker 服务。
+
+- **命令行工具**：使用 `docker` 命令行工具执行相关操作，例如：
+
+  ```powershell
+  docker info
+  docker run hello-world
+  ```
+
+
+
+参考来源：[https://stackoverflow.com/questions/65813979/sudo-systemctl-enable-docker-not-available-automatically-run-docker-at-boot-o?utm_source=chatgpt.com](https://stackoverflow.com/questions/65813979/sudo-systemctl-enable-docker-not-available-automatically-run-docker-at-boot-o?utm_source=chatgpt.com)
+
+
+如果您在 WSL 环境中使用 Docker，可以通过以下方式确保 Docker 正常运行：
+
+1. **确保 Docker Desktop 已启动**：在 Windows 中启动 Docker Desktop 应用程序。
+2. **配置 WSL 与 Docker 的集成**：在 Docker Desktop 的设置中，启用与 WSL 的集成。
+3. **在 WSL 中使用 Docker 命令**：在 WSL 的终端中，直接使用 `docker` 命令，无需使用 `systemctl`。
+
+
+💡 总结
+
+在 Windows 上使用 Docker Desktop 时，不需要也无法使用 `systemctl` 来管理 Docker 服务。建议通过 Docker Desktop 提供的图形界面或命令行工具来管理和使用 Docker。

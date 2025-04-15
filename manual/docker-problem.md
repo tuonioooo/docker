@@ -72,3 +72,26 @@ FROM python:3.6-alpine
 ```
 
 > 参考：https://blog.csdn.net/qq_35764295/article/details/126379879 （更多的sh和bash区别之间的扩展）
+
+
+## ERROR: failed to solve: node:xx-alpine解决办法
+
+🧩 问题原因
+ERROR: failed to solve: node:20-alpine: failed to resolve source metadata for docker.io/library/node:20-alpine: docker.io/library/node:20-alpine: not found
+
+✅ 解决方式
+
+改成手动拉取的方式
+
+```bash
+docker pull node:20-alpine
+```
+
+## ERROR: failed to copy: httpReadSeeker: failed open: unexpected status code
+
+🧩 问题原因
+这个错误提示通常在尝试从网络下载或读取文件时遇到，表示服务器返回了一个非预期的状态代码，这意味着请求没有成功完成。
+
+✅ 解决方式，更换镜像源地址
+
+改成手动拉取的方式

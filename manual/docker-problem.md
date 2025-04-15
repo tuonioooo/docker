@@ -94,4 +94,3 @@ docker pull node:20-alpine
 
 ✅ 解决方式，更换镜像源地址
 
-改成手动拉取的方式

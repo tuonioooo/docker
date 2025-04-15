@@ -94,7 +94,6 @@ docker pull node:20-alpine
 
 ✅ 解决方式，更换镜像源地址
 
-改成手动拉取的方式
 
 ## Windows 桌面Docker 执行 `sudo systemctl enable docker` 报错 `Failed to enable unit: Interactive authentication required.`
 
@@ -170,4 +169,4 @@ sudo service docker status || sudo service docker start
 
 💡 总结
 
-在 Windows 上使用 Docker Desktop 时，不需要也无法使用 `systemctl` 来管理 Docker 服务。建议通过 Docker Desktop 提供的图形界面或命令行工具来管理和使用 Docker。
+在 Windows 上使用 Docker Desktop 时，不需要也无法使用 `systemctl` 来管理 Docker 服务。建议通过 Docker Desktop 提供的图形界面或命令行工具来管理和使用 Docker。

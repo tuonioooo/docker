@@ -73,6 +73,8 @@
   + [Docker 资源汇总](./manual/docker-resources.md)
   + [Docker 常见问题](./manual/docker-problem.md)
 
+* Docker Hub指南
+  + [Docker Hub账号服务说明](./docker-hub/docker-hub-service.md)
 
 ## 关注公众号，获取更多内容
 

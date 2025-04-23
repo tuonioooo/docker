@@ -30,6 +30,7 @@
   + [Docker 安装 Nodejs](./install/docker-install-node.md)
   + [Docker 安装 PHP](./install/docker-install-php.md)
   + [Docker 安装 Python](./install/docker-install-python.md)
+    + [Docker Python镜像 TAG 说明](./install/docker-install-python-tags.md)
   + [Docker 安装 Tomcat](./install/docker-install-tomcat.md)
   + [Docker 安装 MySQL](./install/docker-install-mysql.md)
   + [Docker 安装 Redis](./install/docker-install-redis.md)

@@ -48,7 +48,7 @@
   + [Docker 容器连接](./usage/docker-container-connection.md)
   + [Docker 仓库管理](./usage/docker-repository.md)
   + [Docker Dockerfile](./usage/docker-dockerfile.md)
-    + [Docker Dockerfile Ptyhon实战配置-1](./usage/docker-dockerfile-simple1.md)
+    + [Docker Dockerfile Python实战配置-1](./usage/docker-dockerfile-simple1.md)
   + [Docker docker-compose使用(逐渐被淘汰了，但是我老系统还在用)](./usage/docker-compose.md)
   + [Docker Machine](./usage/docker-machine.md)
   + [Swarm 集群管理](./usage/docker-swarm.md)
@@ -70,6 +70,7 @@
   + [Maven插件构建SpringBoot镜像并推送到远程/私人仓库（Docker Hub）](./advanced/docker-maven-build-image-remote-advanced.md)
   + [docker空(none)镜像处理](./advanced/docker-none-image.md)
   + [Docker缓存构建原理](./advanced/docker-build-cache.md)
+  + [Docker多阶段构建指南](./advanced/docker-multi-stage-builds.md)
 
 * Docker参考手册
   + [Docker 命令大全](./manual/docker-command-manual.md)

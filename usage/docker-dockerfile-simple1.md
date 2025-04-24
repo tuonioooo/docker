@@ -167,9 +167,17 @@ ENV PYTHONUNBUFFERED=1 \
 
 ```Dockerfile
 # 安装系统依赖（按需调整）并清理缓存以减小镜像体积
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential libpq-dev curl && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        libpq-dev \
+        libffi-dev \
+        curl \
+        && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean && \
+    pip install --upgrade pip && \
+    python --version
 
 # 安装现代 Python 工具链（uv + poetry）
 RUN pip install --upgrade pip && \
@@ -182,7 +190,12 @@ WORKDIR /app
 #### 命令解释
 
 * apt-get update：更新包索引。
-* apt-get install -y --no-install-recommends：安装所需的包并避免安装推荐的额外包，以减小镜像大小。
+* apt-get install -y --no-install-recommends：
+  * ​​-y​​：自动回答“yes”，避免安装过程中需要手动确认。
+  * 安装所需的包并避免安装推荐的额外包，以减小镜像大小。
+* build-essential​​：包含 GCC、make 等编译工具链（编译 Python C 扩展必备）。
+* ​​libpq-dev​​：PostgreSQL 客户端库的开发文件（用于 psycopg2 等 Python 数据库驱动）。
+* libffi-dev：安装libffi的开发文件，某些Python包（如cryptography）需要这个库
 * rm -rf /var/lib/apt/lists/*：删除 apt 的索引缓存，减少层大小。
 * apt-get clean：清理 apt 包管理器下载的临时缓存，进一步减小镜像体积。它会删除下载的 .deb 包文件，避免它们被保留在镜像中。
 
@@ -226,7 +239,7 @@ FROM base AS builder
 COPY pyproject.toml poetry.lock* requirements*.txt ./ 
 
 # 使用 uv 快速安装依赖（生产环境）
-RUN uv pip install --no-deps -r requirements.txt
+RUN uv pip install -r requirements.txt
 
 # 可选：开发依赖分层安装
 ARG DEV=false

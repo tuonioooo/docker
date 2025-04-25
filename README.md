@@ -49,7 +49,11 @@
   + [Docker 仓库管理](./usage/docker-repository.md)
   + [Docker Dockerfile](./usage/docker-dockerfile.md)
     + [Docker Dockerfile Python实战配置-1](./usage/docker-dockerfile-simple1.md)
+    + [Docker Dockerfile Python实战配置多阶段构建-2](./usage/docker-dockerfile-simple2.md)
   + [Docker docker-compose使用(逐渐被淘汰了，但是我老系统还在用)](./usage/docker-compose.md)
+  + [Docker Compose使用](./docker-compose/docker-compose-common-command.md)
+    + [Docker Compose 锚点用法](./docker-compose/docker-compose-anchor.md)
+    + [Docker Compose 示例1](./docker-compose/docker-compose-simple-1.md)
   + [Docker Machine](./usage/docker-machine.md)
   + [Swarm 集群管理](./usage/docker-swarm.md)
 

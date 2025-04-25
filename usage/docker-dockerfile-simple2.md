@@ -6,6 +6,7 @@
 
 * [多阶段构建](https://docs.docker.com/build/building/multi-stage/)
 * [构建最佳实践](https://docs.docker.com/build/building/best-practices/) （重点阅读 "Sort multi-line arguments" 部分）
+* [Shell 和 exec 形式](https://docs.docker.com/reference/dockerfile/#exec-form)
 
 
 ## 完整Dockerfile
@@ -281,3 +282,5 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
 ```
 
 在 Shell 形式中，`${PORT}` 会被正确解析为环境变量的值；而在 Exec 形式中，`${PORT}` 会被当作字面量字符串处理，导致启动失败。
+
+详见：[https://docs.docker.com/reference/dockerfile/#exec-form](https://docs.docker.com/reference/dockerfile/#exec-form)

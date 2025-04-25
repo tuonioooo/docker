@@ -93,12 +93,9 @@ EXPOSE 8082
 
 
 # 设置 uvicorn 启动命令
-# 通过 sh -c 执行命令，会启动一个 shell 子进程来解析和执行命令会多一层 shell 进程开销
-# CMD ["sh", "-c", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
-
-# 
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"] 静态写法
+# 通过 sh -c 执行命令，会启动一个 shell 子进程来解析和执行命令会多一层 shell 进程开销（可以忽略不计很小）
 CMD ["sh", "-c", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${APP_PORT:8080}"]
-
 
 ```
 

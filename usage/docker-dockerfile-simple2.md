@@ -96,7 +96,7 @@ EXPOSE 8082
 # 设置 uvicorn 启动命令
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"] 静态写法
 # 通过 sh -c 执行命令，会启动一个 shell 子进程来解析和执行命令会多一层 shell 进程开销（可以忽略不计很小）
-CMD ["sh", "-c", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${APP_PORT:8080}"]
+CMD ["/bin/sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${APP_PORT:-8080}"]
 
 ```
 
@@ -277,8 +277,10 @@ Shell 形式会通过 `/bin/sh -c` 启动命令，这样可以正确地解析环
 ```dockerfile
 # Shell 形式
 CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
+或
+CMD ["/bin/sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]
 # Exec 形式
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
 ```
 
 在 Shell 形式中，`${PORT}` 会被正确解析为环境变量的值；而在 Exec 形式中，`${PORT}` 会被当作字面量字符串处理，导致启动失败。

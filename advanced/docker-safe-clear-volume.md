@@ -73,6 +73,8 @@ docker run --rm -v <volume_name>:/data alpine ls -la /data
 docker volume prune -f
 ```
 
+* [Docker批量查找每个卷对应的容器](./advanced/docker-find-volume-container-mapping.md)
+
 ## 7. 避免future问题的建议
 
 ```bash

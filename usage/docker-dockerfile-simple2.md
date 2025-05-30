@@ -117,7 +117,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 具体选择哪个版本，请看：[Docker Python镜像 TAG 说明](../install/docker-install-python-tags.md)
 
-ENV 设置的环境变量默认不会自动跨阶段共享、每个阶段都需要独立设置
+ENV 设置的环境变量默认不会自动跨阶段共享，需要 **FROM base** 会继承 base 阶段的所有环境变量配置，而达到共享的目的 
 
 
 1. **`PYTHONUNBUFFERED=1`**

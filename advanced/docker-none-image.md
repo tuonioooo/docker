@@ -1,4 +1,4 @@
-# Docker空(none)镜像处理
+# Docker清理悬空镜像(空(none)镜像)
 
 
 ### 有用镜像
@@ -15,5 +15,7 @@
 
 ```shell
 docker rmi $(docker images -f "dangling=true" -q)
+或
+docker image prune
 ```
 

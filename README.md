@@ -72,7 +72,14 @@
   + [Maven插件构建SpringBoot镜像（一）](./advanced/docker-maven-build-image.md)
   + [Maven插件构建SpringBoot镜像（二）](./advanced/docker-maven-build-image-2.md)
   + [Maven插件构建SpringBoot镜像并推送到远程/私人仓库（Docker Hub）](./advanced/docker-maven-build-image-remote-advanced.md)
-  + [docker空(none)镜像处理](./advanced/docker-none-image.md)
+  + [Docker清理悬空镜像(空(none)镜像)](./advanced/docker-none-image.md)
+  + [Docker清理数据卷(volume prune)](./advanced/docker-clear-volume.md)
+    + [Docker Bind Mount vs Volume 的区别](./advanced/docker-volume-vs-bind-mount.md)
+    + [Docker安全的清理匿名数据卷](./advanced/docker-safe-clear-volume.md)
+  + [Docker inspect 查看容器、镜像的高级用法](./advanced/docker-inspect-advanced.md)
+  + Docker 常用的脚本汇总
+    + [Docker批量查找每个卷对应的容器](./advanced/docker-find-volume-container-mapping.md)
+    + [Docker检测所有容器挂载状态的脚本](./advanced/docker-inspect-advanced-sh-1.md)
   + [Docker缓存构建原理](./advanced/docker-build-cache.md)
   + [Docker多阶段构建指南](./advanced/docker-multi-stage-builds.md)
 

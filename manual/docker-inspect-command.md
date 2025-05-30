@@ -274,7 +274,9 @@ docker inspect my_container
 + **监控资源**: 获取容器的资源配置信息和使用情况，便于进行资源管理和监控。
 + **脚本自动化**: 在自动化脚本中使用 `docker inspect` 获取对象的详细信息，以进行后续操作。
 
+### 高级使用示例
 
+* [Docker inspect 查看容器、镜像的高级用法](../advanced/docker-inspect-advanced.md)
 
 `docker inspect` 命令是 Docker 中非常强大和实用的命令之一，允许用户获取容器、镜像、卷、网络等对象的详细信息。通过使用该命令，用户可以深入了解和管理 Docker 对象的配置和状态，满足各种调试、监控和管理需求。
 

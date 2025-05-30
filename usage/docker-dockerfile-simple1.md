@@ -97,7 +97,7 @@ ENV PYTHONUNBUFFERED=1 \
     UV_VERSION=0.6.9 \
     LANG=C.UTF-8
 ```
-ENV 设置的环境变量默认不会自动跨阶段共享
+ENV 设置的环境变量默认不会自动跨阶段共享，**需要通过继承关系来实现共享**
 
 1. **`PYTHONUNBUFFERED=1`**
 

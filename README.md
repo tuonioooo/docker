@@ -77,6 +77,7 @@
     + [Docker Bind Mount vs Volume 的区别](./advanced/docker-volume-vs-bind-mount.md)
     + [Docker安全的清理匿名数据卷](./advanced/docker-safe-clear-volume.md)
   + [Docker inspect 查看容器、镜像的高级用法](./advanced/docker-inspect-advanced.md)
+  + [Docker Keycloak进阶配置](./advanced/docker-keycloak-advanced.md)
   + Docker 常用的脚本汇总
     + [Docker批量查找每个卷对应的容器](./advanced/docker-find-volume-container-mapping.md)
     + [Docker检测所有容器挂载状态的脚本](./advanced/docker-inspect-advanced-sh-1.md)

@@ -54,6 +54,7 @@
   + [Docker Compose使用](./docker-compose/docker-compose-common-command.md)
     + [Docker Compose 锚点用法](./docker-compose/docker-compose-anchor.md)
     + [Docker Compose 示例1](./docker-compose/docker-compose-simple-1.md)
+  + [Docker 重启策略](./usage/docker-restart.md)
   + [Docker Machine](./usage/docker-machine.md)
   + [Swarm 集群管理](./usage/docker-swarm.md)
 

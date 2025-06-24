@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  runner:
+    image: gitea/act_runner:0.2.11
+    environment:
+      CONFIG_FILE: /config.yaml
+      GITEA_INSTANCE_URL: "${INSTANCE_URL}"
+      GITEA_RUNNER_REGISTRATION_TOKEN: "${REGISTRATION_TOKEN}"
+      GITEA_RUNNER_NAME: "${RUNNER_NAME}"
+      # GITEA_RUNNER_LABELS: "${RUNNER_LABELS}" <<<--- Defined in config.yaml
+    restart: unless-stopped # 类似 always，但如果手动停止，在守护进程重启后不会重启
+    volumes:
+      - ./config.yaml:/config.yaml
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/tuonioooo/web:/workspace/deploy
+    networks:
+      - gitea
+    ports:
+      - "222:22"
+
+
+
+networks:
+  gitea:
+    external: true       # true: 引用外部网络，false: 自动创建网络,不使用已存在的外部网络
+    name: gitea_network  # 引用外部网络

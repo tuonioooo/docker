@@ -1,0 +1,31 @@
+# Crawl4AI Docker Compose Configuration
+# 简化版本，不配置 LLM 功能，仅提供基础的网页爬取服务
+version: '3.8'
+
+services:
+  crawl4ai:
+    image: unclecode/crawl4ai:latest            # 使用最新的 Crawl4AI 镜像
+    container_name: crawl4ai                    # 容器名称
+    restart: unless-stopped                     # 容器重启策略：除非手动停止，否则总是重启
+    ports:
+      - "11235:11235"
+    # 共享内存大小设置为3GB
+    # 对应 docker run --shm-size=3g
+    # Chrome/Playwright 需要较大的共享内存来正常运行
+    shm_size: '3g'
+    networks:
+      - crawl4ai-network                        # 连接到自定义网络
+    
+    # 可选：健康检查（取消注释以启用）
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:11235/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+
+# 网络配置
+networks:
+  crawl4ai-network:
+    external: true                # true: 引用外部网络，false: 自动创建网络,不使用已存在的外部网络
+    name: docker-mount_default    # 引用外部网络

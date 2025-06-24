@@ -1,0 +1,18 @@
+version: '3'
+services:
+  1panel:
+    container_name: 1panel # 容器名
+    image: moelin/1panel:latest
+    restart: always
+    #network_mode: "host"
+    ports:
+      - "10086:10086"  # 显式映射宿主机10086→容器10086
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+      - /opt:/opt  # 文件存储映射
+      - /etc/docker:/etc/docker  # docker 配置文件夹映射
+    environment:
+      - TZ=Asia/Shanghai  # 时区设置
+    labels:
+      createdBy: "Apps"

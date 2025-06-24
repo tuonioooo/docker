@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    networks:
+      - n8n-network                        # 连接到自定义网络
+    volumes:
+      - n8n_data:/home/node/.n8n
+    command: start --tunnel
+    restart: unless-stopped
+
+
+volumes:
+  n8n_data:
+    external: false # external: true，需要提前在外部手动执行命令：docker volume create n8n_data
+
+# 网络配置
+networks:
+  n8n-network:
+    external: true                # true: 引用外部网络，false: 自动创建网络,不使用已存在的外部网络
+    name: docker-mount_default    # 引用外部网络

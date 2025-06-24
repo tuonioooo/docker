@@ -50,10 +50,20 @@
   + [Docker Dockerfile](./usage/docker-dockerfile.md)
     + [Docker Dockerfile Python实战配置-1](./usage/docker-dockerfile-simple1.md)
     + [Docker Dockerfile Python实战配置多阶段构建-2](./usage/docker-dockerfile-simple2.md)
-  + [Docker docker-compose使用(逐渐被淘汰了，但是我老系统还在用)](./usage/docker-compose.md)
-  + [Docker Compose使用](./docker-compose/docker-compose-common-command.md)
-    + [Docker Compose 锚点用法](./docker-compose/docker-compose-anchor.md)
-    + [Docker Compose 示例1](./docker-compose/docker-compose-simple-1.md)
+  + `docker compose`、`docker-compose`使用
+    + [docker-compose 安装](./usage/docker-compose.md)
+    + [docker-compose 常用命令](./docker-compose/docker-compose-common-command.md)
+    + [docker-compose 构建jenkins](./docker-compose/docker-compose-jenkins.md)
+    + [docker-compose 构建mySql](./docker-compose/docker-compose-mysql.md)
+    + [docker-compose 构建redis](./docker-compose/docker-compose-redis.md)
+    + [docker-compose 构建nginx](./docker-compose/docker-compose-nginx.md)
+    + [docker-compose 网络配置](./docker-compose/docker-compose-network.md)
+    + [docker-compose 编排多服务](./docker-compose/docker-compose-build-servers.md)
+    + [docker-compose 常用命令](./docker-compose/docker-compose-common-command.md)
+    + [`docker compose` 和 `docker-compose` 区别](./manual/diff/docker-compose-vs-compose-diff.md)
+    + [docker compose 锚点用法](./docker-compose/docker-compose-anchor.md)
+    + [docker compose 示例1](./docker-compose/docker-compose-simple-1.md)
+    
   + [Docker 重启策略](./usage/docker-restart.md)
   + [Docker Machine](./usage/docker-machine.md)
   + [Swarm 集群管理](./usage/docker-swarm.md)
@@ -81,6 +91,12 @@
     + [Docker清理构建缓存(Build Cache)](./advanced/docker-clear-build-cache.md)
   + [Docker inspect 查看容器、镜像的高级用法](./advanced/docker-inspect-advanced.md)
   + [Docker Keycloak进阶配置](./advanced/docker-keycloak-advanced.md)
+  + [Docker 1panel进阶配置](./advanced/docker-1panel.md)
+  + [Docker crawl4ai进阶配置](./advanced/docker-crawl4ai.md)
+  + [docker gitea进阶配置](./advanced/gitea/readme.md)
+  + [docker n8n进阶配置](./advanced/n8n/n8n.md)
+
+
   + Docker 常用的脚本汇总
     + [Docker批量查找每个卷对应的容器](./advanced/docker-find-volume-container-mapping.md)
     + [Docker检测所有容器挂载状态的脚本](./advanced/docker-inspect-advanced-sh-1.md)

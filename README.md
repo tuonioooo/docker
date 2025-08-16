@@ -73,6 +73,7 @@
   + [Docker Jenkins进阶配置](./advanced/docker-jenkins-advanced.md)
   + [Docker MongoDB进阶配置](./advanced/docker-mogongdb-advanced.md)
   + [Docker Mysql进阶配置](./advanced/docker-mysql-advanced.md)
+    + [Docker 备份MySQL数据库完整指南](./advanced/docker-mysql-backup.md)
   + [Docker Redis进阶配置](./advanced/docker-redis-advanced.md)
   + [Docker Network进阶配置](./advanced/docker-network-advanced.md)
   + [Docker Nginx进阶配置](./advanced/docker-nginx-advanced.md)
@@ -90,6 +91,7 @@
       + [Docker安全的清理匿名数据卷](./advanced/docker-safe-clear-volume.md)
     + [Docker清理构建缓存(Build Cache)](./advanced/docker-clear-build-cache.md)
   + [Docker inspect 查看容器、镜像的高级用法](./advanced/docker-inspect-advanced.md)
+    + [Docker inspect 查看容器的ip](./advanced/docker-inspect-ip.md)
   + [Docker Keycloak进阶配置](./advanced/docker-keycloak-advanced.md)
   + [Docker 1panel进阶配置](./advanced/docker-1panel.md)
   + [Docker crawl4ai进阶配置](./advanced/docker-crawl4ai.md)
@@ -100,6 +102,7 @@
     + [Docker检测所有容器挂载状态的脚本](./advanced/docker-inspect-advanced-sh-1.md)
   + [Docker缓存构建原理](./advanced/docker-build-cache.md)
   + [Docker多阶段构建指南](./advanced/docker-multi-stage-builds.md)
+  + [Docker容器时间同步指南](./advanced/docker-sync-time.md)
 
 * Docker参考手册
   + [Docker 命令大全](./manual/docker-command-manual.md)

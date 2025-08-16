@@ -107,5 +107,3 @@ docker image inspect mysql | grep -i volume
 # 3. 查看容器的完整信息
 docker inspect mysql > mysql_inspect.json
 ```
-
-、

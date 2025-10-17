@@ -170,3 +170,9 @@ docker@swarm-manager:~$  docker node update --availability active swarm-worker1
 
 ![](../assets/usage/swarm18.png)
 
+## 参考资料
+
+- [第三方博客](https://www.cnblogs.com/lihi9998/p/18893360)
+- [官网](https://docs.docker.com/reference/cli/docker/swarm/)
+- [容器化的选择讨论](https://www.zhihu.com/question/312917608)
+

@@ -67,6 +67,9 @@
   + [Docker 重启策略](./usage/docker-restart.md)
   + [Docker Machine](./usage/docker-machine.md)
   + [Swarm 集群管理](./usage/docker-swarm.md)
+    + [第三方博客](https://www.cnblogs.com/lihi9998/p/18893360)
+    + [官网](https://docs.docker.com/reference/cli/docker/swarm/)
+    + [容器化的分布式选择讨论](https://www.zhihu.com/question/312917608)
 
 
 * Docker实战进阶
